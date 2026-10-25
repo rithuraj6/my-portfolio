@@ -28,15 +28,14 @@
   <!-- Dynamic Ambient Animated Gradient Background -->
   <div class="dynamic-background-canvas" aria-hidden="true"></div>
 
-  <!-- Antigravity Intro Page Loader -->
+  <!-- Intro Page Loader Screen -->
   <div id="antigravity-loader">
     <canvas id="antigravity-canvas"></canvas>
     <div class="loader-content">
-      <div class="logo-svg-wrapper" style="width: 80px; height: 80px; margin: 0 auto 16px;">
+      <div class="logo-svg-wrapper" style="width: 86px; height: 86px; margin: 0 auto 16px;">
         <img src="{% static 'portfolio/images/r-logo.svg' %}" alt="R Logo">
       </div>
-      <div class="loader-title">{{ portfolio.name }}</div>
-      <div class="loader-subtitle">INITIALIZING ANTIGRAVITY FIELD</div>
+      <div class="loader-title" style="letter-spacing: 0.25em;">{{ portfolio.name }}</div>
     </div>
   </div>
 
@@ -195,7 +194,7 @@
       <div class="footer-credits">
         <p>© {{ current_year }} {{ portfolio.full_name }}. Built with <strong>Python & Django</strong> on <strong>Render</strong>.</p>
         <p style="font-size: 0.8rem; margin-top: 4px; color: var(--text-dim);">
-          Antigravity aesthetics • Living Venom symbiote physics • Web3Forms mail
+          Living Venom symbiote physics • Web3Forms direct mail
         </p>
       </div>
 

@@ -50,7 +50,7 @@ PORTFOLIO_CONFIG = {
     # Format: YYYY-MM-DD
     # The countdown automatically detects your next upcoming birthday!
     # -------------------------------------------------------------
-    "dob": "2002-08-15",  # Replace with your actual DOB
+    "dob": "2000-04-28",  # April 28th, 2000
 
     # -------------------------------------------------------------
     # GitHub Integration

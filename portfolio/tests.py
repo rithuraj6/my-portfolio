@@ -8,9 +8,9 @@ class PortfolioViewsTestCase(TestCase):
 
     def test_home_page_status(self):
         response = self.client.get(reverse("portfolio:home"))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "INITIALIZING ANTIGRAVITY FIELD")
+        self.assertContains(response, "RITHU RAJ R")
         self.assertContains(response, "Countdown to Celebration")
+
 
     def test_story_page_status(self):
         response = self.client.get(reverse("portfolio:story"))

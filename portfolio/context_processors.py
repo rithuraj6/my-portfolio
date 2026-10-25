@@ -19,7 +19,7 @@ def portfolio_context(request):
     if os.environ.get("PORTFOLIO_DOB"):
         config["dob"] = os.environ.get("PORTFOLIO_DOB")
 
-    bday_data = get_next_birthday_countdown(config.get("dob", "2002-08-15"))
+    bday_data = get_next_birthday_countdown(config.get("dob", "2000-04-28"))
 
     return {
         "portfolio": config,
