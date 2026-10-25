@@ -1,0 +1,174 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contact-section-container" style="padding-top: 60px;">
+
+  <!-- Header -->
+  <div class="section-head">
+    <span class="section-pill">Direct Communication</span>
+    <h1 style="font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 16px;">
+      Let's Connect &amp; <span class="gradient-text">Build Together.</span>
+    </h1>
+    <p style="max-width: 680px; margin: 0 auto;">
+      Have an interesting project, engineering role, or creative collaboration in mind? 
+      Drop a direct message below — powered by Web3Forms for instant delivery.
+    </p>
+  </div>
+
+  <div class="contact-layout">
+
+    <!-- Contact Info Panel -->
+    <div class="contact-info-panel">
+      <div>
+        <h3>Get In Touch</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          I am actively available for software engineering roles, high-concurrency Python backend contracts, 
+          and creative web experiences.
+        </p>
+
+        <div class="contact-methods">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <i class="ri-mail-line"></i>
+            </div>
+            <div>
+              <div class="code-font" style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Direct Email</div>
+              <a href="mailto:{{ portfolio.email }}" style="color: #fff; font-weight: 500;">
+                {{ portfolio.email }}
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <i class="ri-map-pin-user-line"></i>
+            </div>
+            <div>
+              <div class="code-font" style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Location</div>
+              <div style="color: #fff; font-weight: 500;">{{ portfolio.location }}</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <i class="ri-cake-2-line"></i>
+            </div>
+            <div>
+              <div class="code-font" style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Next Celebration</div>
+              <div style="color: var(--accent-amber); font-weight: 500;">
+                {{ bday.next_celebration_formatted }} ({{ bday.days_remaining }} days)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Free Web3Forms Setup Helper Note -->
+      <div style="background: rgba(0, 240, 255, 0.05); border: 1px dashed rgba(0, 240, 255, 0.25); border-radius: var(--radius-md); padding: 18px; margin-top: 24px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; color: var(--accent-cyan); font-weight: 600; font-size: 0.9rem;">
+          <i class="ri-flashlight-line"></i> Powered by Free Web3Forms
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; margin: 0;">
+          Free form processing with zero server overhead. Get your free key at 
+          <a href="https://web3forms.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); text-decoration: underline;">
+            web3forms.com
+          </a> and paste into <code>portfolio_config.py</code> or your Render environment variable.
+        </p>
+      </div>
+    </div>
+
+    <!-- Contact Form with Async Web3Forms Submission -->
+    <div class="contact-form-card">
+      <div id="form-alert-box" class="form-status-alert"></div>
+
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms Access Key from Portfolio Config / Environment -->
+        <input type="hidden" name="access_key" value="{{ portfolio.web3forms_access_key }}">
+        <input type="hidden" name="subject" value="New Portfolio Message from {{ portfolio.name }} Portfolio">
+        <input type="hidden" name="from_name" value="{{ portfolio.name }} Portfolio Contact Form">
+        
+        <!-- Spam honeypot -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <div class="form-group">
+          <label for="name" class="form-label">YOUR FULL NAME</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Morgan" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">YOUR EMAIL ADDRESS</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="e.g. alex@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">MESSAGE / PROPOSAL</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your idea, requirements, or timeline..." required></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; justify-content: center;">
+          <span id="btn-text">Transmit Message</span>
+          <i class="ri-send-plane-fill"></i>
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Web3Forms Asynchronous AJAX Handler
+  const form = document.getElementById('contact-form');
+  const alertBox = document.getElementById('form-alert-box');
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      btnText.textContent = 'Transmitting...';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let jsonResponse = await response.json();
+        if (response.status === 200) {
+          alertBox.className = 'form-status-alert alert-success';
+          alertBox.innerHTML = '<i class="ri-checkbox-circle-line"></i> Thank you! Your message has been transmitted successfully. I will get back to you shortly.';
+          form.reset();
+        } else {
+          alertBox.className = 'form-status-alert alert-error';
+          alertBox.innerHTML = '<i class="ri-error-warning-line"></i> ' + (jsonResponse.message || 'Transmission failed. You can also email me directly at {{ portfolio.email }}');
+        }
+      })
+      .catch((error) => {
+        alertBox.className = 'form-status-alert alert-error';
+        alertBox.innerHTML = '<i class="ri-error-warning-line"></i> Network error. Please try again or reach out at {{ portfolio.email }}.';
+      })
+      .finally(() => {
+        btnText.textContent = 'Transmit Message';
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        alertBox.style.display = 'block';
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,195 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ==========================================================================
+     HERO & CELEBRATION COUNTDOWN SECTION
+     ========================================================================== -->
+<section class="hero-section" id="hero">
+  <div class="hero-grid">
+    
+    <!-- Left Hero Column -->
+    <div class="hero-info">
+      <div class="hero-badge-pill">
+        <span class="pulse-dot"></span>
+        <span>{{ portfolio.status }}</span>
+      </div>
+
+      <h1 class="hero-title">
+        Hello, I'm <br>
+        <span class="gradient-text">{{ portfolio.name }}.</span>
+      </h1>
+
+      <p class="hero-description">
+        {{ portfolio.tagline }} Specialize in scalable Python &amp; Django architectures, 
+        creative web physics, and seamless cloud deployments on Render.
+      </p>
+
+      <div class="hero-actions">
+        <a href="{% url 'portfolio:projects' %}" class="btn-primary">
+          <span>Explore Projects</span>
+          <i class="ri-arrow-right-line"></i>
+        </a>
+        <a href="{% url 'portfolio:story' %}" class="btn-secondary">
+          <i class="ri-book-open-line"></i>
+          <span>Who Was I?</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Hero Column: Live DOB Countdown Card -->
+    <div class="hero-aside">
+      <div class="dob-celebration-card" id="bday-countdown-ticker" data-target-date="{{ bday.next_celebration_date }}">
+        <div class="card-top-header">
+          <span class="dob-chip">
+            <i class="ri-cake-2-line"></i> Born {{ bday.dob_formatted }}
+          </span>
+          <span class="code-font" style="font-size: 0.8rem; color: var(--text-dim);">
+            Turning {{ bday.turning_age }}
+          </span>
+        </div>
+
+        <h3 class="celebration-title">Countdown to Celebration</h3>
+        <p class="celebration-target">Next milestone on {{ bday.next_celebration_formatted }}</p>
+
+        <!-- Live Countdown Ticker -->
+        <div class="countdown-grid">
+          <div class="countdown-box">
+            <div class="countdown-number" id="bday-days">{{ bday.days_remaining }}</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="bday-hours">--</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="bday-mins">--</div>
+            <div class="countdown-label">Mins</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="bday-secs">--</div>
+            <div class="countdown-label">Secs</div>
+          </div>
+        </div>
+
+        <div class="celebration-footer-note">
+          <i class="ri-sparkling-fill" style="color: var(--accent-amber);"></i>
+          <span>Another orbit around the sun in progress. Ready for the next leap!</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================================
+     GITHUB DYNAMIC REPOSITORIES STATS BAR
+     ========================================================================== -->
+<section class="stats-banner-section">
+  <div class="github-live-card">
+    <div class="github-user-badge">
+      <img src="{{ github_data.avatar_url|default:'https://github.com/github.png' }}" 
+           alt="{{ github_data.username }} GitHub avatar" class="github-avatar">
+      <div>
+        <div class="github-name">@{{ github_data.username }}</div>
+        <div class="github-sync-indicator">
+          <i class="ri-check-double-line"></i>
+          <span>Live GitHub Sync Active</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Counter Tickers -->
+    <div class="stats-ticker-row">
+      <div class="stat-item">
+        <div class="stat-value dynamic-github-repo-count" data-count="{{ github_data.public_repos }}">
+          {{ github_data.public_repos }}
+        </div>
+        <div class="stat-label">Public Repositories</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-value" data-count="{{ github_data.total_stars }}">
+          {{ github_data.total_stars }}
+        </div>
+        <div class="stat-label">Stargazers</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-value" data-count="{{ github_data.followers }}">
+          {{ github_data.followers }}
+        </div>
+        <div class="stat-label">Followers</div>
+      </div>
+    </div>
+
+    <a href="{% url 'portfolio:projects' %}" class="btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;">
+      <span>Browse All Repos</span>
+      <i class="ri-arrow-right-up-line"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     "WHO WAS I" TEASER & STORY PREVIEW
+     ========================================================================== -->
+<section class="stories-section-container" id="story-preview">
+  <div class="section-head">
+    <span class="section-pill">The Chronicles</span>
+    <h2>Who Was I? The Evolution.</h2>
+    <p>A scrollable retrospective through challenges, breakthroughs, and architectural shifts.</p>
+  </div>
+
+  <div class="story-timeline">
+    {% for chapter in preview_stories %}
+    <div class="story-card-item">
+      <div class="story-marker-orb"></div>
+      <div class="story-card">
+        <span class="story-badge">{{ chapter.period }}</span>
+        <h3 class="story-title">{{ chapter.title }}</h3>
+        <div class="story-tagline">{{ chapter.tagline }}</div>
+        <p class="story-text">{{ chapter.content }}</p>
+        <div class="story-lesson-box">
+          <strong>Key Insight:</strong> {{ chapter.lesson }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="{% url 'portfolio:story' %}" class="btn-primary">
+      <span>Read All Chapters &amp; Philosophy</span>
+      <i class="ri-arrow-right-line"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     TECHNICAL ARSENAL / SKILLS
+     ========================================================================== -->
+<section class="stories-section-container" id="skills">
+  <div class="section-head">
+    <span class="section-pill">Technical Arsenal</span>
+    <h2>Engineered for Scale &amp; Performance</h2>
+  </div>
+
+  <div class="projects-grid">
+    {% for cat in portfolio.skill_categories %}
+    <div class="project-repo-card">
+      <div class="repo-card-top">
+        <h3 style="font-size: 1.2rem; color: var(--accent-cyan);">{{ cat.category }}</h3>
+        <i class="ri-terminal-box-line" style="font-size: 1.3rem; color: var(--text-dim);"></i>
+      </div>
+      <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
+        {% for skill in cat.skills %}
+        <li style="background: rgba(255,255,255,0.06); padding: 5px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(255,255,255,0.08);">
+          {{ skill }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+  
+  <!-- SEO & Social Graph Meta Tags -->
+  <meta name="description" content="{{ portfolio.tagline }} - Professional Python & Django Portfolio with Antigravity web aesthetics.">
+  <meta name="author" content="{{ portfolio.full_name }}">
+  <meta name="keywords" content="Python, Django, Portfolio, Render, Web Development, Creative Coding, {{ portfolio.name }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ portfolio.tagline }}">
+  <meta property="og:type" content="website">
+  
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+  
+  <!-- Remix Icons for Clean Minimalist Glyphs -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+</head>
+<body>
+
+  <!-- Dynamic Ambient Animated Gradient Background -->
+  <div class="dynamic-background-canvas" aria-hidden="true"></div>
+
+  <!-- Antigravity Intro Page Loader -->
+  <div id="antigravity-loader">
+    <canvas id="antigravity-canvas"></canvas>
+    <div class="loader-content">
+      <div class="loader-symbol">⚚</div>
+      <div class="loader-title">{{ portfolio.name }}</div>
+      <div class="loader-subtitle">INITIALIZING ANTIGRAVITY FIELD</div>
+    </div>
+  </div>
+
+  <!-- Venom Symbiote Canvas (Draws organic gravity tendrils to magnetic buttons) -->
+  <canvas id="symbiote-canvas" aria-hidden="true"></canvas>
+
+  <!-- Sticky Dynamic Navigation Bar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="{% url 'portfolio:home' %}" class="brand-logo" aria-label="Go to Home">
+        <div class="logo-orb">{{ portfolio.name|slice:":1" }}</div>
+        <span>{{ portfolio.name }}<span style="color: var(--accent-cyan);">.py</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links">
+        <li>
+          <a href="{% url 'portfolio:home' %}" class="nav-item-link {% if active_nav == 'home' %}active{% endif %}">
+            <i class="ri-home-4-line"></i> Home
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'portfolio:story' %}" class="nav-item-link {% if active_nav == 'story' %}active{% endif %}">
+            <i class="ri-compass-3-line"></i> Who Was I
+            <span class="nav-tag">Story</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'portfolio:projects' %}" class="nav-item-link {% if active_nav == 'projects' %}active{% endif %}">
+            <i class="ri-code-s-slash-line"></i> Projects
+            <span class="nav-tag dynamic-github-repo-count">{{ github_data.public_repos|default:"..." }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'portfolio:contact' %}" class="nav-item-link {% if active_nav == 'contact' %}active{% endif %}">
+            <i class="ri-send-plane-fill"></i> Contact
+          </a>
+        </li>
+      </ul>
+
+      <!-- Status Indicator -->
+      <div class="nav-actions">
+        <div class="btn-render-pill" title="Hosted on Render with Python Django & WhiteNoise">
+          <span class="pulse-dot"></span>
+          <span>Render Live</span>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <i class="ri-menu-4-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Venom Symbiote Magnetic Social Dock (Fixed Bottom Right) -->
+  <aside class="venom-social-dock" aria-label="Social connections with symbiote gravity pull">
+    <!-- LinkedIn -->
+    <div class="magnetic-social-item">
+      <a href="{{ portfolio.socials.linkedin.url }}" target="_blank" rel="noopener noreferrer" 
+         class="magnetic-btn" id="symbiote-linkedin" aria-label="LinkedIn profile">
+        <i class="ri-linkedin-fill"></i>
+      </a>
+      <span class="social-tooltip">LinkedIn // Connect</span>
+    </div>
+
+    <!-- Instagram -->
+    <div class="magnetic-social-item">
+      <a href="{{ portfolio.socials.instagram.url }}" target="_blank" rel="noopener noreferrer" 
+         class="magnetic-btn" id="symbiote-instagram" aria-label="Instagram profile">
+        <i class="ri-instagram-line"></i>
+      </a>
+      <span class="social-tooltip">Instagram // Creative</span>
+    </div>
+
+    <!-- GitHub -->
+    <div class="magnetic-social-item">
+      <a href="{{ portfolio.socials.github.url }}" target="_blank" rel="noopener noreferrer" 
+         class="magnetic-btn" id="symbiote-github" aria-label="GitHub profile">
+        <i class="ri-github-fill"></i>
+      </a>
+      <span class="social-tooltip">GitHub // Code & Repos</span>
+    </div>
+  </aside>
+
+  <!-- Main Content Block with Page Transition -->
+  <main class="page-transition-wrapper">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-credits">
+        <p>© {{ current_year }} {{ portfolio.full_name }}. Built with <strong>Python & Django</strong> on <strong>Render</strong>.</p>
+        <p style="font-size: 0.8rem; margin-top: 4px; color: var(--text-dim);">
+          Antigravity aesthetics • Living Venom symbiote physics • Web3Forms mail
+        </p>
+      </div>
+
+      <div class="footer-badge-group">
+        <span class="footer-pill">DOB: {{ bday.dob_formatted }}</span>
+        <span class="footer-pill" style="color: var(--accent-cyan); border-color: rgba(0,240,255,0.25);">
+          {{ bday.days_remaining }} days to next celebration
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Modules -->
+  <script src="{% static 'portfolio/js/antigravity-loader.js' %}"></script>
+  <script src="{% static 'portfolio/js/venom-symbiote.js' %}"></script>
+  <script src="{% static 'portfolio/js/gradient-contrast.js' %}"></script>
+  <script src="{% static 'portfolio/js/countdown.js' %}"></script>
+  <script src="{% static 'portfolio/js/github-counter.js' %}"></script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,127 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="projects-container" style="padding-top: 60px;">
+
+  <!-- Header -->
+  <div class="section-head">
+    <span class="section-pill">GitHub Synchronized</span>
+    <h1 style="font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 16px;">
+      Live Projects &amp; <span class="gradient-text">Repositories.</span>
+    </h1>
+    <p style="max-width: 680px; margin: 0 auto;">
+      Directly queried from the GitHub API. Whenever a new public repository is created, 
+      the count and repository showcase automatically update in real-time.
+    </p>
+  </div>
+
+  <!-- Live GitHub Quick-Stats Banner -->
+  <div class="github-live-card" style="margin-bottom: 40px;">
+    <div class="github-user-badge">
+      <img src="{{ github_data.avatar_url|default:'https://github.com/github.png' }}" 
+           alt="{{ github_data.username }} GitHub avatar" class="github-avatar">
+      <div>
+        <div class="github-name">@{{ github_data.username }}</div>
+        <div class="github-sync-indicator">
+          <i class="ri-radar-line"></i>
+          <span>Auto-Polling GitHub REST v3 API</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-ticker-row">
+      <div class="stat-item">
+        <div class="stat-value dynamic-github-repo-count" data-count="{{ github_data.public_repos }}">
+          {{ github_data.public_repos }}
+        </div>
+        <div class="stat-label">Total Repositories</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-value" data-count="{{ github_data.total_stars }}">
+          {{ github_data.total_stars }}
+        </div>
+        <div class="stat-label">Total Stars</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-value" data-count="{{ github_data.followers }}">
+          {{ github_data.followers }}
+        </div>
+        <div class="stat-label">Followers</div>
+      </div>
+    </div>
+
+    <div>
+      <a href="https://github.com/{{ github_data.username }}" target="_blank" rel="noopener noreferrer" 
+         class="btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+        <i class="ri-github-fill"></i>
+        <span>Follow on GitHub</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Search & Filter Bar -->
+  <div class="projects-filter-bar">
+    <div class="search-input-wrapper">
+      <i class="ri-search-line search-icon"></i>
+      <input type="text" id="project-search" class="search-input" 
+             placeholder="Search repositories by name, language, or keyword...">
+    </div>
+
+    <div id="visible-repo-count" class="code-font" style="font-size: 0.85rem; color: var(--text-dim);">
+      Showing {{ github_data.repos|length }} repositories
+    </div>
+  </div>
+
+  <!-- Repositories Grid -->
+  <div class="projects-grid">
+    {% for repo in github_data.repos %}
+    <article class="project-repo-card">
+      <div>
+        <div class="repo-card-top">
+          <i class="ri-folder-3-line repo-folder-icon"></i>
+          <a href="{{ repo.url }}" target="_blank" rel="noopener noreferrer" class="repo-external-link" 
+             title="View {{ repo.name }} on GitHub" aria-label="View on GitHub">
+            <i class="ri-arrow-right-up-line"></i>
+          </a>
+        </div>
+
+        <h3 class="repo-name">{{ repo.name }}</h3>
+        <p class="repo-desc">{{ repo.description }}</p>
+      </div>
+
+      <div>
+        {% if repo.topics %}
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;">
+          {% for topic in repo.topics|slice:":3" %}
+          <span style="font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; background: rgba(0,240,255,0.08); color: var(--accent-cyan); padding: 2px 7px; border-radius: 4px;">
+            #{{ topic }}
+          </span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="repo-meta">
+          <span class="repo-lang">
+            <span class="lang-dot"></span>
+            {{ repo.language }}
+          </span>
+          <span style="display: flex; gap: 12px; align-items: center;">
+            <span title="Stargazers"><i class="ri-star-line"></i> {{ repo.stars }}</span>
+            <span title="Forks"><i class="ri-git-fork-line"></i> {{ repo.forks }}</span>
+          </span>
+        </div>
+      </div>
+    </article>
+    {% empty %}
+    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+      <i class="ri-inbox-line" style="font-size: 3rem; color: var(--text-dim);"></i>
+      <p style="margin-top: 12px;">No repositories currently available. Check GitHub username configuration in <code>portfolio_config.py</code>.</p>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}
