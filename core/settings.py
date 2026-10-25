@@ -137,6 +137,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'portfolio' / 'static',
 ]
 
-# Optimized WhiteNoise storage for Render compression & cache busting
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Resilient WhiteNoise configuration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+WHITENOISE_USE_FINDERS = True
+
 
