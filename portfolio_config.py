@@ -1,9 +1,8 @@
 """
 PORTFOLIO CONFIGURATION FILE
 =============================
-Customize your personal details, GitHub username, Date of Birth (DOB),
-social media accounts, Web3Forms key, and personal story chapters here.
-All templates automatically read from this configuration.
+Personal profile, story chronicles, philosophy, AI perspective,
+and outside-the-terminal dimensions for RITHU RAJ R.
 """
 
 from datetime import datetime, date
@@ -14,41 +13,40 @@ PORTFOLIO_CONFIG = {
     # -------------------------------------------------------------
     "name": "RITHU RAJ R",
     "full_name": "RITHU RAJ R",
-    "role": "Python & Django Developer | Creative Technologist",
-    "tagline": "Architecting resilient backends & gravity-defying interactive experiences.",
+    "role": "Civil Engineer → DevOps & Cloud Engineer | Python Builder",
+    "tagline": "From physical foundations to cloud infrastructure. Obsessed with building, automating, and understanding how things work.",
     "location": "India / Global Remote",
     "email": "rithuraj@example.com",
-    "status": "Available for high-impact software engineering roles",
+    "status": "Available for DevOps, Cloud & Software Engineering Roles",
 
     # -------------------------------------------------------------
-    # Executive Summary Slot (Professional Snapshot)
+    # Executive Summary Slot (The Core Narrative)
     # -------------------------------------------------------------
     "summary": {
-        "title": "Executive Summary // Core Profile",
-        "headline": "Full-Stack Python Engineer bridging scalable backend architecture with living web physics.",
+        "title": "Executive Summary // The Journey",
+        "headline": "Civil Engineer turned DevOps & Cloud Engineer. Bridging real-world structural discipline with scalable cloud automation.",
         "bio": (
-            "I am RITHU RAJ R, a software engineer with a deep passion for building high-throughput "
-            "Python & Django services, distributed systems, and sensory web interfaces. Whether optimizing ORM queries "
-            "and database indexes or crafting mathematical canvas physics with organic symbiote attraction, "
-            "I design software that is both rigorously engineered and unforgettable to interact with."
+            "I transitioned from Civil Engineering to technology because I love understanding how complex systems work, "
+            "why they break, and how to engineer them better. My journey is built on three pillars: Obsession (curiosity "
+            "that refuses to leave me alone), Passion (enjoying the process, not just the outcome), and Consistency "
+            "(showing up especially when the initial hype wears off). Starting from zero doesn't scare me—ego wants to "
+            "look experienced; curiosity wants to get better."
         ),
         "stats": [
-            {"label": "Specialization", "value": "Python / Django"},
-            {"label": "Deployment", "value": "Render Cloud"},
-            {"label": "Physics Engine", "value": "Canvas & Symbiote"},
-            {"label": "Status", "value": "Ready to Deploy"},
+            {"label": "Origin", "value": "Civil Engineering"},
+            {"label": "Current Domain", "value": "DevOps & Cloud"},
+            {"label": "Stack", "value": "Python, Django, AWS, Docker"},
+            {"label": "Philosophy", "value": "Curiosity > Ego"},
         ],
         "highlights": [
-            "Production-ready Django architecture with WhiteNoise static asset compression & Gunicorn.",
-            "Living interactive physics: inverted antigravity loaders, magnetic buttons & fluid tendrils.",
-            "Real-time GitHub REST API auto-polling and serverless Web3Forms direct communication.",
+            "Practical career transition backed by hands-on cloud automation, CI/CD pipelines, and Python architecture.",
+            "Strong problem-solving foundation rooted in structural engineering and on-site coordination.",
+            "Real-world mindset: context, trade-offs, and accountability over blind automated hype.",
         ],
     },
 
     # -------------------------------------------------------------
     # Date of Birth (DOB) & Countdown Configuration
-    # Format: YYYY-MM-DD
-    # The countdown automatically detects your next upcoming birthday!
     # -------------------------------------------------------------
     "dob": "2000-04-28",  # April 28th, 2000
 
@@ -66,95 +64,205 @@ PORTFOLIO_CONFIG = {
             "url": "https://github.com/rithuraj6",
             "icon": "github",
             "handle": "@rithuraj6",
-            "description": "Code repositories, open source contributions, and experiments.",
+            "description": "Code repositories, infrastructure scripts, and open experiments.",
         },
         "linkedin": {
             "name": "LinkedIn",
             "url": "https://www.linkedin.com/in/rithurajr",
             "icon": "linkedin",
             "handle": "in/rithurajr",
-            "description": "Professional history, engineering endorsements, and career updates.",
+            "description": "Professional history, career journey, and engineering updates.",
         },
         "instagram": {
             "name": "Instagram",
-            "url": "https://www.instagram.com/rithuraj6",
+            "url": "https://www.instagram.com/rithuraj_6",
             "icon": "instagram",
-            "handle": "@rithuraj6",
-            "description": "Life behind the terminal, creative visual sketches, and captures.",
+            "handle": "@rithuraj_6",
+            "description": "Behind the terminal, creative visual sketches, and captures.",
         },
     },
 
     # -------------------------------------------------------------
     # Web3Forms Contact Form (100% Free, No Backend Key Required)
-    # Get your free access key in 30 seconds at: https://web3forms.com
-    # Just enter your email and paste the key here or via WEB3FORMS_ACCESS_KEY env variable!
     # -------------------------------------------------------------
     "web3forms_access_key": "YOUR_WEB3FORMS_ACCESS_KEY_HERE",
 
     # -------------------------------------------------------------
-    # "Who Was I" - Interactive Story Chronicles & Backstory
-    # Scrollable journey through your personal evolution and milestones
+    # "Who Was I" - Authentic Career Story Timeline
     # -------------------------------------------------------------
     "who_was_i_stories": [
         {
-            "id": "origins",
-            "period": "Phase 01 // The Curious Spark",
-            "year": "The Early Days",
-            "title": "Taking Apart the Machine",
-            "tagline": "How a fascination with how things work turned into lines of code.",
+            "id": "civil-engineering",
+            "period": "Phase 01 // The Concrete Foundation",
+            "year": "Civil Engineering Era",
+            "title": "Understanding How Structures Stand",
+            "tagline": "From blueprints, material strengths, and load paths to site coordination.",
             "content": (
-                "Before I wrote production-ready services, I was the kid who opened up "
-                "old electronics just to see the silicon gears turning inside. My first lines "
-                "of code weren't clean or structured — they were simple scripts, text games, "
-                "and crude loops. But the feeling of commanding electrons was pure magic."
+                "I started in Civil Engineering, designing physical structures and coordinating site works. "
+                "In civil projects, an overlooked variable or unverified calculation has real, tangible consequences. "
+                "It taught me systems thinking, patience with complex blueprints, and the importance of solid foundations."
             ),
-            "lesson": "Curiosity without fear of breaking things is where real engineering starts.",
-            "badge": "Origins",
+            "lesson": "No structure survives without a rigorous foundation — whether made of concrete or microservices.",
+            "badge": "Physical World",
         },
         {
-            "id": "wilderness",
-            "period": "Phase 02 // The Wilderness",
-            "year": "The Crucible Years",
-            "title": "Into Python & Backend Depths",
-            "tagline": "Grappling with databases, architecture patterns, and algorithmic scale.",
+            "id": "the-pivot",
+            "period": "Phase 02 // The Pivot & The Blank Slate",
+            "year": "The Transition",
+            "title": "Starting from Absolute Zero",
+            "tagline": "Trading the hard hat for the terminal with zero fear of looking like a beginner.",
             "content": (
-                "Transitioning into deep Python and Django was a watershed moment. "
-                "Suddenly, it wasn't just about syntax — it was about architecture, state management, "
-                "ORM optimizations, secure authentication, and handling concurrency. I spent late nights "
-                "tracing bottlenecks, reading PEPs, and building microservices from scratch."
+                "Deciding to pivot from civil construction to technology was a conscious leap into the deep end. "
+                "I was starting from scratch: learning Linux internals, bash scripting, networking protocols, "
+                "and Python. Leaving behind past certainty to become a total beginner takes humility, but curiosity was louder."
             ),
-            "lesson": "Resilience in code comes from embracing edge cases before they find you.",
-            "badge": "Growth",
+            "lesson": "Ego wants to look experienced. Curiosity wants to get better. I know which one I'd rather feed.",
+            "badge": "The Pivot",
         },
         {
-            "id": "creative-gravity",
-            "period": "Phase 03 // The Synthesis",
+            "id": "devops-cloud",
+            "period": "Phase 03 // The DevOps Crucible",
             "year": "Modern Era",
-            "title": "Gravity-Defying Web & Aesthetics",
-            "tagline": "Merging strict backend logic with tactile, organic frontend physics.",
+            "title": "Pipelines, Cloud & Scalable Systems",
+            "tagline": "Discovering that infrastructure is just civil engineering for electrons.",
             "content": (
-                "Engineering is half science and half sensory experience. A fast backend is "
-                "essential, but pairing it with fluid, physics-driven interfaces creates unforgettable "
-                "software. From canvas-based antigravity particles to dynamic symbiote magnetic physics, "
-                "I discovered the power of making the web feel alive and responsive."
+                "Suddenly, everything connected. Terraform configurations were digital blueprints; Docker containers "
+                "were pre-cast modular units; CI/CD pipelines were assembly lines. I fell in love with automating "
+                "deployments, managing distributed instances on Render and AWS, and architecting resilient Python backends."
             ),
-            "lesson": "Great software shouldn't just function; it should evoke wonder and delight.",
-            "badge": "Aesthetics",
+            "lesson": "If it has to be done more than twice, automate it before it consumes your sanity.",
+            "badge": "DevOps",
         },
         {
-            "id": "future-horizons",
-            "period": "Phase 04 // The Horizon",
+            "id": "the-synthesis",
+            "period": "Phase 04 // The Synthesis",
             "year": "Present & Forward",
-            "title": "Designing Scalable Frontiers",
-            "tagline": "Continuous curiosity, distributed cloud computing, and real-world impact.",
+            "title": "Building Things That Endure",
+            "tagline": "Discipline, sensory web physics, and relentless consistency.",
             "content": (
-                "Today, 'Who I Am' is an ongoing commit history. I focus on building production-grade "
-                "Django applications hosted on modern cloud fabrics like Render, architecting clean APIs, "
-                "automating deployments, and constantly challenging what's possible at the intersection "
-                "of reliability and high visual polish."
+                "Today, 'Who I Am' is someone who bridges hands-on infrastructure reliability with creative web experiences. "
+                "Whether setting up cloud environments or implementing mathematical canvas physics with Venom symbiote "
+                "attractions, building things has always been my natural state."
             ),
-            "lesson": "Never stop being the curious beginner in a room full of veterans.",
-            "badge": "Horizons",
+            "lesson": "Consistency beats talent when talent relies on the mood of the day.",
+            "badge": "Forward",
+        },
+    ],
+
+    # -------------------------------------------------------------
+    # My Philosophy: The Core Rules
+    # -------------------------------------------------------------
+    "philosophy": [
+        {
+            "id": "obsession",
+            "number": "01",
+            "title": "OBSESSION",
+            "tagline": "The curiosity that refuses to leave me alone.",
+            "content": (
+                "I'm the kind of person who wants to know how something works, why it broke, and what happens "
+                "if I try it differently. Sometimes that means solving a problem cleanly. Sometimes it means "
+                "spending far too long investigating an edge case that could probably have waited until tomorrow. "
+                "Once curiosity gets hold of you, good luck pretending you don't care."
+            )
+        },
+        {
+            "id": "passion",
+            "number": "02",
+            "title": "PASSION",
+            "tagline": "Enjoying the process, not just the outcome.",
+            "content": (
+                "I genuinely enjoy building things, experimenting with ideas, and turning something confusing into "
+                "something that finally clicks. Whether it's an infrastructure setup, a line of code, a watercolor "
+                "painting, or a new recipe, I like the process of making something better than it was before."
+            )
+        },
+        {
+            "id": "consistency",
+            "number": "03",
+            "title": "CONSISTENCY",
+            "tagline": "Showing up, especially when the excitement disappears.",
+            "content": (
+                "Motivation is great. Unfortunately, it has the attendance record of an unreliable intern. "
+                "Consistency is what keeps me learning, troubleshooting, and improving when things get stubborn. "
+                "I don't need every day to be extraordinary; I need to keep moving forward often enough that progress "
+                "eventually becomes impossible to ignore."
+            )
+        },
+        {
+            "id": "zero",
+            "number": "04",
+            "title": "STARTING FROM ZERO",
+            "tagline": "Starting from zero doesn't scare me.",
+            "content": (
+                "I'm not afraid to start from zero, even if it means admitting that I don't know something. "
+                "I've already done it once by moving from Civil Engineering into technology, and I'm ready to do it "
+                "again whenever a new challenge demands it. I don't see being a beginner as going backwards; "
+                "I see it as the price of learning something new."
+            )
+        },
+    ],
+
+    # -------------------------------------------------------------
+    # "Will AI Take My Job?" - Realistic & Humorous Section
+    # -------------------------------------------------------------
+    "ai_perspective": {
+        "title": "Will AI take my job?",
+        "subtitle": "Honestly? AI is getting scary good.",
+        "content_paragraphs": [
+            (
+                "I'm a DevOps Engineer with hands-on experience in modern cloud technologies, and I can already "
+                "see how AI can write scripts, generate configurations, troubleshoot errors, and automate tasks that "
+                "used to take considerably longer. So, yes — AI has potential to take over parts of what we do. "
+                "Pretending otherwise would be a questionable career strategy."
+            ),
+            (
+                "But there's a difference between generating a Terraform configuration and understanding whether it "
+                "should be deployed into production. Between suggesting a Kubernetes fix and knowing whether that fix "
+                "will cause an outage elsewhere. Between writing a pipeline and taking personal responsibility when the "
+                "deployment goes sideways. AI is powerful; context, judgment, trade-offs, accountability, and real-world "
+                "problem-solving still matter."
+            ),
+            (
+                "And if AI eventually decides that DevOps is completely its territory now? Well, I have a few backup plans. "
+                "I can cook. I can paint. I studied Civil Engineering, so I understand the fundamentals of designing physical "
+                "structures. I can work with code, infrastructure, and creative ideas — enough different things to make "
+                "choosing a single label delightfully difficult."
+            ),
+            (
+                "If the machines take over the servers, I'll make dinner. If they take over the kitchen, I'll paint a picture "
+                "of our new robot overlords. And if all else fails, I'll ask them whether their buildings have passed structural review."
+            ),
+            (
+                "My plan isn't to compete with AI at being AI. It's to become the kind of person who knows how to use it, "
+                "question it, and take responsibility for what gets built with it. Until then, I'll keep automating the "
+                "infrastructure — and occasionally automating my own confusion."
+            ),
+        ]
+    },
+
+    # -------------------------------------------------------------
+    # "Outside the Terminal" - The Full Human
+    # -------------------------------------------------------------
+    "beyond_tech": [
+        {
+            "role": "The Cook",
+            "icon": "ri-restaurant-2-line",
+            "text": "I enjoy cooking. It turns out that debugging isn't the only thing that requires patience, timing, and occasionally starting over because something went wrong halfway through.",
+        },
+        {
+            "role": "The Artist",
+            "icon": "ri-palette-line",
+            "text": "I paint, because not every problem needs a terminal window. Sometimes it's nice to create something without worrying about environment variables, dependencies, or why the app works locally but not in production.",
+        },
+        {
+            "role": "The Civil Engineer",
+            "icon": "ri-building-2-line",
+            "text": "I have a Civil Engineering background and experience in the construction industry. I understand the fundamentals behind building physical structures. Apparently, building things became a recurring theme.",
+        },
+        {
+            "role": "The Curious Human",
+            "icon": "ri-compass-discover-line",
+            "text": "I like learning, experimenting, and exploring things outside my immediate field. My interests don't always fit neatly into one category, and I'm perfectly fine with that.",
         },
     ],
 
@@ -163,16 +271,16 @@ PORTFOLIO_CONFIG = {
     # -------------------------------------------------------------
     "skill_categories": [
         {
-            "category": "Backend & Core",
-            "skills": ["Python 3.12+", "Django 6", "REST Framework", "PostgreSQL", "SQLite", "Celery / Redis"]
+            "category": "Cloud & DevOps",
+            "skills": ["Linux / Bash", "Docker", "Render Cloud", "CI/CD Pipelines", "Git & GitHub CI", "AWS Basics"]
         },
         {
-            "category": "Frontend & Creative",
-            "skills": ["HTML5 Canvas", "Modern Vanilla CSS", "Magnetic Physics", "Responsive Design", "Symbiote Slime Math"]
+            "category": "Backend Engineering",
+            "skills": ["Python 3.12+", "Django 6", "RESTful APIs", "PostgreSQL", "SQLite", "Gunicorn / WhiteNoise"]
         },
         {
-            "category": "DevOps & Cloud",
-            "skills": ["Render Deployment", "Gunicorn", "WhiteNoise", "Git & GitHub CI", "Linux / Bash", "Docker"]
+            "category": "Creative & Foundations",
+            "skills": ["Civil Engineering Fundamentals", "HTML5 Canvas Physics", "Vanilla CSS", "Symbiote Slime Math"]
         },
     ],
 }
@@ -185,10 +293,9 @@ def get_next_birthday_countdown(dob_str: str):
     try:
         dob_date = datetime.strptime(dob_str, "%Y-%m-%d").date()
     except Exception:
-        dob_date = date(2002, 8, 15)
+        dob_date = date(2000, 4, 28)
 
     today = date.today()
-    # Check if birthday already happened this year
     current_year_bday = date(today.year, dob_date.month, dob_date.day)
     
     if current_year_bday < today:
