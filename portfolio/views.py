@@ -135,14 +135,15 @@ def fetch_github_data(username: str):
 
 
 def home_view(request):
-    """Landing Page with Hero, Antigravity Intro, Countdown, and Highlights."""
-    username = PORTFOLIO_CONFIG.get("github_username", "torvalds")
+    """Single-Page Scrollable Experience with Hero, Summary Slot, DOB Countdown, GitHub Sync, and Full Story Journey."""
+    username = PORTFOLIO_CONFIG.get("github_username", "rithuraj6")
     github_data = fetch_github_data(username)
     return render(request, "portfolio/index.html", {
-        "page_title": "Home // " + PORTFOLIO_CONFIG["name"],
+        "page_title": PORTFOLIO_CONFIG["name"] + " // Full Stack Python Portfolio",
         "active_nav": "home",
         "github_data": github_data,
-        "preview_stories": PORTFOLIO_CONFIG["who_was_i_stories"][:2],
+        "stories": PORTFOLIO_CONFIG["who_was_i_stories"],
+        "summary": PORTFOLIO_CONFIG.get("summary", {}),
     })
 
 
@@ -156,8 +157,8 @@ def story_view(request):
 
 
 def projects_view(request):
-    """Projects Showcase with dynamically updated GitHub repositories and stats."""
-    username = PORTFOLIO_CONFIG.get("github_username", "torvalds")
+    """Dedicated Separate Projects Showcase with dynamically updated GitHub repositories and stats."""
+    username = PORTFOLIO_CONFIG.get("github_username", "rithuraj6")
     github_data = fetch_github_data(username)
     return render(request, "portfolio/projects.html", {
         "page_title": "Projects // Real-Time Repositories",

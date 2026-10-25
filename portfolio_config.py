@@ -12,30 +12,53 @@ PORTFOLIO_CONFIG = {
     # -------------------------------------------------------------
     # Personal Identity
     # -------------------------------------------------------------
-    "name": "Rith",
-    "full_name": "Rith",
+    "name": "RITHU RAJ R",
+    "full_name": "RITHU RAJ R",
     "role": "Python & Django Developer | Creative Technologist",
     "tagline": "Architecting resilient backends & gravity-defying interactive experiences.",
-    "location": "Global / Remote",
-    "email": "hello@example.com",
-    "status": "Available for high-impact projects & engineering roles",
+    "location": "India / Global Remote",
+    "email": "rithuraj@example.com",
+    "status": "Available for high-impact software engineering roles",
+
+    # -------------------------------------------------------------
+    # Executive Summary Slot (Professional Snapshot)
+    # -------------------------------------------------------------
+    "summary": {
+        "title": "Executive Summary // Core Profile",
+        "headline": "Full-Stack Python Engineer bridging scalable backend architecture with living web physics.",
+        "bio": (
+            "I am RITHU RAJ R, a software engineer with a deep passion for building high-throughput "
+            "Python & Django services, distributed systems, and sensory web interfaces. Whether optimizing ORM queries "
+            "and database indexes or crafting mathematical canvas physics with organic symbiote attraction, "
+            "I design software that is both rigorously engineered and unforgettable to interact with."
+        ),
+        "stats": [
+            {"label": "Specialization", "value": "Python / Django"},
+            {"label": "Deployment", "value": "Render Cloud"},
+            {"label": "Physics Engine", "value": "Canvas & Symbiote"},
+            {"label": "Status", "value": "Ready to Deploy"},
+        ],
+        "highlights": [
+            "Production-ready Django architecture with WhiteNoise static asset compression & Gunicorn.",
+            "Living interactive physics: inverted antigravity loaders, magnetic buttons & fluid tendrils.",
+            "Real-time GitHub REST API auto-polling and serverless Web3Forms direct communication.",
+        ],
+    },
 
     # -------------------------------------------------------------
     # Date of Birth (DOB) & Countdown Configuration
-    # Format: YYYY-MM-DD (e.g. "2001-11-14")
+    # Format: YYYY-MM-DD
     # The countdown automatically detects your next upcoming birthday!
     # -------------------------------------------------------------
     "dob": "2002-08-15",  # Replace with your actual DOB
 
     # -------------------------------------------------------------
     # GitHub Integration
-    # Set your GitHub username below.
-    # The portfolio dynamically fetches your public repository count,
-    # stargazers, language stats, and top repositories.
+    # -------------------------------------------------------------
     "github_username": "rithuraj6",  # Auto-synced GitHub username
 
     # -------------------------------------------------------------
-    # Social Media Accounts (Venom Symbiote & Magnetic Buttons)
+    # Social Media Accounts (Venom Symbiote & Magnetic Floating Dock)
     # -------------------------------------------------------------
     "socials": {
         "github": {
@@ -47,16 +70,16 @@ PORTFOLIO_CONFIG = {
         },
         "linkedin": {
             "name": "LinkedIn",
-            "url": "https://linkedin.com/in/",
+            "url": "https://www.linkedin.com/in/rithurajr",
             "icon": "linkedin",
-            "handle": "in/developer",
+            "handle": "in/rithurajr",
             "description": "Professional history, engineering endorsements, and career updates.",
         },
         "instagram": {
             "name": "Instagram",
-            "url": "https://instagram.com/",
+            "url": "https://www.instagram.com/rithuraj6",
             "icon": "instagram",
-            "handle": "@instagram",
+            "handle": "@rithuraj6",
             "description": "Life behind the terminal, creative visual sketches, and captures.",
         },
     },
