@@ -32,8 +32,7 @@ PORTFOLIO_CONFIG = {
     # Set your GitHub username below.
     # The portfolio dynamically fetches your public repository count,
     # stargazers, language stats, and top repositories.
-    # -------------------------------------------------------------
-    "github_username": "torvalds",  # Replace with your GitHub handle (e.g. 'rithwik', 'octocat')
+    "github_username": "rithuraj6",  # Auto-synced GitHub username
 
     # -------------------------------------------------------------
     # Social Media Accounts (Venom Symbiote & Magnetic Buttons)
@@ -41,9 +40,9 @@ PORTFOLIO_CONFIG = {
     "socials": {
         "github": {
             "name": "GitHub",
-            "url": "https://github.com/",
+            "url": "https://github.com/rithuraj6",
             "icon": "github",
-            "handle": "@github",
+            "handle": "@rithuraj6",
             "description": "Code repositories, open source contributions, and experiments.",
         },
         "linkedin": {
