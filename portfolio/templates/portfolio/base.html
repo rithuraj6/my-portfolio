@@ -115,8 +115,8 @@
     </div>
   </aside>
 
-  <!-- Main Content Block with Page Transition -->
-  <main class="page-transition-wrapper">
+  <!-- Main Content Block with Page-Specific Transition -->
+  <main class="page-transition-wrapper page-{{ active_nav }}">
     {% block content %}
     {% endblock %}
   </main>
