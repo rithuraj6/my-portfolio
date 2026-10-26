@@ -19,8 +19,8 @@
   window.addEventListener('resize', resize);
   resize();
 
-  let mouseX = -1000;
-  let mouseY = -1000;
+  let mouseX = -2000;
+  let mouseY = -2000;
   let isMouseActive = false;
 
   window.addEventListener('mousemove', (e) => {
@@ -31,8 +31,8 @@
 
   window.addEventListener('mouseout', () => {
     isMouseActive = false;
-    mouseX = -1000;
-    mouseY = -1000;
+    mouseX = -2000;
+    mouseY = -2000;
   });
 
   // Track all magnetic buttons on page
@@ -46,7 +46,7 @@
       currentY: 0,
       targetX: 0,
       targetY: 0,
-      radius: 120, // Magnetic & symbiote trigger radius
+      radius: 200, // Magnetic & symbiote trigger radius
       isAttached: false,
       tendrilPhase: Math.random() * 10,
     });

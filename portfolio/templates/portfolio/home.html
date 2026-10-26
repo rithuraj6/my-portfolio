@@ -1,66 +1,63 @@
+
 {% extends 'portfolio/base.html' %}
 {% load static %}
 
 {% block content %}
-<!-- ==========================================================================
-     1. HERO SECTION
-     ========================================================================== -->
+
+<!-- HERO -->
 <section class="hero-section" id="hero">
   <div class="hero-grid">
-    
-    <!-- Left Hero Column -->
     <div class="hero-info">
       <div class="hero-badge-pill">
         <span class="pulse-dot"></span>
         <span>{{ portfolio.status }}</span>
       </div>
 
+      <p class="story-kicker">CIVIL ENGINEERING → DEVOPS</p>
+
       <h1 class="hero-title">
-        Hello, I'm <br>
-        <span class="gradient-text">{{ portfolio.name }}.</span>
+        Built on curiosity.<br>
+        Driven by <span class="gradient-text">obsession.</span>
       </h1>
 
       <p class="hero-description">
-        Civil Engineer by foundation. DevOps Engineer by choice. Curious enough to keep becoming something else.
-        I build and troubleshoot cloud infrastructure, CI/CD pipelines, and automated delivery workflows.
+        I'm {{ portfolio.name }} — a Civil Engineer turned DevOps
+        Engineer. I build, automate, troubleshoot, and occasionally
+        break things just to understand how they work.
       </p>
 
-      <div class="hero-actions">
-        <a href="{% url 'portfolio:projects' %}" class="btn-primary">
-          <i class="ri-folder-code-line"></i>
-          <span>Explore My Projects</span>
-          <i class="ri-arrow-right-line"></i>
-        </a>
-        <a href="#summary" class="btn-secondary">
-          <i class="ri-file-user-line"></i>
-          <span>Who I Am</span>
-        </a>
-        <a href="#story" class="btn-secondary">
-          <i class="ri-compass-3-line"></i>
-          <span>My Journey</span>
-        </a>
-      </div>
+      <p class="hero-description">
+        My career changed direction. My habit of figuring things out didn't.
+      </p>
+
+
+
     </div>
 
-    <!-- Right Hero Column: Live DOB Countdown Card -->
     <div class="hero-aside" id="countdown">
-      <div class="dob-celebration-card" id="bday-countdown-ticker" data-target-date="{{ bday.next_celebration_date }}">
+      <div class="dob-celebration-card"
+           id="bday-countdown-ticker"
+           data-target-date="{{ bday.next_celebration_date }}">
         <div class="card-top-header">
           <span class="dob-chip">
-            <i class="ri-cake-2-line"></i> Born {{ bday.dob_formatted }}
+            <i class="ri-cake-2-line"></i>
+            Born {{ bday.dob_formatted }}
           </span>
-          <span class="code-font" style="font-size: 0.8rem; color: var(--text-dim);">
+          <span class="code-font">
             Turning {{ bday.turning_age }}
           </span>
         </div>
 
-        <h3 class="celebration-title">Countdown to Celebration</h3>
-        <p class="celebration-target">Next milestone on {{ bday.next_celebration_formatted }}</p>
+        <h3 class="celebration-title">Another orbit around the sun</h3>
+        <p class="celebration-target">
+          Next celebration: {{ bday.next_celebration_formatted }}
+        </p>
 
-        <!-- Live Countdown Ticker -->
         <div class="countdown-grid">
           <div class="countdown-box">
-            <div class="countdown-number" id="bday-days">{{ bday.days_remaining }}</div>
+            <div class="countdown-number" id="bday-days">
+              {{ bday.days_remaining }}
+            </div>
             <div class="countdown-label">Days</div>
           </div>
           <div class="countdown-box">
@@ -77,37 +74,58 @@
           </div>
         </div>
 
-        <div class="celebration-footer-note">
-          <i class="ri-sparkling-fill" style="color: var(--accent-amber);"></i>
-          <span>Orbital birthday ticker tracking live seconds to next celebration!</span>
-        </div>
+        <p class="celebration-footer-note">
+          Older, hopefully wiser, still debugging.
+        </p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ==========================================================================
-     2. EXECUTIVE SUMMARY SLOT
-     ========================================================================== -->
-<section class="stories-section-container" id="summary">
+<!-- PROFESSIONAL SUMMARY -->
+<section class="stories-section-container reveal-on-scroll" id="summary">
   <div class="section-head">
-    <span class="section-pill">Professional Profile</span>
-    <h2>{{ summary.title|default:"Executive Summary" }}</h2>
-    <p>From construction sites to cloud infrastructure — the materials changed, but the problem-solving stayed.</p>
+    <span class="section-pill">The Professional Version</span>
+    <h2>What I do now.</h2>
+    <p>
+      Building the skills to make software delivery more automated,
+      secure, observable, and reliable.
+    </p>
   </div>
 
-  <div class="summary-slot-card">
-    <div class="summary-headline">
-      <i class="ri-terminal-box-fill" style="color: var(--accent-cyan); margin-right: 8px;"></i>
-      {{ summary.headline }}
-    </div>
+  <article class="summary-slot-card">
+    <h3 class="summary-headline">
+      <i class="ri-terminal-box-line"></i>
+      {{ summary.headline|default:"Junior DevOps Engineer | Cloud & Automation" }}
+    </h3>
 
     <p class="summary-bio">
-      {{ summary.bio }}
+      {{ summary.bio|default:"I work on hands-on projects involving AWS,
+      Linux, Terraform, Docker, Kubernetes, CI/CD, GitOps, DevSecOps,
+      and observability. My Python and Django background also helps me
+      understand the applications that run on the infrastructure." }}
     </p>
 
-    <!-- Key Metrics Grid -->
+    <div class="summary-pill-list">
+      <div class="summary-pill-item">
+        <i class="ri-checkbox-circle-fill"></i>
+        CI/CD and DevSecOps pipelines
+      </div>
+      <div class="summary-pill-item">
+        <i class="ri-checkbox-circle-fill"></i>
+        Cloud infrastructure and infrastructure as code
+      </div>
+      <div class="summary-pill-item">
+        <i class="ri-checkbox-circle-fill"></i>
+        Kubernetes, Helm, GitOps and progressive delivery
+      </div>
+      <div class="summary-pill-item">
+        <i class="ri-checkbox-circle-fill"></i>
+        Monitoring, logging and troubleshooting
+      </div>
+    </div>
+
+    {% if summary.stats %}
     <div class="summary-stat-grid">
       {% for stat in summary.stats %}
       <div class="summary-stat-box">
@@ -116,204 +134,431 @@
       </div>
       {% endfor %}
     </div>
-
-    <!-- Highlights Pill List -->
-    <div class="summary-pill-list">
-      {% for item in summary.highlights %}
-      <div class="summary-pill-item">
-        <i class="ri-checkbox-circle-fill"></i>
-        <span>{{ item }}</span>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
+    {% endif %}
+  </article>
 </section>
 
-<!-- ==========================================================================
-     3. GITHUB DYNAMIC STATS BANNER
-     ========================================================================== -->
-<section class="stats-banner-section" id="github-overview">
+<!-- GITHUB -->
+<section class="stats-banner-section reveal-on-scroll" id="github-overview">
   <div class="github-live-card">
     <div class="github-user-badge">
-      <img src="{{ github_data.avatar_url|default:'https://github.com/github.png' }}" 
-           alt="{{ github_data.username }} GitHub avatar" class="github-avatar">
+      <img
+        src="{{ github_data.avatar_url|default:'https://github.com/github.png' }}"
+        alt="GitHub profile avatar"
+        class="github-avatar"
+        loading="lazy">
+
       <div>
-        <div class="github-name">@{{ github_data.username }}</div>
-        <div class="github-sync-indicator">
-          <i class="ri-check-double-line"></i>
-          <span>Live GitHub Sync Active</span>
+        <div class="github-name">
+          @{{ github_data.username|default:"GitHub" }}
         </div>
+
+        <div class="github-sync-indicator">
+          <i class="ri-github-fill"></i>
+          Open-source learning in progress
+        </div>
+
       </div>
     </div>
 
-    <!-- Live Counter Tickers -->
     <div class="stats-ticker-row">
       <div class="stat-item">
-        <div class="stat-value dynamic-github-repo-count" data-count="{{ github_data.public_repos }}">
-          {{ github_data.public_repos }}
+        <div class="stat-value">
+          {{ github_data.public_repos|default:0 }}
         </div>
-        <div class="stat-label">Public Repositories</div>
+        <div class="stat-label">Public repositories</div>
       </div>
-
-      <div class="stat-item">
-        <div class="stat-value" data-count="{{ github_data.total_stars }}">
-          {{ github_data.total_stars }}
-        </div>
-        <div class="stat-label">Stargazers</div>
-      </div>
-
-      <div class="stat-item">
-        <div class="stat-value" data-count="{{ github_data.followers }}">
-          {{ github_data.followers }}
-        </div>
-        <div class="stat-label">Followers</div>
-      </div>
+    
     </div>
 
-    <a href="{% url 'portfolio:projects' %}" class="btn-primary" style="padding: 12px 24px; font-size: 0.95rem;">
-      <i class="ri-folder-open-fill"></i>
-      <span>Open Projects Folder</span>
+    <a href="{% url 'portfolio:projects' %}" class="btn-primary">
+      Explore repositories
       <i class="ri-arrow-right-line"></i>
     </a>
   </div>
+  
 </section>
 
-<!-- ==========================================================================
-     4. "WHO WAS I" SCROLLABLE CHRONICLES (ALL CHAPTERS)
-     ========================================================================== -->
-<section class="stories-section-container" id="story">
+<!-- MY PRINCIPLES -->
+<section class="stories-section-container reveal-on-scroll" id="principles">
   <div class="section-head">
-    <span class="section-pill">Chronicles &amp; Journey</span>
-    <h2>My Journey The Scrollable Story.</h2>
-    <p>A real career change built through curiosity, practice, broken builds, and the decision to start from zero.</p>
-  </div>
-
-  <div class="story-timeline">
-    {% for chapter in stories %}
-    <div class="story-card-item" id="{{ chapter.id }}">
-      <div class="story-marker-orb"></div>
-      <div class="story-card">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-          <span class="story-badge">{{ chapter.period }}</span>
-          <span class="code-font" style="font-size: 0.8rem; color: var(--accent-cyan); background: rgba(0,240,255,0.08); padding: 2px 8px; border-radius: 4px;">
-            {{ chapter.year }}
-          </span>
-        </div>
-        
-        <h3 class="story-title">{{ chapter.title }}</h3>
-        <div class="story-tagline">{{ chapter.tagline }}</div>
-        <p class="story-text">{{ chapter.content }}</p>
-        
-        <div class="story-lesson-box">
-          <i class="ri-lightbulb-flash-line" style="color: var(--accent-cyan); margin-right: 6px;"></i>
-          <strong>Key Insight:</strong> {{ chapter.lesson }}
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</section>
-
-<!-- ==========================================================================
-     5. TECHNICAL ARSENAL / SKILLS
-     ========================================================================== -->
-<section class="stories-section-container" id="skills">
-  <div class="section-head">
-    <span class="section-pill">Tools I Build With</span>
-    <h2>Cloud, Automation &amp; Reliability</h2>
-  </div>
-
-  <div class="projects-grid">
-    {% for cat in portfolio.skill_categories %}
-    <div class="project-repo-card">
-      <div class="repo-card-top">
-        <h3 style="font-size: 1.2rem; color: var(--accent-cyan);">{{ cat.category }}</h3>
-        <i class="ri-terminal-box-line" style="font-size: 1.3rem; color: var(--text-dim);"></i>
-      </div>
-      <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
-        {% for skill in cat.skills %}
-        <li style="background: rgba(255,255,255,0.06); padding: 5px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(255,255,255,0.08);">
-          {{ skill }}
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endfor %}
-  </div>
-
-  <!-- Bottom CTA -->
-  <div style="text-align: center; margin-top: 60px;">
-    <a href="{% url 'portfolio:projects' %}" class="btn-primary" style="padding: 14px 32px;">
-      <i class="ri-folder-code-line"></i>
-      <span>Explore All GitHub Projects</span>
-      <i class="ri-arrow-right-line"></i>
-    </a>
-  </div>
-</section>
-
-<!-- PERSONAL PRINCIPLES -->
-<section class="stories-section-container reveal-section" id="principles">
-  <div class="section-head">
-    <span class="section-pill">My Operating Principles</span>
+    <span class="section-pill">My Operating System</span>
     <h2>Obsession. Passion. Consistency.</h2>
     <p>Three words I try to practise, not just put on a wall.</p>
   </div>
+
   <div class="principles-grid">
-    <article class="principle-card"><span class="principle-index">01 / CURIOSITY</span><h3>Obsession.</h3>
-      <p>I want to know how things work, why they break, and what happens if I try a different approach. Sometimes that solves the problem. Sometimes I spend far too long investigating it. Curiosity has questionable working hours.</p></article>
-    <article class="principle-card"><span class="principle-index">02 / ENERGY</span><h3>Passion.</h3>
-      <p>I enjoy building, experimenting, and turning confusion into understanding. Whether it's infrastructure, code, a painting, or a new recipe, I like making something better than it was before.</p></article>
-    <article class="principle-card"><span class="principle-index">03 / SHOWING UP</span><h3>Consistency.</h3>
-      <p>Motivation is great, but its attendance record is unreliable. Consistency keeps me learning and practising even when the exciting part is over. Every day doesn't have to be extraordinary; progress just has to continue.</p></article>
+    <article class="principle-card">
+      <span class="principle-index">01 / CURIOSITY</span>
+      <div class="principle-symbol">
+        <i class="ri-search-eye-line"></i>
+      </div>
+      <h3>Obsession.</h3>
+      <p class="principle-tagline">
+        Understand it. Don't just make it work.
+      </p>
+      <p>
+        If something breaks, I want to know why — not just which
+        command makes the error disappear. I like digging into
+        problems until the pieces make sense. Sometimes this saves
+        time. Sometimes I spend two hours investigating a five-minute
+        problem. We're working on the efficiency part.
+      </p>
+    </article>
+
+    <article class="principle-card">
+      <span class="principle-index">02 / ENERGY</span>
+      <div class="principle-symbol">
+        <i class="ri-fire-line"></i>
+      </div>
+      <h3>Passion.</h3>
+      <p class="principle-tagline">
+        Build something. Learn something. Repeat.
+      </p>
+      <p>
+        I enjoy turning ideas into something real — whether that's
+        a deployment pipeline, a Python application, a painting,
+        or a meal. Passion makes me curious enough to begin and
+        interested enough to keep improving.
+      </p>
+    </article>
+
+    <article class="principle-card">
+      <span class="principle-index">03 / SHOWING UP</span>
+      <div class="principle-symbol">
+        <i class="ri-calendar-check-line"></i>
+      </div>
+      <h3>Consistency.</h3>
+      <p class="principle-tagline">
+        Progress doesn't require a perfect day.
+      </p>
+      <p>
+        Motivation has an unreliable attendance record. Consistency
+        is what keeps me learning when the exciting part is over.
+        Not every day has to be extraordinary. The important thing
+        is to keep practising, correcting mistakes, and moving forward.
+      </p>
+    </article>
   </div>
-  <div class="zero-start-card"><span class="section-pill">A rule I live by</span>
+
+  <article class="zero-start-card">
+    <span class="section-pill">A rule I live by</span>
     <h3>I'm not afraid to start from zero.</h3>
-    <p>I've already changed direction from Civil Engineering to technology. If there's something worth learning, I'm willing to be a beginner again. Ego wants to look experienced. Curiosity wants to get better. I know which one I'd rather feed.</p>
+    <p>
+      I've already changed direction from Civil Engineering to
+      technology. That meant being a beginner again, learning new
+      tools, and accepting that I wouldn't know everything on day one.
+      If there's something worth learning, I'm willing to start over.
+      Ego wants to look experienced. Curiosity wants to get better.
+      I know which one I'd rather feed.
+    </p>
+  </article>
+</section>
+
+<!-- MY STORY -->
+<section class="stories-section-container reveal-on-scroll" id="story">
+  <div class="section-head">
+    <span class="section-pill">The Origin Story</span>
+    <h2>From construction sites to cloud infrastructure.</h2>
+    <p>
+      Different industries. Different tools. The same instinct
+      to understand how things fit together.
+    </p>
+  </div>
+
+  <div class="story-timeline">
+    <article class="story-card-item">
+      <div class="story-marker-orb"></div>
+      <div class="story-card">
+        <span class="story-badge">CHAPTER 01 / THE FOUNDATION</span>
+        <h3 class="story-title">Civil Engineering came first.</h3>
+        <div class="story-tagline">Learn to build things that stand.</div>
+        <p class="story-text">
+          I began with a Diploma in Civil Engineering and practical
+          site experience. Working in Kerala and Saudi Arabia taught
+          me about coordination, planning, deadlines, responsibility,
+          and the real-world consequences of getting the details wrong.
+        </p>
+        <div class="story-lesson-box">
+          <strong>The lesson:</strong>
+          Good results depend on solid foundations and attention to detail.
+        </div>
+      </div>
+    </article>
+
+    <article class="story-card-item">
+      <div class="story-marker-orb"></div>
+      <div class="story-card">
+        <span class="story-badge">CHAPTER 02 / THE TURNING POINT</span>
+        <h3 class="story-title">Curiosity changed direction.</h3>
+        <div class="story-tagline">From physical structures to software systems.</div>
+        <p class="story-text">
+          My interest gradually shifted towards programming, automation,
+          Linux, and cloud technology. I started learning Python and
+          Django, then explored the infrastructure and delivery systems
+          behind modern applications. It wasn't a shortcut; it was a
+          decision to start learning a new field from the ground up.
+        </p>
+        <div class="story-lesson-box">
+          <strong>The lesson:</strong>
+          A career change doesn't erase your previous experience.
+          It gives you a different foundation to build on.
+        </div>
+      </div>
+    </article>
+
+    <article class="story-card-item">
+      <div class="story-marker-orb"></div>
+      <div class="story-card">
+        <span class="story-badge">CHAPTER 03 / THE BUILD</span>
+        <h3 class="story-title">Learning by building.</h3>
+        <div class="story-tagline">Less watching. More doing.</div>
+        <p class="story-text">
+          I began working on practical projects involving Docker,
+          Jenkins, Kubernetes, Terraform, AWS, Helm, Argo CD,
+          security scanning, and observability. I've built CI/CD
+          workflows, experimented with GitOps and progressive delivery,
+          and learned to troubleshoot by working through real failures.
+        </p>
+        <div class="story-lesson-box">
+          <strong>The lesson:</strong>
+          Documentation is useful. Hands-on experience teaches you
+          what the documentation couldn't predict.
+        </div>
+      </div>
+    </article>
+
+    <article class="story-card-item">
+      <div class="story-marker-orb"></div>
+      <div class="story-card">
+        <span class="story-badge">CHAPTER 04 / RIGHT NOW</span>
+        <h3 class="story-title">An engineer still in progress.</h3>
+        <div class="story-tagline">Building towards a career in DevOps.</div>
+        <p class="story-text">
+          Today, I'm focused on becoming a strong Junior DevOps Engineer.
+          My goal is to deepen my understanding of cloud infrastructure,
+          automation, secure delivery, reliability, and the systems
+          that help development teams ship software with confidence.
+        </p>
+        <div class="story-lesson-box">
+          <strong>The lesson:</strong>
+          I'm not claiming to know everything. I'm committed to
+          learning, building, and getting better.
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
-<!-- AI SECTION -->
-<section class="stories-section-container reveal-section" id="ai-question">
-  <div class="section-head"><span class="section-pill">A Reasonable Concern</span><h2>Will AI take my job?</h2>
-    <p>Honestly, AI is getting scary good. Pretending otherwise would be a questionable career strategy.</p></div>
+
+<!-- THE AI QUESTION -->
+<section class="stories-section-container reveal-on-scroll" id="ai-question">
+  <div class="section-head">
+    <span class="section-pill">The Question Everyone Asks</span>
+    <h2>Will AI take over my job?</h2>
+    <p>
+      A reasonable concern. Also an excellent excuse to discuss
+      my questionable career contingency plan.
+    </p>
+  </div>
+
   <article class="ai-story-card">
-    <p>I'm a DevOps Engineer working with modern cloud technologies, and I can already see AI writing scripts, generating configurations, and helping troubleshoot problems that used to take considerably longer.</p>
-    <p>But generating a Terraform configuration isn't the same as knowing whether it belongs in production. Suggesting a Kubernetes fix isn't the same as understanding its side effects. Building a pipeline is one thing; taking responsibility when a deployment goes sideways is another.</p>
-    <p>And if AI eventually decides DevOps is its territory now? I have a few backup plans.</p>
-    <p>I can cook. I can paint. I studied Civil Engineering, so I understand the fundamentals of designing and building structures. I'm a bit of a jack of all trades — not a master of all of them, let's keep the marketing honest.</p>
-    <p>If the machines take over the servers, I'll make dinner. If they take over the kitchen, I'll paint a portrait of our new robot overlords. And if all else fails, I'll ask them whether their buildings have passed structural review.</p>
-    <p class="ai-closing-line">My plan isn't to compete with AI at being AI. It's to learn how to use it, question it, and take responsibility for what gets built with it.</p>
+    <div class="ai-intro">
+      <div class="ai-orbit" aria-hidden="true">AI</div>
+      <div>
+        <h3>Honestly? AI is getting good.</h3>
+        <p>
+          I'm building my career in DevOps and modern cloud technology.
+          I can see AI generating scripts, suggesting configurations,
+          and helping troubleshoot errors. Ignoring that progress
+          would be a questionable career strategy.
+        </p>
+        <p>
+          But generating a Terraform file isn't the same as deciding
+          whether it belongs in production. Suggesting a Kubernetes fix
+          isn't the same as understanding every consequence. Someone
+          still needs to validate the output, understand the system,
+          investigate failures, and take responsibility.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="backup-heading">
+      And if the machines take over anyway?
+    </h3>
+
+    <div class="backup-grid">
+      <article class="backup-card">
+        <div class="backup-icon">
+          <i class="ri-restaurant-2-line"></i>
+        </div>
+        <p class="eyebrow">PLAN B</p>
+        <h3>The Cook.</h3>
+        <p>
+          I can cook. I understand timing, patience, and the importance
+          of not ignoring something on the stove. Very similar to
+          production monitoring, except the alerts smell different.
+        </p>
+      </article>
+
+      <article class="backup-card">
+        <div class="backup-icon">
+          <i class="ri-brush-line"></i>
+        </div>
+        <p class="eyebrow">PLAN C</p>
+        <h3>The Artist.</h3>
+        <p>
+          I can paint, too. If the servers are run by robots, at least
+          I'll have a creative outlet. Maybe I'll paint a portrait
+          of the machine that replaced me. Freelance work is freelance work.
+        </p>
+      </article>
+
+      <article class="backup-card">
+        <div class="backup-icon">
+          <i class="ri-building-2-line"></i>
+        </div>
+        <p class="eyebrow">PLAN D</p>
+        <h3>The Civil Engineer.</h3>
+        <p>
+          I have a Civil Engineering background and site experience.
+          I understand the fundamentals of building design and
+          construction. If the robots start building cities,
+          someone should at least ask about the foundations.
+        </p>
+      </article>
+    </div>
+
+    <div class="ai-conclusion">
+      <p>
+        My plan isn't to beat AI at being AI.
+        It's to learn how to use it, question it, and build responsibly.
+      </p>
+      <span>
+        Jack of a few trades. Mastering my next one, one day at a time.
+      </span>
+    </div>
   </article>
 </section>
 
 <!-- BEYOND TECH -->
-<section class="stories-section-container reveal-section" id="beyond-tech">
-  <div class="section-head"><span class="section-pill">Beyond the Terminal</span><h2>A job title isn't a whole personality.</h2>
-    <p>Because not every interesting thing in life requires a terminal window.</p></div>
-  <div class="principles-grid">
-    <article class="principle-card hobby-card"><h3><i class="ri-restaurant-line" aria-hidden="true"></i> The Cook</h3>
-      <p>I enjoy cooking. Debugging and cooking both require patience, timing, and accepting that sometimes you have to start over halfway through.</p></article>
-    <article class="principle-card hobby-card"><h3><i class="ri-brush-line" aria-hidden="true"></i> The Artist</h3>
-      <p>I paint because not every problem needs a terminal window. Sometimes it's good to create something without worrying about dependencies or production errors.</p></article>
-    <article class="principle-card hobby-card"><h3><i class="ri-building-2-line" aria-hidden="true"></i> The Civil Engineer</h3>
-      <p>My Civil Engineering background and site experience taught me planning, coordination, precision, and the importance of getting the foundations right.</p></article>
+<section class="stories-section-container reveal-on-scroll" id="beyond-tech">
+  <div class="section-head">
+    <span class="section-pill">Beyond the Terminal</span>
+    <h2>A job title isn't a whole personality.</h2>
+    <p>
+      Not every interesting thing in life requires a terminal window.
+    </p>
   </div>
+
+  <div class="side-grid">
+    <article class="side-card side-cooking">
+      <span class="side-number">01</span>
+      <div>
+        <p class="eyebrow">THE KITCHEN</p>
+        <h3>Cooking</h3>
+        <p>
+          I enjoy making food, experimenting with flavours, and
+          figuring out what works. Debugging a recipe is still
+          debugging — the reward is just considerably tastier.
+        </p>
+      </div>
+    </article>
+
+    <article class="side-card side-painting">
+      <span class="side-number">02</span>
+      <div>
+        <p class="eyebrow">THE CANVAS</p>
+        <h3>Painting</h3>
+        <p>
+          Painting gives me room to create without thinking about
+          dependencies, deployment failures, or whether the service
+          is healthy. Sometimes making a mess is part of the process.
+        </p>
+      </div>
+    </article>
+
+    <article class="side-card side-civil">
+      <span class="side-number">03</span>
+      <div>
+        <p class="eyebrow">THE FOUNDATION</p>
+        <h3>Civil Engineering</h3>
+        <p>
+          My original field taught me to plan, coordinate, and respect
+          the details. Those lessons still influence how I approach
+          software and infrastructure today.
+        </p>
+      </div>
+    </article>
+  </div>
+
+
 </section>
 
-<!-- CONTACT INVITATION -->
-<section class="stories-section-container reveal-section" id="contact-invitation">
+<!-- CONTACT -->
+<section class="stories-section-container reveal-on-scroll"
+         id="contact-invitation">
   <div class="contact-invitation-card">
-    <span class="section-pill">One Last Thing</span>
-    <h2>Have an opportunity? A problem to solve? A good biryani recommendation?</h2>
-    <p>I'm open to Junior DevOps Engineer opportunities, cloud and infrastructure projects, technical collaborations, and conversations with people who enjoy building useful things.</p>
-    <p>If you're hiring, I'd love to talk about how my engineering background, hands-on projects, and willingness to learn could contribute to your team.</p>
-    <p>And if you're simply in the mood for coffee, invite me. Just one small condition: if we're settling down for a proper meal afterwards, <strong>biryani over mandi.</strong> I'm willing to negotiate on many things. This is not one of them.</p>
+    <span class="section-pill">The Next Chapter</span>
+    <h2>Let's build something worth talking about.</h2>
+
+    <p class="contact-copy">
+      I'm open to Junior DevOps Engineer and Cloud Engineer opportunities,
+      technical collaborations, and conversations with people who enjoy
+      solving real problems.
+    </p>
+
+    <p class="contact-copy">
+      If you're hiring, I'd love to discuss how my engineering background,
+      hands-on projects, and willingness to learn could contribute
+      to your team.
+    </p>
+
     <div class="hero-actions contact-cta-actions">
-      <a href="{% url 'portfolio:contact' %}" class="btn-primary"><i class="ri-mail-send-line" aria-hidden="true"></i><span>Hire Me / Say Hello</span></a>
-      <a href="https://www.instagram.com/rithuraj_6/" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="ri-instagram-line" aria-hidden="true"></i><span>Instagram</span></a>
-      <a href="{{ portfolio.socials.linkedin.url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="ri-linkedin-fill" aria-hidden="true"></i><span>LinkedIn</span></a>
+      <button
+        type="button"
+        class="modal-close-btn"
+        id="close-contact-modal"
+        aria-label="Close contact form">
+        <i class="ri-close-line"></i>
+      </button>
+
+      <a href="{{ portfolio.socials.linkedin.url }}"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-secondary">
+        <i class="ri-linkedin-fill"></i>
+        LinkedIn
+      </a>
+
+      <a href="{{ portfolio.socials.github.url }}"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-secondary">
+        <i class="ri-github-fill"></i>
+        GitHub
+      </a>
     </div>
-    <p class="contact-signoff">Let's connect. Worst case, we learn something. Best case, we build something great.</p>
+
+    <div class="biryani-note">
+      <span class="biryani-emoji" aria-hidden="true">☕ 🍛</span>
+      <p>
+        Or we could keep it simple.
+        <strong>Invite me for coffee.</strong>
+      </p>
+      <p>
+        We can talk about technology, careers, life, or whatever
+        happens to come up. If coffee turns into dinner, though,
+        I have one non-negotiable condition.
+      </p>
+      <p class="biryani-small">
+        <strong>Biryani. Not mandi.</strong><br>
+        Some decisions are too important to leave to automation.
+      </p>
+    </div>
+
+    <p class="contact-last-line">
+      Let's connect. Worst case, we learn something.
+      Best case, we build something great.
+    </p>
   </div>
 </section>
 
@@ -321,81 +566,25 @@
 
 {% block extra_js %}
 <script>
-  // Floating Modal Trigger & AJAX Web3Forms Handler
-  const modal = document.getElementById('floating-contact-modal');
-  const openFabBtn = document.getElementById('floating-contact-trigger');
-  const openNavBtn = document.getElementById('nav-contact-btn');
-  const closeBtn = document.getElementById('close-contact-modal');
-  const modalForm = document.getElementById('floating-contact-form');
-  const modalAlert = document.getElementById('modal-alert-box');
-  const modalSubmitBtn = document.getElementById('modal-submit-btn');
-  const modalBtnText = document.getElementById('modal-btn-text');
+  (() => {
+    // Reuse the contact modal already defined in base.html.
+    const modal = document.getElementById('floating-contact-modal');
 
-  function openModal() {
-    if (modal) {
+    const triggers = [
+      document.getElementById('hero-contact-btn'),
+      document.getElementById('story-contact-btn')
+    ].filter(Boolean);
+
+    if (!modal) return;
+
+    const openModal = () => {
       modal.classList.add('active');
       modal.setAttribute('aria-hidden', 'false');
-    }
-  }
+    };
 
-  function closeModal() {
-    if (modal) {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  }
-
-  if (openFabBtn) openFabBtn.addEventListener('click', openModal);
-  if (openNavBtn) openNavBtn.addEventListener('click', openModal);
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-  // Close on outside click
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
+    triggers.forEach((button) => {
+      button.addEventListener('click', openModal);
     });
-  }
-
-  // Web3Forms AJAX inside Floating Modal
-  if (modalForm) {
-    modalForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      modalBtnText.textContent = 'Transmitting...';
-      modalSubmitBtn.disabled = true;
-
-      const formData = new FormData(modalForm);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: json
-      })
-      .then(async (response) => {
-        let jsonResponse = await response.json();
-        if (response.status === 200) {
-          modalAlert.className = 'form-status-alert alert-success';
-          modalAlert.innerHTML = '<i class="ri-checkbox-circle-line"></i> Message sent successfully! Rithu Raj R will reach back shortly.';
-          modalForm.reset();
-        } else {
-          modalAlert.className = 'form-status-alert alert-error';
-          modalAlert.innerHTML = '<i class="ri-error-warning-line"></i> ' + (jsonResponse.message || 'Transmission failed.');
-        }
-      })
-      .catch((err) => {
-        modalAlert.className = 'form-status-alert alert-error';
-        modalAlert.innerHTML = '<i class="ri-error-warning-line"></i> Network error. Please try again.';
-      })
-      .finally(() => {
-        modalBtnText.textContent = 'Transmit Message';
-        modalSubmitBtn.disabled = false;
-        modalAlert.style.display = 'block';
-      });
-    });
-  }
+  })();
 </script>
 {% endblock %}

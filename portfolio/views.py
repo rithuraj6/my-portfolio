@@ -3,6 +3,13 @@ import requests
 from django.shortcuts import render
 from django.http import JsonResponse
 from portfolio_config import PORTFOLIO_CONFIG
+import dns.resolver
+import dns.exception
+
+from django.http import JsonResponse
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from django.views.decorators.http import require_GET
 
 # In-memory cache for GitHub API data to adhere to rate limits and speed up responses
 _GITHUB_CACHE = {
@@ -184,3 +191,77 @@ def github_stats_api(request):
     username = PORTFOLIO_CONFIG.get("github_username", "torvalds")
     data = fetch_github_data(username)
     return JsonResponse(data)
+
+
+
+@require_GET
+def validate_email_domain(request):
+    email = request.GET.get("email", "").strip()
+
+    try:
+        validate_email(email)
+    except ValidationError:
+        return JsonResponse({
+            "valid": False,
+            "message": "Enter a valid email address."
+        }, status=400)
+
+    domain = email.rsplit("@", 1)[1].rstrip(".").lower()
+
+    try:
+        answers = dns.resolver.resolve(
+            domain, "MX", lifetime=3
+        )
+        has_mail_server = any(
+            str(answer.exchange).strip(".") != ""
+            for answer in answers
+        )
+
+        if has_mail_server:
+            return JsonResponse({
+                "valid": True,
+                "message": "Email domain looks valid."
+            })
+
+    except dns.resolver.NoAnswer:
+        # Some domains accept mail through fallback delivery.
+        pass
+    except dns.resolver.NXDOMAIN:
+        return JsonResponse({
+            "valid": False,
+            "message": "This email domain does not appear to exist."
+        }, status=400)
+    except (dns.exception.Timeout, dns.resolver.NoNameservers):
+        return JsonResponse({
+            "valid": False,
+            "message": "Could not verify the email domain. Please try again."
+        }, status=503)
+
+    # If there is no MX record, check whether the domain itself exists.
+    try:
+        dns.resolver.resolve(domain, "A", lifetime=3)
+        return JsonResponse({
+            "valid": True,
+            "message": "The domain exists, but mail delivery could not be confirmed."
+        })
+    except dns.resolver.NoAnswer:
+        try:
+            dns.resolver.resolve(domain, "AAAA", lifetime=3)
+            return JsonResponse({
+                "valid": True,
+                "message": "The domain exists, but mail delivery could not be confirmed."
+            })
+        except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN):
+            pass
+    except dns.resolver.NXDOMAIN:
+        pass
+    except (dns.exception.Timeout, dns.resolver.NoNameservers):
+        return JsonResponse({
+            "valid": False,
+            "message": "Could not verify the email domain. Please try again."
+        }, status=503)
+
+    return JsonResponse({
+        "valid": False,
+        "message": "This email domain has no confirmed mail or address records."
+    }, status=400)

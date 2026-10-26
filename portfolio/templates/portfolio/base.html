@@ -31,9 +31,39 @@
 
   <link rel="icon" type="image/svg+xml" href="{% static 'portfolio/images/r-logo.svg' %}">
 
+    <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="{% static 'portfolio/js/portfolio-ui.js' %}" defer></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Stack+Sans+Notch:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700;800&family=Voces&display=swap" rel="stylesheet">
   <!-- CSS Design System -->
+   <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("rithu-theme-preference");
+        const hour = new Date().getHours();
+
+        const theme = saved === "light" || saved === "dark"
+          ? saved
+          : (hour >= 7 && hour < 19 ? "light" : "dark");
+
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch {
+        const hour = new Date().getHours();
+
+        document.documentElement.setAttribute(
+          "data-theme",
+          hour >= 7 && hour < 19 ? "light" : "dark"
+        );
+      }
+    })();
+  </script>
+  <script src="{% static 'portfolio/js/nav-progress.js' %}" defer></script>
 
   <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+  
+    
 
   <!-- Remix Icons for Clean Minimalist Glyphs -->
 
@@ -52,25 +82,30 @@
 
 
 
-  <!-- Intro Page Loader Screen -->
+  <
+<!-- Cinematic Liquid Identity Intro -->
+<div id="antigravity-loader" aria-label="Loading portfolio">
+  <canvas id="antigravity-canvas" aria-hidden="true"></canvas>
 
-  <div id="antigravity-loader">
-
-    <canvas id="antigravity-canvas"></canvas>
-
-    <div class="loader-content">
-
-      <div class="logo-svg-wrapper" style="width: 86px; height: 86px; margin: 0 auto 16px;">
-
-        <img src="{% static 'portfolio/images/r-logo.svg' %}" alt="R Logo">
-
-      </div>
-
-      <div class="loader-title" style="letter-spacing: 0.25em;">{{ portfolio.name }}</div>
+  <div class="loader-content">
+    <div class="liquid-letter-stage" aria-live="polite">
+      <span class="liquid-letter" style="display: block;">R</span>
+      <span class="liquid-letter">റ</span>
+      <span class="liquid-letter">ர்</span>
+      <span class="liquid-letter">र</span>
+      <span class="liquid-letter liquid-full-name">RITHU RAJ R</span>
 
     </div>
+    <div class="loader-status" aria-live="polite">
+      <span class="loader-status-label">INITIALIZING</span>
+      <span class="loader-status-detail">Preparing the environment...</span>
+    </div>
 
+    <div class="identity-loader-line" aria-hidden="true">
+      <span></span>
+    </div>
   </div>
+</div>
 
 
 
@@ -94,7 +129,7 @@
 
         </div>
 
-        <span>{{ portfolio.name }}<span style="color: var(--accent-cyan);">.py</span></span>
+        <span>{{ portfolio.name }}<span style="color: var(--accent-cyan);">.DevOps</span></span>
 
       </a>
 
@@ -157,6 +192,7 @@
           </a>
 
         </li>
+        
 
       </ul>
 
@@ -169,13 +205,18 @@
          <i class="ri-sun-line" aria-hidden="true"></i>
        </button>
 
-        <button id="nav-contact-btn" class="btn-primary" style="padding: 8px 18px; font-size: 0.85rem;" aria-label="Open Contact Modal">
-
-          <i class="ri-mail-send-fill"></i>
-
-          <span>Contact</span>
-
+        <button
+            type="button"
+            id="nav-contact-btn"
+            class="btn-primary"
+            style="padding: 8px 18px; font-size: 0.85rem;"
+            aria-label="Open Contact Modal"
+            data-contact-open
+        >
+            <i class="ri-mail-send-line"></i>
+            Contact
         </button>
+
 
         <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
 
@@ -195,19 +236,7 @@
 
   <aside class="venom-social-dock" aria-label="Social connections and floating contact">
 
-    <!-- Floating Contact Me Button -->
-
-    <div class="magnetic-social-item">
-
-      <button class="magnetic-btn contact-fab-btn" id="floating-contact-trigger" aria-label="Open Floating Contact Modal">
-
-        <i class="ri-mail-send-fill" style="color: var(--accent-cyan);"></i>
-
-      </button>
-
-      <span class="social-tooltip">Contact Me // Direct Mail</span>
-
-    </div>
+   
 
 
 
@@ -426,7 +455,11 @@
   <script src="{% static 'portfolio/js/countdown.js' %}"></script>
 
   <script src="{% static 'portfolio/js/github-counter.js' %}"></script>
+  <!-- Theme Manager -->
+  <script src="{% static 'portfolio/js/theme-manager.js' %}" defer></script>
 
+  <!-- Core JavaScript Modules -->
+  <script src="{% static 'portfolio/js/antigravity-loader.js' %}"></script>
 
 
   {% block extra_js %}{% endblock %}
