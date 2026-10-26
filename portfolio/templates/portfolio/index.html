@@ -52,7 +52,8 @@
     <div class="hero-aside" id="countdown">
       <div class="dob-celebration-card"
            id="bday-countdown-ticker"
-           data-target-date="{{ bday.next_celebration_date }}">
+           data-target-date="{{ bday.next_celebration_date }}"
+           data-birth-datetime="2000-04-28T07:00:00">
         <div class="card-top-header">
           <span class="dob-chip">
             <i class="ri-cake-2-line"></i>
@@ -86,6 +87,35 @@
           <div class="countdown-box">
             <div class="countdown-number" id="bday-secs">--</div>
             <div class="countdown-label">Secs</div>
+          </div>
+        </div>
+
+        <!-- Time on Earth — Live Counter -->
+        <div class="time-on-earth-section">
+          <div class="time-earth-header">
+            <i class="ri-earth-line"></i>
+            <span>Time on Earth</span>
+          </div>
+          <div class="time-earth-grid">
+            <div class="time-earth-box">
+              <div class="time-earth-number" id="earth-days">--</div>
+              <div class="time-earth-label">Days</div>
+            </div>
+            <div class="time-earth-separator">:</div>
+            <div class="time-earth-box">
+              <div class="time-earth-number" id="earth-hours">--</div>
+              <div class="time-earth-label">Hours</div>
+            </div>
+            <div class="time-earth-separator">:</div>
+            <div class="time-earth-box">
+              <div class="time-earth-number" id="earth-mins">--</div>
+              <div class="time-earth-label">Mins</div>
+            </div>
+            <div class="time-earth-separator">:</div>
+            <div class="time-earth-box">
+              <div class="time-earth-number" id="earth-secs">--</div>
+              <div class="time-earth-label">Secs</div>
+            </div>
           </div>
         </div>
 
@@ -607,7 +637,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 
 <!-- CONTACT / THE NEXT CHAPTER -->
 <section class="stories-section-container reveal-on-scroll"
@@ -625,79 +654,104 @@
         >
 
         <div class="next-chapter-portrait-caption">
-         
           <h3>Rithu Raj R</h3>
           <p>DevOps · Cloud · Automation</p>
         </div>
       </div>
 
-      <!-- Text and contact links -->
+      <!-- Career opportunities -->
       <div class="next-chapter-copy">
         <span class="section-pill">The Next Chapter</span>
 
-        <h2>Let's build something worth talking about.</h2>
+        <h2>OK, Let's Get Serious.</h2>
 
         <p class="contact-copy">
-          I'm open to Junior DevOps Engineer and Cloud Engineer opportunities,
-          technical collaborations, and conversations with people who enjoy
-          solving real problems.
+          I'm currently exploring opportunities in Junior DevOps,
+          Cloud Engineering, and related infrastructure roles that
+          match my skills and interests.
         </p>
 
         <p class="contact-copy">
-          If you're hiring, I'd love to discuss how my engineering background,
-          hands-on projects, and willingness to learn could contribute
-          to your team.
+          If you're hiring, working on something interesting, or
+          looking for someone who's serious about learning and building,
+          let's talk. I'd be glad to discuss my projects, technical
+          experience, and how I could contribute to your team.
         </p>
 
         <div class="hero-actions contact-cta-actions">
-          <button type="button" id="story-contact-btn" class="btn-primary">
-            <i class="ri-mail-send-line"></i>
-            Hire me / Say hello
+          <button
+            type="button"
+            id="story-contact-btn"
+            class="btn-primary"
+            data-contact-open
+          >
+            <i class="ri-mail-send-line" aria-hidden="true"></i>
+            Contact Me
           </button>
 
-          <a href="{{ portfolio.socials.linkedin.url }}"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="btn-secondary">
-            <i class="ri-linkedin-fill"></i>
+          <a
+            href="{{ portfolio.socials.linkedin.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            <i class="ri-linkedin-fill" aria-hidden="true"></i>
             LinkedIn
           </a>
 
-          <a href="{{ portfolio.socials.github.url }}"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="btn-secondary">
-            <i class="ri-github-fill"></i>
+          <a
+            href="{{ portfolio.socials.github.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            <i class="ri-github-fill" aria-hidden="true"></i>
             GitHub
           </a>
+
+          
         </div>
 
+        <!-- Coffee, conversation, and food -->
         <div class="biryani-note">
           <span class="biryani-emoji" aria-hidden="true">☕ 🍛</span>
 
-          <p>
-            Or we could keep it simple.
-            <strong>Invite me for coffee.</strong>
-          </p>
+          <h3>Still haven't made up your mind about hiring? 👀</h3>
 
-          <p>
-            We can talk about technology, careers, life, or whatever
-            happens to come up. If coffee turns into dinner, though,
-            I have one non-negotiable condition.
-          </p>
+            <p>
+              Fair enough 😉 How about we skip the boring formalities and grab a cup
+              of <strong>matcha coffee 🍵</strong> whatever that is
+              and talk about life, tech, big dreams, and the little things that make
+              life interesting. Who knows? We might just get along a little too well. 😌
+            </p>
 
-          <p class="biryani-small">
-            <strong>Biryani. Not mandi.</strong><br>
-            Some decisions are too important to leave to automation.
-          </p>
+            <p>
+              And if the conversation goes well, we can wrap up the day with a proper,
+              heavy meal. ❤️‍🔥🍽️ Just one tiny detail we need to settle first...
+            </p>
+
+            <p class="biryani-small">
+              <strong>🍛 Biryani over Mandhi. No negotiations. 😌🤝</strong><br>
+              If we agree on that, we're already off to a pretty good start. 😂
+              Some things are more important than automation. ⚙️❤️
+            </p>
+          <a
+            href="https://www.instagram.com/rithuraj_6/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary biryani-instagram-btn"
+          >
+            <i class="ri-instagram-line" aria-hidden="true"></i>
+            Connect on Instagram
+          </a>
         </div>
 
         <p class="contact-last-line">
           Let's connect. Worst case, we learn something.
-          Best case, we build something great.
+          Best case, we build something great — and share something great.
         </p>
-      </div>
 
+      </div>
     </div>
   </div>
 </section>

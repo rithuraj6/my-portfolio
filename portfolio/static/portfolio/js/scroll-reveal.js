@@ -29,8 +29,9 @@
   let wheelResetTimer = null;
   let touchStartY = 0;
 
-  const transitionDuration = 1150;
-  const wheelThreshold = 65;
+  // Smoother, faster transitions for a more responsive feel
+  const transitionDuration = 850;
+  const wheelThreshold = 45;
 
   function updateHeaderHeight() {
     const height = header ? header.offsetHeight : 80;
@@ -52,10 +53,12 @@
 
     const previous = sections[activeIndex];
     const next = sections[index];
+    const goingDown = index > activeIndex;
 
     if (previous) {
       previous.classList.remove("is-active");
       previous.classList.add("is-leaving");
+      previous.setAttribute("data-leaving-direction", goingDown ? "up" : "down");
       previous.setAttribute("aria-hidden", "true");
       previous.inert = true;
     }
@@ -65,6 +68,7 @@
     next.scrollTop = 0;
     next.inert = false;
     next.setAttribute("aria-hidden", "false");
+    next.setAttribute("data-entering-direction", goingDown ? "from-below" : "from-above");
 
     // Force a style calculation so the entrance transition starts reliably.
     void next.offsetWidth;
@@ -77,7 +81,11 @@
     }
 
     transitionTimer = setTimeout(() => {
-      if (previous) previous.classList.remove("is-leaving");
+      if (previous) {
+        previous.classList.remove("is-leaving");
+        previous.removeAttribute("data-leaving-direction");
+      }
+      next.removeAttribute("data-entering-direction");
       isTransitioning = false;
     }, transitionDuration);
   }
@@ -110,7 +118,7 @@
     // Let long sections scroll internally before switching panels.
     if (canScrollInside(section, direction)) {
       section.scrollBy({
-        top: direction * Math.max(120, section.clientHeight * 0.65),
+        top: direction * Math.max(100, section.clientHeight * 0.5),
         behavior: "smooth"
       });
       return;
@@ -120,6 +128,7 @@
   }
 
   // Scroll wheel: accumulate small trackpad movements into one transition.
+  // More responsive with lower threshold and smoother internal scrolling.
   window.addEventListener(
     "wheel",
     (event) => {
@@ -139,8 +148,12 @@
       const section = activeSection();
 
       if (canScrollInside(section, direction)) {
+        // Pass through wheel events for internal scrolling with smooth behavior
         event.preventDefault();
-        section.scrollTop += event.deltaY;
+        section.scrollBy({
+          top: event.deltaY,
+          behavior: "auto"
+        });
         return;
       }
 
@@ -152,7 +165,7 @@
 
       wheelResetTimer = setTimeout(() => {
         wheelAccumulator = 0;
-      }, 180);
+      }, 150);
 
       if (Math.abs(wheelAccumulator) >= wheelThreshold) {
         const step = Math.sign(wheelAccumulator);
@@ -211,14 +224,14 @@
       const difference =
         touchStartY - event.changedTouches[0].clientY;
 
-      if (Math.abs(difference) < 65 || isTransitioning) return;
+      if (Math.abs(difference) < 55 || isTransitioning) return;
 
       const direction = Math.sign(difference);
       const section = activeSection();
 
       if (canScrollInside(section, direction)) {
         section.scrollBy({
-          top: direction * Math.max(120, section.clientHeight * 0.65),
+          top: direction * Math.max(100, section.clientHeight * 0.5),
           behavior: "smooth"
         });
       } else {

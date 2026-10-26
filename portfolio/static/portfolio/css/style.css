@@ -5144,3 +5144,1018 @@ body.contact-modal-open {
     transition: none !important;
   }
 }
+
+.biryani-instagram-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  text-decoration: none;
+}
+
+
+/* ==========================================================================
+   MODERNIZATION OVERHAUL — SMOOTH UI, URBANIST FONTS, ANIMATIONS
+   ========================================================================== */
+
+/* ---------- GLOBAL SMOOTH TRANSITIONS ---------- */
+*, *::before, *::after {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- URBANIST FONT — LARGER, MORE READABLE ---------- */
+body,
+p,
+li,
+summary,
+blockquote,
+.story-text,
+.hero-description,
+.summary-bio,
+.contact-copy,
+.ai-story-card p,
+.contact-invitation-card p,
+.backup-card p,
+.principle-card p,
+.zero-start-card p,
+.biryani-note p,
+.celebration-footer-note,
+.celebration-target,
+.github-note-content p,
+.github-sync-indicator,
+.story-lesson-box,
+.story-tagline {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 450;
+  letter-spacing: 0.005em;
+}
+
+/* Increase base font sizes for readability */
+body {
+  font-size: 17px !important;
+  line-height: 1.78 !important;
+}
+
+p {
+  font-size: 1.08rem !important;
+  line-height: 1.82 !important;
+}
+
+.hero-description {
+  font-size: 1.2rem !important;
+  line-height: 1.8 !important;
+}
+
+.summary-bio {
+  font-size: 1.12rem !important;
+  line-height: 1.88 !important;
+}
+
+.story-text {
+  font-size: 1.08rem !important;
+  line-height: 1.85 !important;
+}
+
+.contact-copy {
+  font-size: 1.1rem !important;
+  line-height: 1.85 !important;
+}
+
+.principle-card p,
+.backup-card p {
+  font-size: 1.02rem !important;
+  line-height: 1.85 !important;
+}
+
+.github-note-content p {
+  font-size: 1.06rem !important;
+  line-height: 1.88 !important;
+}
+
+.section-head p {
+  font-size: 1.12rem !important;
+  font-weight: 450 !important;
+}
+
+.story-lesson-box {
+  font-size: 1rem !important;
+  line-height: 1.75 !important;
+}
+
+.celebration-footer-note {
+  font-size: 0.95rem !important;
+}
+
+/* Headings: keep Urbanist for cohesion */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.02em;
+}
+
+.hero-title {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 850 !important;
+  letter-spacing: -0.035em;
+}
+
+.section-head h2 {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 800 !important;
+}
+
+/* Navbar brand */
+.brand-logo,
+.brand-logo > span {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  font-size: 1.4rem !important;
+}
+
+/* Nav links */
+.nav-links,
+.nav-item-link,
+.nav-item-link span {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 550 !important;
+  font-size: 0.98rem !important;
+}
+
+/* Labels, tags, eyebrows stay mono for contrast */
+.code-font,
+code,
+pre,
+.nav-tag,
+.principle-index,
+.eyebrow,
+.story-kicker,
+.story-badge,
+.dob-chip,
+.countdown-label,
+.footer-pill,
+.github-section-eyebrow,
+.github-repo-label,
+.github-footer-caption,
+.loader-status-label,
+.loader-status-detail,
+.time-earth-label {
+  font-family: "JetBrains Mono", monospace !important;
+}
+
+/* Story kicker */
+.story-kicker {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em;
+}
+
+
+/* ---------- NAVBAR — REMOVE BORDERS, SMOOTH GLASS ---------- */
+.site-header {
+  backdrop-filter: blur(24px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+  border-bottom: none !important;
+  box-shadow: 0 1px 0 rgba(128, 128, 128, 0.08);
+  transition: background-color 0.5s ease, box-shadow 0.5s ease !important;
+}
+
+/* Remove borders from all nav buttons */
+.btn-primary,
+.btn-secondary {
+  border: none !important;
+  border-radius: 12px !important;
+}
+
+#nav-contact-btn {
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.theme-toggle {
+  border: none !important;
+  border-radius: 12px !important;
+  background: rgba(128, 128, 128, 0.08) !important;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease !important;
+}
+
+.theme-toggle:hover {
+  background: rgba(128, 128, 128, 0.16) !important;
+  transform: rotate(15deg) scale(1.08);
+}
+
+/* Nav links — clean, borderless, smooth hover */
+.nav-item-link {
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 9px 18px !important;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.nav-item-link:hover {
+  background: rgba(128, 128, 128, 0.08) !important;
+  transform: translateY(-1px);
+}
+
+.nav-item-link.active,
+.nav-item-link.nav-section-active {
+  border: none !important;
+  background: rgba(128, 128, 128, 0.1) !important;
+}
+
+
+/* ---------- BUTTONS — MODERN, BORDERLESS, ELEVATED ---------- */
+.btn-primary {
+  border-radius: 12px !important;
+  padding: 13px 26px !important;
+  font-weight: 650 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.25s ease,
+              background-color 0.25s ease !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16) !important;
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12) !important;
+}
+
+.btn-secondary {
+  border-radius: 12px !important;
+  padding: 13px 26px !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  background: rgba(128, 128, 128, 0.06) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.25s ease,
+              background-color 0.25s ease !important;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px) !important;
+  background: rgba(128, 128, 128, 0.12) !important;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1) !important;
+}
+
+
+/* ---------- COUNTDOWN CLOCK — MODERN ANIMATED DESIGN ---------- */
+.dob-celebration-card {
+  border-radius: 24px !important;
+  border: 1px solid rgba(128, 128, 128, 0.12) !important;
+  padding: 28px !important;
+  backdrop-filter: blur(20px) saturate(1.3) !important;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.dob-celebration-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Animated gradient sweep on the card */
+.dob-celebration-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -120% !important;
+  left: -50% !important;
+  width: 200% !important;
+  height: 200% !important;
+  background: radial-gradient(
+    circle at center,
+    rgba(128, 128, 128, 0.04),
+    transparent 50%
+  ) !important;
+  animation: card-ambient-glow 8s ease-in-out infinite alternate !important;
+  pointer-events: none !important;
+}
+
+@keyframes card-ambient-glow {
+  0% { transform: translate(-10%, 0) rotate(0deg); }
+  100% { transform: translate(10%, -10%) rotate(180deg); }
+}
+
+.celebration-title {
+  font-size: 1.4rem !important;
+  font-weight: 750 !important;
+  margin-bottom: 6px !important;
+}
+
+.celebration-target {
+  font-size: 0.95rem !important;
+  margin-bottom: 20px !important;
+}
+
+/* Countdown boxes — modern glass design */
+.countdown-grid {
+  gap: 10px !important;
+  margin-bottom: 18px !important;
+}
+
+.countdown-box {
+  background: rgba(128, 128, 128, 0.06) !important;
+  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border-radius: 16px !important;
+  padding: 18px 8px !important;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-box:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  border-color: var(--text-main) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Number flip animation on tick */
+.countdown-number {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 2.2rem !important;
+  font-weight: 850 !important;
+  line-height: 1 !important;
+  margin-bottom: 6px !important;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease !important;
+}
+
+.countdown-number.tick-flip {
+  animation: tickFlip 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+@keyframes tickFlip {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(-8px) scale(1.08);
+    opacity: 0.6;
+  }
+  60% {
+    transform: translateY(3px) scale(0.97);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.countdown-label {
+  font-size: 0.72rem !important;
+  letter-spacing: 0.1em !important;
+  opacity: 0.7;
+}
+
+/* Seconds pulse */
+.countdown-box:last-child .countdown-number {
+  position: relative;
+}
+
+.countdown-box:last-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: radial-gradient(circle, rgba(128, 128, 128, 0.06), transparent);
+  animation: sec-pulse 1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sec-pulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+
+/* ---------- TIME ON EARTH — LIVE COUNTER DESIGN ---------- */
+.time-on-earth-section {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(128, 128, 128, 0.12);
+}
+
+.time-earth-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.time-earth-header i {
+  font-size: 1.1rem;
+  animation: earth-spin 20s linear infinite;
+}
+
+@keyframes earth-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.time-earth-grid {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.time-earth-box {
+  flex: 1;
+  text-align: center;
+  padding: 12px 6px;
+  background: rgba(128, 128, 128, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.08);
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.time-earth-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--text-main);
+}
+
+.time-earth-number {
+  font-family: "Urbanist", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.time-earth-number.tick-flip {
+  animation: tickFlip 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.time-earth-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  opacity: 0.8;
+}
+
+.time-earth-separator {
+  font-family: "Urbanist", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  opacity: 0.4;
+  animation: colon-blink 1s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes colon-blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.1; }
+}
+
+
+/* ---------- SMOOTHER PRESENTATION PANEL TRANSITIONS ---------- */
+body.home-presentation main.page-home > .presentation-panel {
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.8s !important;
+}
+
+body.home-presentation main.page-home > .presentation-panel.is-active {
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s !important;
+}
+
+/* Lighter blur for faster perceived performance */
+body.home-presentation main.page-home > .presentation-panel {
+  filter: blur(8px) !important;
+  transform: translateY(18px) scale(0.99) !important;
+}
+
+body.home-presentation main.page-home > .presentation-panel.is-active {
+  filter: blur(0) !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+body.home-presentation main.page-home > .presentation-panel.is-leaving {
+  filter: blur(8px) !important;
+  transform: translateY(-12px) scale(0.995) !important;
+}
+
+/* Smooth internal scrolling */
+body.home-presentation main.page-home > .presentation-panel {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+body.home-presentation main.page-home > .presentation-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+body.home-presentation main.page-home > .presentation-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.home-presentation main.page-home > .presentation-panel::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 10px;
+}
+
+body.home-presentation main.page-home > .presentation-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.35);
+}
+
+
+/* ---------- CARDS — SMOOTH HOVER ELEVATION ---------- */
+.project-repo-card,
+.summary-slot-card,
+.principle-card,
+.ai-story-card,
+.zero-start-card,
+.backup-card,
+.story-card,
+.contact-invitation-card,
+.github-redesign-card,
+.biryani-note {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease !important;
+  border-radius: 20px !important;
+}
+
+.project-repo-card:hover,
+.principle-card:hover,
+.backup-card:hover,
+.story-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1) !important;
+}
+
+
+/* ---------- SECTION PILL — CLEANER ---------- */
+.section-pill {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.06em;
+  border-radius: 10px !important;
+  border: none !important;
+  padding: 6px 16px !important;
+  background: rgba(128, 128, 128, 0.08) !important;
+}
+
+
+/* ---------- HERO BADGE — CLEANER ---------- */
+.hero-badge-pill {
+  border: none !important;
+  border-radius: 10px !important;
+  background: rgba(128, 128, 128, 0.06) !important;
+  padding: 7px 16px !important;
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+}
+
+
+/* ---------- DOB CHIP — CLEANER ---------- */
+.dob-chip {
+  border: none !important;
+  border-radius: 8px !important;
+  background: rgba(128, 128, 128, 0.08) !important;
+  padding: 5px 12px !important;
+  font-size: 0.82rem !important;
+}
+
+
+/* ---------- FOOTER — SMOOTHER ---------- */
+.site-footer {
+  border-top: none !important;
+  background: rgba(128, 128, 128, 0.03) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.footer-pill {
+  border: none !important;
+  background: rgba(128, 128, 128, 0.06) !important;
+  border-radius: 8px !important;
+}
+
+
+/* ---------- SOCIAL DOCK — SMOOTH INTERACTIONS ---------- */
+.magnetic-btn {
+  border: none !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease !important;
+}
+
+.magnetic-btn:hover {
+  transform: translateY(-4px) scale(1.08) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+  border: none !important;
+}
+
+
+/* ---------- MODAL — SMOOTHER ANIMATION ---------- */
+.floating-contact-modal {
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              visibility 0.35s ease !important;
+}
+
+.floating-modal-dialog {
+  border: none !important;
+  border-radius: 24px !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.modal-close-btn {
+  border: none !important;
+  border-radius: 12px !important;
+}
+
+
+/* ---------- FORM INPUTS — BORDERLESS, MODERN ---------- */
+.form-input,
+.form-textarea {
+  border: none !important;
+  border-radius: 12px !important;
+  background: rgba(128, 128, 128, 0.06) !important;
+  padding: 15px 18px !important;
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 450 !important;
+  transition: background-color 0.3s ease,
+              box-shadow 0.3s ease !important;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  background: rgba(128, 128, 128, 0.1) !important;
+  box-shadow: 0 0 0 2px var(--text-main) !important;
+}
+
+
+/* ---------- STORY TIMELINE — SMOOTHER ---------- */
+.story-card {
+  border-radius: 20px !important;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease !important;
+}
+
+.story-card:hover {
+  transform: translateX(10px) translateY(-3px) !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.1) !important;
+}
+
+.story-marker-orb {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease !important;
+}
+
+.story-card-item:hover .story-marker-orb {
+  transform: scale(1.4) !important;
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.2) !important;
+}
+
+
+/* ---------- SKILL CHIPS — MODERN ---------- */
+.skill-chip-list li {
+  border: none !important;
+  background: rgba(128, 128, 128, 0.08) !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+  font-size: 0.82rem !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.skill-chip-list li:hover {
+  transform: translateY(-2px);
+  background: rgba(128, 128, 128, 0.14) !important;
+}
+
+
+/* ---------- PRINCIPLE SYMBOL — ANIMATED ---------- */
+.principle-symbol i {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.principle-card:hover .principle-symbol i {
+  transform: scale(1.15) rotate(5deg);
+}
+
+
+/* ---------- AI ORBIT — SMOOTHER FLOAT ---------- */
+.ai-orbit {
+  border: none !important;
+  background: rgba(128, 128, 128, 0.06) !important;
+  animation: modern-float 5s cubic-bezier(0.37, 0, 0.63, 1) infinite !important;
+}
+
+@keyframes modern-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(2deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  75% { transform: translateY(-4px) rotate(-2deg); }
+}
+
+
+/* ---------- BACKUP ICON — ANIMATED ---------- */
+.backup-icon {
+  border: none !important;
+  background: rgba(128, 128, 128, 0.06) !important;
+  border-radius: 14px !important;
+  transition: transform 0.3s ease, background-color 0.3s ease !important;
+}
+
+.backup-card:hover .backup-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(128, 128, 128, 0.12) !important;
+}
+
+
+/* ---------- GITHUB CARD — MODERN ---------- */
+#github-overview .github-redesign-card {
+  border: none !important;
+  border-radius: 28px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06) !important;
+}
+
+#github-overview .github-avatar-large {
+  border: 2px solid rgba(128, 128, 128, 0.15) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  transition: transform 0.4s ease !important;
+}
+
+#github-overview .github-avatar-large:hover {
+  transform: scale(1.05);
+}
+
+#github-overview .github-build-note {
+  border: none !important;
+  border-radius: 18px !important;
+  background: rgba(128, 128, 128, 0.04) !important;
+}
+
+#github-overview .github-note-icon {
+  border: none !important;
+  background: rgba(128, 128, 128, 0.06) !important;
+  border-radius: 14px !important;
+}
+
+
+/* ---------- PORTRAIT — SMOOTHER HOVER ---------- */
+.next-chapter-portrait img {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.next-chapter-portrait:hover img {
+  transform: scale(1.04) !important;
+}
+
+
+/* ---------- SUMMARY CARD — POLISHED ---------- */
+#summary .summary-slot-card {
+  border: none !important;
+  border-radius: 24px !important;
+}
+
+#summary .summary-pill-item {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 1.04rem !important;
+  font-weight: 550 !important;
+}
+
+
+/* ---------- NAV PROGRESS BAR — SMOOTHER ---------- */
+.site-header .nav-progress-bar {
+  transition: width 650ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+
+/* ---------- MICRO-ANIMATIONS — POLISH ---------- */
+
+/* Subtle entrance for cards on hover */
+.project-repo-card,
+.principle-card,
+.backup-card,
+.story-card {
+  will-change: transform;
+}
+
+/* Logo hover */
+.brand-logo:hover .logo-svg-wrapper {
+  transform: scale(1.08) rotate(6deg) !important;
+}
+
+.logo-svg-wrapper {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* Gradient text — animate on scroll */
+.gradient-text {
+  background-size: 200% 200% !important;
+  animation: gradient-shift 4s ease infinite !important;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Jack quote — subtle entrance */
+.jack-quote p {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: clamp(1.2rem, 3vw, 1.7rem) !important;
+  font-weight: 650 !important;
+}
+
+/* AI conclusion — polish */
+.ai-conclusion {
+  border-left: 3px solid var(--text-main) !important;
+  border-radius: 0 16px 16px 0 !important;
+  background: rgba(128, 128, 128, 0.03) !important;
+  padding: 28px !important;
+}
+
+.ai-conclusion p {
+  font-family: "Urbanist", sans-serif !important;
+}
+
+/* Story lesson box */
+.story-lesson-box {
+  border-left: 3px solid var(--text-main) !important;
+  border-radius: 0 12px 12px 0 !important;
+  background: rgba(128, 128, 128, 0.04) !important;
+  padding: 14px 20px !important;
+}
+
+/* Zero start card */
+.zero-start-card {
+  border: none !important;
+  border-radius: 20px !important;
+}
+
+
+/* ---------- DARK THEME ADJUSTMENTS ---------- */
+:root[data-theme="dark"] .countdown-box {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+:root[data-theme="dark"] .time-earth-box {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+:root[data-theme="dark"] .time-on-earth-section {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme="dark"] .dob-celebration-card {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+:root[data-theme="dark"] .magnetic-btn {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+:root[data-theme="dark"] .magnetic-btn:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+:root[data-theme="dark"] #github-overview .github-redesign-card {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+:root[data-theme="dark"] .form-input,
+:root[data-theme="dark"] .form-textarea {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+:root[data-theme="dark"] .form-input:focus,
+:root[data-theme="dark"] .form-textarea:focus {
+  background: rgba(255, 255, 255, 0.07) !important;
+}
+
+
+/* ---------- MOBILE RESPONSIVE FIXES ---------- */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px !important;
+  }
+
+  p {
+    font-size: 1.02rem !important;
+  }
+
+  .hero-description {
+    font-size: 1.08rem !important;
+  }
+
+  .countdown-number {
+    font-size: 1.6rem !important;
+  }
+
+  .time-earth-number {
+    font-size: 1.1rem;
+  }
+
+  .time-earth-box {
+    padding: 10px 4px;
+  }
+
+  .time-earth-separator {
+    font-size: 1rem;
+  }
+
+  .celebration-title {
+    font-size: 1.2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-earth-grid {
+    gap: 2px;
+  }
+
+  .time-earth-number {
+    font-size: 0.95rem;
+  }
+
+  .time-earth-label {
+    font-size: 0.55rem;
+  }
+
+  .countdown-number {
+    font-size: 1.4rem !important;
+  }
+}
+
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .countdown-number.tick-flip,
+  .time-earth-number.tick-flip {
+    animation: none !important;
+  }
+
+  .time-earth-header i {
+    animation: none !important;
+  }
+
+  .time-earth-separator {
+    animation: none !important;
+    opacity: 0.4;
+  }
+
+  .gradient-text {
+    animation: none !important;
+  }
+
+  .ai-orbit {
+    animation: none !important;
+  }
+
+  .countdown-box:last-child::after {
+    animation: none !important;
+  }
+
+  .dob-celebration-card::before {
+    animation: none !important;
+  }
+}
