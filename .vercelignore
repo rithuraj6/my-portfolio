@@ -1,0 +1,22 @@
+# Vercel Ignore File
+# Ensures Vercel treats this repository strictly as a static frontend deployment
+legacy_backend
+legacy_backend/**
+portfolio
+portfolio/**
+core
+core/**
+staticfiles
+staticfiles/**
+venv
+venv/**
+__pycache__
+__pycache__/**
+*.py
+*.pyc
+*.sqlite3
+requirements.txt
+Procfile
+render.yaml
+runtime.txt
+build.sh

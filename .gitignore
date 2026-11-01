@@ -7,3 +7,6 @@ staticfiles/
 .env
 .DS_Store
 *.log
+legacy_backend/
+portfolio/
+core/
