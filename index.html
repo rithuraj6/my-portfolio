@@ -8,7 +8,8 @@
 <meta property="og:title" content="Rithu Raj R — DevOps &amp; Cloud Engineer">
 <meta property="og:description" content="From concrete to cloud. Pipelines, clusters and infrastructure as code.">
 <meta name="theme-color" content="#080c18">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232f6bff'/%3E%3Ctext x='50' y='70' font-size='60' font-family='sans-serif' font-weight='900' text-anchor='middle' fill='white'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="alternate icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -43,6 +44,9 @@ a:hover>.rl>span,button:hover>.rl>span{transform:translateY(-100%)}
 .stage{position:relative;z-index:4;width:min(92vw,740px);padding:1rem}
 .scan{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.7;animation:scan 3s linear infinite;z-index:5}
 @keyframes scan{from{top:0}to{top:100%}}
+.loader-logo-wrap{margin-bottom:.8rem;display:flex;align-items:center}
+.loader-logo{width:56px;height:56px;display:inline-block;filter:drop-shadow(0 0 16px rgba(23,224,255,.85));animation:logoPulse 2.2s ease-in-out infinite alternate}
+@keyframes logoPulse{0%{transform:scale(.94);filter:drop-shadow(0 0 12px rgba(47,107,255,.7))}100%{transform:scale(1.06);filter:drop-shadow(0 0 24px rgba(23,224,255,1))}}
 .count{font-weight:900;font-size:clamp(5.5rem,24vw,16rem);line-height:.85;letter-spacing:-.05em;color:var(--wh);font-variant-numeric:tabular-nums}
 .count small{font-size:.28em;color:var(--cyan);letter-spacing:0}
 .bname{font-weight:900;font-size:clamp(1.7rem,5vw,3rem);letter-spacing:-.02em;margin-top:1rem;height:1.3em;color:var(--wh)}
@@ -60,7 +64,9 @@ a:hover>.rl>span,button:hover>.rl>span{transform:translateY(-100%)}
 nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:1rem 0;transition:background .3s}
 nav.s{background:rgba(8,12,24,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.logo{font-weight:900;font-size:1.7rem;letter-spacing:-.03em;color:var(--wh);perspective:600px;display:inline-block;white-space:nowrap}
+.logo{font-weight:900;font-size:1.7rem;letter-spacing:-.03em;color:var(--wh);perspective:600px;display:inline-flex;align-items:center;white-space:nowrap}
+.nav-logo-badge{width:36px;height:36px;display:inline-block;margin-right:.65rem;filter:drop-shadow(0 0 10px rgba(47,107,255,.8));transition:transform .35s var(--ease),filter .35s ease}
+.logo:hover .nav-logo-badge{transform:rotate(12deg) scale(1.1);filter:drop-shadow(0 0 18px rgba(23,224,255,1))}
 .logo i{font-style:normal;display:inline-block;opacity:0;animation:lg 6s infinite;animation-delay:calc(var(--i)*70ms);transform-origin:50% 100%}
 .logo i:nth-child(n+7){color:var(--cyan)}
 @keyframes lg{0%{opacity:0;transform:rotateX(-95deg) translateY(50%)}12%,78%{opacity:1;transform:none}90%,100%{opacity:0;transform:rotateX(95deg) translateY(-50%)}}
@@ -128,9 +134,10 @@ h2.in .ch{opacity:1;transform:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 .box{position:absolute;inset:0;border-radius:22px;background:var(--panel);overflow:hidden;display:grid;place-items:center;animation:flt 6s ease-in-out infinite}
 @keyframes flt{50%{transform:translateY(-8px)}}
-.box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.box::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(8,12,24,.6))}
-.ini{font-weight:900;font-size:9rem;color:var(--cyan);letter-spacing:-.05em}
+.box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:2;transition:transform .5s var(--ease),filter .5s var(--ease)}
+.box:hover img{transform:scale(1.04)}
+.box::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,rgba(8,12,24,.75));z-index:3;pointer-events:none}
+.ini{font-weight:900;font-size:9rem;color:var(--cyan);letter-spacing:-.05em;z-index:1}
 .bdg{position:absolute;z-index:3;font-size:.95rem;padding:.5rem 1rem;border-radius:99px;background:var(--wh);color:var(--ink);font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.4);transform:translateZ(60px);animation:flt 4s ease-in-out infinite}
 .bdg.a{top:8%;right:-8%}.bdg.b{bottom:12%;left:-8%;background:var(--cyan);animation-delay:-2s}
 .story p{font-size:1.3rem;font-weight:600;margin-bottom:1.2rem;max-width:36rem}
@@ -216,6 +223,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   <div class="scan"></div>
   <button class="skip lb" id="skip">Skip · Esc</button>
   <div class="stage">
+    <div class="loader-logo-wrap"><img src="assets/images/r-logo.svg" alt="R Logo" class="loader-logo"></div>
     <div class="count" id="count">0<small>%</small></div>
     <div class="bname" id="bname" aria-hidden="true"></div>
     <div class="logs lb" id="logs" aria-live="polite"></div>
@@ -227,7 +235,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 
 <nav id="nav">
   <div class="wrap">
-    <a href="#top" class="logo" id="logo" aria-label="Rithu Raj R"></a>
+    <a href="#top" class="logo" aria-label="Rithu Raj R">
+      <img src="assets/images/r-logo.svg" alt="R Logo" class="nav-logo-badge">
+      <span id="logo"></span>
+    </a>
     <div class="status lb"><span class="dot"></span>Open to junior DevOps roles</div>
     <div class="links"><a href="#story">Journey</a><a href="#work">Projects</a><a href="#github">GitHub</a><a href="#stack">Stack</a><a href="#exp">Experience</a></div>
     <a href="#contact" class="cta">Let’s talk</a>
@@ -267,7 +278,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
           <div class="ring"></div>
           <div class="box">
             <span class="ini">R</span>
-            <img src="profile.jpg" alt="Rithu Raj R" onerror="this.remove()">
+            <img src="assets/images/profile.jpg" alt="Rithu Raj R" loading="eager" onerror="if(this.src.indexOf('assets')!==-1){this.src='profile.jpg'}else{this.style.display='none'}">
           </div>
           <span class="bdg a lb">Kubernetes · AWS</span>
           <span class="bdg b lb">Civil → DevOps</span>
@@ -373,6 +384,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
       <a class="btn p" href="https://mail.google.com/mail/?view=cm&fs=1&to=contactrithuraj@gmail.com&su=DevOps%20Opportunity%20-%20Rithu%20Raj%20R" target="_blank" rel="noopener">Open in Gmail</a>
       <a class="btn" href="https://github.com/rithuraj6" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/rithurajr" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://www.instagram.com/rithuraj_6" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
 </section>
