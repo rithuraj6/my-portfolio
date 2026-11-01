@@ -29,48 +29,118 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 #glow{position:fixed;width:620px;height:620px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(47,107,255,.28),rgba(255,79,163,.08) 45%,transparent 68%);transform:translate(-50%,-50%);left:60%;top:25%}
 
 /* 3D roll text on hover */
-.rl{display:inline-block;overflow:hidden;vertical-align:bottom;height:1.4em;line-height:1.4em}
-.rl>span{display:block;transition:transform .55s var(--ease)}
-.rl>span::after{content:attr(data-t);display:block}
-a:hover>.rl>span,button:hover>.rl>span{transform:translateY(-100%)}
+/* ===== LOADER: bricks -> building -> DevOps tools -> shutter reveal ===== */
+#loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;color:var(--txt);overflow:hidden;
+  --e:cubic-bezier(.76,0,.24,1)}
+#loader .half{position:absolute;left:0;right:0;height:50.2%;background:var(--ink);z-index:0;
+  transition:transform 1.15s var(--e);will-change:transform}
+#loader .half.top{top:0;border-bottom:1px solid var(--line)}
+#loader .half.bot{bottom:0;border-top:1px solid var(--line)}
+#loader .half::before{content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1.5px);background-size:26px 26px}
+#loader.open .half.top{transform:translateY(-101%)}
+#loader.open .half.bot{transform:translateY(101%)}
+#loader.open .stage,#loader.open .scan,#loader.open .skip{opacity:0;transform:scale(.96);transition:opacity .45s ease,transform .6s var(--e)}
+#loader.gone{visibility:hidden;pointer-events:none}
+#loader .scan{position:absolute;left:0;right:0;top:0;height:2px;z-index:2;opacity:.8;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);box-shadow:0 0 22px var(--cyan);
+  animation:scan 2.8s linear infinite}
+@keyframes scan{from{transform:translateY(-10px)}to{transform:translateY(100vh)}}
+#loader .skip{position:absolute;right:1.4rem;bottom:1.4rem;z-index:3;background:none;border:1.5px solid var(--line);
+  color:var(--mut);border-radius:99px;padding:.45rem 1rem;font-size:.85rem;cursor:pointer;transition:all .25s}
+#loader .skip:hover{color:var(--wh);border-color:var(--cyan)}
+#loader .stage{position:relative;z-index:2;width:min(92vw,780px);text-align:center;display:flex;flex-direction:column;align-items:center}
+.loader-logo-wrap{height:44px;margin-bottom:.8rem}
+.loader-logo{height:44px;width:auto}
 
-/* Brick wall -> DevOps pipeline loader. Loads after the main <style>. */
-#loader .stage{width:min(92vw,760px)}
-#loader .count{font-size:clamp(4.2rem,14vw,8.5rem)}
-#loader .bname{height:1.3em;margin-top:.6rem}
-
-.scene{--bw:clamp(34px,7.4vw,58px);position:relative;height:calc(var(--bw)*.42*6 + 24px);margin:.4rem 0 1.4rem}
-
-/* bricks */
+/* scene */
+.scene{--bw:clamp(32px,6.6vw,54px);--bh:calc(var(--bw)*.42);position:relative;width:100%;
+  height:calc(var(--bh)*8 + 40px);margin:.4rem 0 1.2rem}
 .wall{position:absolute;inset:0;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start;gap:3px}
 .brow{display:flex;gap:3px}
-.br{width:var(--bw);height:calc(var(--bw)*.42);border-radius:3px;opacity:0;
+.br{width:var(--bw);height:var(--bh);border-radius:3px;opacity:0;will-change:transform,opacity;
   background:linear-gradient(180deg,#f0704f,#c8432c);
-  box-shadow:inset 0 -3px 0 rgba(0,0,0,.2),inset 0 2px 0 rgba(255,255,255,.22);
-  transform:translateY(-160px) rotate(var(--r));
-  animation:brDrop .6s cubic-bezier(.3,1.35,.5,1) forwards;animation-delay:calc(var(--d)*1ms)}
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.22),inset 0 2px 0 rgba(255,255,255,.22);
+  transform:translateY(-220px) rotate(var(--r));
+  animation:brDrop .75s cubic-bezier(.22,1.2,.4,1) forwards;animation-delay:calc(var(--d)*1ms)}
 .br:nth-child(3n){filter:brightness(.9)}.br:nth-child(4n+1){filter:brightness(1.1)}
-@keyframes brDrop{0%{opacity:0;transform:translateY(-160px) rotate(var(--r))}50%{opacity:1}100%{opacity:1;transform:none}}
-#loader.morph .br{animation:brCrush .75s ease-in forwards;animation-delay:calc(var(--m)*1ms)}
-@keyframes brCrush{
+.br.win{background:linear-gradient(180deg,#ffe9a8,#ffc94d);box-shadow:0 0 14px rgba(255,201,77,.7),inset 0 -3px 0 rgba(0,0,0,.15)}
+.br.roof{background:linear-gradient(180deg,#5b6ca8,#36447a)}
+@keyframes brDrop{0%{opacity:0;transform:translateY(-220px) rotate(var(--r))}35%{opacity:1}100%{opacity:1;transform:none}}
+/* building "powers up": bricks glow cyan then lift away as the pipeline takes over */
+#loader.morph .br{animation:brMorph .9s cubic-bezier(.6,0,.4,1) forwards;animation-delay:calc(var(--m)*1ms)}
+@keyframes brMorph{
   0%{opacity:1;transform:none}
-  45%{opacity:1;transform:none;filter:hue-rotate(170deg) brightness(1.3)}
-  100%{opacity:0;transform:scale(.15) translateY(-26px) rotate(60deg);filter:hue-rotate(170deg) blur(3px)}}
+  40%{opacity:1;transform:translateY(-4px);filter:hue-rotate(170deg) brightness(1.35);box-shadow:0 0 18px rgba(23,224,255,.7)}
+  100%{opacity:0;transform:translateY(-30px) scale(.2) rotate(50deg);filter:hue-rotate(170deg) blur(3px)}}
 
-/* DevOps pipeline */
-.pipe{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 2%}
-.pipe::before{content:'';position:absolute;left:4%;right:4%;top:50%;height:3px;border-radius:3px;opacity:.6;
+/* pipeline */
+.pipe{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 1%;pointer-events:none}
+.pipe::before{content:'';position:absolute;left:3%;right:3%;top:50%;height:3px;border-radius:3px;opacity:.7;
   background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));
   transform:scaleX(0);transform-origin:left;transition:transform var(--pt,2s) linear}
 .pipe.run::before{transform:scaleX(1)}
-.ic{position:relative;z-index:1;display:grid;place-items:center;width:clamp(40px,8vw,64px);height:clamp(40px,8vw,64px);
-  border-radius:14px;background:var(--panel);border:2px solid var(--line);
-  opacity:0;transform:translateY(24px) scale(.5) rotateY(-100deg);
-  transition:opacity .3s,transform .3s,border-color .3s,box-shadow .3s}
-.ic.on{opacity:1;transform:none;transition:opacity .4s,transform .7s cubic-bezier(.3,1.5,.5,1),border-color .3s,box-shadow .3s}
-.ic.cur{border-color:var(--cyan);box-shadow:0 0 24px rgba(23,224,255,.55);transform:scale(1.14)}
-.ic svg,.ic img{width:62%;height:62%;object-fit:contain}
-.ic svg{fill:none;stroke:var(--cyan);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ic{position:relative;z-index:1;display:grid;place-items:center;width:clamp(36px,8.2vw,62px);height:clamp(36px,8.2vw,62px);
+  border-radius:14px;background:#f1f5ff;border:2px solid var(--line);
+  opacity:0;transform:translateY(26px) scale(.5);
+  transition:opacity .35s ease,transform .35s ease,border-color .35s,box-shadow .35s}
+.ic.on{opacity:1;transform:none;transition:opacity .4s ease,transform .8s cubic-bezier(.3,1.45,.5,1),border-color .35s,box-shadow .35s}
+.ic.cur{border-color:var(--cyan);box-shadow:0 0 26px rgba(23,224,255,.65);transform:translateY(-6px) scale(1.14)}
+.ic img{width:62%;height:62%;object-fit:contain}
+.ic b{font-weight:900;color:var(--ink);font-size:1.1rem}
+
+/* readouts */
+.count{font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--wh);font-size:clamp(4rem,13vw,8rem);font-variant-numeric:tabular-nums}
+.count small{font-size:.3em;color:var(--cyan);margin-left:.1em;letter-spacing:0}
+.tag{min-height:1.8em;margin-top:.5rem;font-size:clamp(.95rem,2.2vw,1.15rem);color:var(--mut)}
+.tag b{color:var(--cyan)}
+.tag span{display:inline-block;opacity:0;transform:translateY(8px);animation:rise .4s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.bname{height:1.4em;margin-top:.5rem;font-weight:900;letter-spacing:.18em;color:var(--wh);font-size:clamp(1rem,2.6vw,1.4rem)}
+.bname i{display:inline-block;font-style:normal;opacity:0;transform:translateY(60%);animation:rise .5s forwards}
+.bar{width:min(80vw,420px);height:3px;margin-top:1.2rem;background:var(--line);border-radius:3px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));transform-origin:left;will-change:width}
+
+/* ===== MODERN SCROLL EFFECTS ===== */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;transform:scaleX(0);transform-origin:left;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));will-change:transform}
+nav{transition:background .3s,transform .5s var(--ease)}
+nav.hide{transform:translateY(-110%)}
+
+/* hero fades and drifts as you scroll away */
+header.hero .wrap{will-change:transform,opacity}
+
+/* staggered blur-in for grouped items */
+.stg>*{opacity:0;transform:translateY(40px) scale(.97);filter:blur(8px);
+  transition:opacity .9s ease,transform 1s var(--ease),filter .9s ease;transition-delay:calc(var(--si,0)*90ms)}
+.stg.in>*{opacity:1;transform:none;filter:none}
+
+/* section headings: masked wipe line under title */
+h2.d3::after{content:'';display:block;height:4px;width:0;margin-top:1.4rem;border-radius:4px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));transition:width 1.2s .5s var(--ease)}
+h2.d3.in::after{width:min(220px,40%)}
+
+/* project rows: cursor spotlight */
+.pr::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(23,224,255,.12),transparent 60%)}
+.pr:hover::before{opacity:1}
+
+/* skills and cards: tilt via JS vars */
+.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease,border-color .3s,background .3s}
+
+/* parallax photo layer */
+.ph{will-change:transform}
+
+/* story timeline fills as you scroll */
+.steps{position:relative}
+.steps::after{content:'';position:absolute;left:-2px;top:0;width:2px;height:calc(var(--sp,0)*100%);
+  background:linear-gradient(var(--cyan),var(--pink));box-shadow:0 0 12px var(--cyan)}
+
+@media(prefers-reduced-motion:reduce){
+  #loader .scan{display:none}
+  .stg>*{opacity:1;transform:none;filter:none}
+  nav.hide{transform:none}
+}
 
 /* caption */
 .tag{min-height:1.7em;font-size:clamp(1rem,2.4vw,1.2rem);color:var(--mut)}
@@ -475,6 +545,7 @@ document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',
 sync();setInterval(()=>{last=0;sync()},300000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)sync()});
 })();
+<script src="fx.js" defer></script>
 </script>
 </body>
 </html>
