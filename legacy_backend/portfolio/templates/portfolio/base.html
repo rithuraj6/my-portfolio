@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ page_title|default:"Rithu Raj R | DevOps Engineer" }}</title>
+
+  <!-- SEO & Social Graph Meta Tags -->
+
+  <meta name="description" content="{{ portfolio.tagline }} - Junior DevOps Engineer portfolio: cloud infrastructure, automation, and a journey from Civil Engineering to DevOps.">
+
+  <meta name="author" content="{{ portfolio.full_name }}">
+
+  <meta name="keywords" content="Python, Django, Portfolio, Render, Web Development, Creative Coding, {{ portfolio.name }}">
+
+  <meta property="og:title" content="{{ page_title }}">
+
+  <meta property="og:description" content="{{ portfolio.tagline }}">
+
+  <meta property="og:type" content="website">
+
+  <!-- Favicon: Animated Bold 'R' SVG with Radar Beep & Shining Sweep -->
+
+  <link rel="icon" type="image/svg+xml" href="{% static 'portfolio/images/r-logo.svg' %}">
+
+    <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="{% static 'portfolio/js/portfolio-ui.js' %}" defer></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Stack+Sans+Notch:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700;800&family=Voces&display=swap" rel="stylesheet">
+  <!-- CSS Design System (Tactical DevOps Green Palette) -->
+  <script>
+    (() => {
+      try {
+        localStorage.removeItem("rithu-theme-preference");
+        document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) {}
+    })();
+  </script>
+  <script src="{% static 'portfolio/js/nav-progress.js' %}" defer></script>
+
+  <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+  
+    
+
+  <!-- Remix Icons for Clean Minimalist Glyphs -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+
+</head>
+
+<body>
+
+
+
+  <!-- Dynamic Ambient Animated Gradient Background -->
+
+  <div class="dynamic-background-canvas" aria-hidden="true"></div>
+  <canvas id="antigravity-particles" aria-hidden="true"></canvas>
+
+
+
+  <
+<!-- Cinematic Liquid Identity Intro -->
+<div id="antigravity-loader" aria-label="Loading portfolio">
+  <canvas id="antigravity-canvas" aria-hidden="true"></canvas>
+
+  <div class="loader-content">
+    <div class="liquid-letter-stage" aria-live="polite">
+      <span class="liquid-letter" style="display: block;">R</span>
+      <span class="liquid-letter">റ</span>
+      <span class="liquid-letter">ர்</span>
+      <span class="liquid-letter">र</span>
+      <span class="liquid-letter liquid-full-name">RITHU RAJ R</span>
+
+    </div>
+    <div class="loader-status" aria-live="polite">
+      <span class="loader-status-label">INITIALIZING</span>
+      <span class="loader-status-detail">Preparing the environment...</span>
+    </div>
+
+    <div class="identity-loader-line" aria-hidden="true">
+      <span></span>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Venom Symbiote Canvas (Draws organic gravity tendrils to magnetic buttons) -->
+
+  <canvas id="symbiote-canvas" aria-hidden="true"></canvas>
+
+
+
+  <!-- Sticky Dynamic Navigation Bar -->
+
+  <header class="site-header">
+
+    <div class="nav-container">
+
+      <a href="{% url 'portfolio:home' %}" class="brand-logo" aria-label="Go to Home">
+
+        <div class="logo-svg-wrapper">
+
+          <img src="{% static 'portfolio/images/r-logo.svg' %}" alt="Rithu Raj R Logo">
+
+        </div>
+
+        <span>{{ portfolio.name }}<span style="color: var(--accent-cyan);">.DevOps</span></span>
+
+      </a>
+
+
+
+      <!-- Desktop Nav Links: Smooth Single-Page Navigation + Separate Projects Page -->
+
+      <ul class="nav-links">
+
+        <li>
+
+          <a href="{% if active_nav == 'home' %}#hero{% else %}/#hero{% endif %}" class="nav-item-link">
+
+            <i class="ri-home-4-line"></i> Home
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a href="{% if active_nav == 'home' %}#summary{% else %}/#summary{% endif %}" class="nav-item-link">
+
+            <i class="ri-user-star-line"></i> Summary
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a href="{% if active_nav == 'home' %}#countdown{% else %}/#countdown{% endif %}" class="nav-item-link">
+
+            <i class="ri-cake-2-line"></i> Milestone
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a href="{% if active_nav == 'home' %}#story{% else %}/#story{% endif %}" class="nav-item-link">
+
+            <i class="ri-compass-3-line"></i> Who Was I
+
+            <span class="nav-tag">Story</span>
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a href="{% url 'portfolio:projects' %}" class="nav-item-link {% if active_nav == 'projects' %}active{% endif %}">
+
+            <i class="ri-folder-code-line"></i> Projects
+
+            <span class="nav-tag dynamic-github-repo-count">{{ github_data.public_repos|default:"..." }}</span>
+
+          </a>
+
+        </li>
+        
+
+      </ul>
+
+
+
+      <!-- Status Indicator & Quick Contact -->
+
+      <div class="nav-actions">
+       <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch color theme" title="Switch color theme">
+         <i class="ri-sun-line" aria-hidden="true"></i>
+       </button>
+
+        <button
+            type="button"
+            id="nav-contact-btn"
+            class="btn-primary"
+            style="padding: 8px 18px; font-size: 0.85rem;"
+            aria-label="Open Contact Modal"
+            data-contact-open
+        >
+            <i class="ri-mail-send-line"></i>
+            Contact
+        </button>
+
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+
+          <i class="ri-menu-4-line"></i>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- Venom Symbiote Magnetic Floating Dock (Fixed Bottom Right) -->
+
+  <aside class="venom-social-dock" aria-label="Social connections and floating contact">
+
+   
+
+
+
+    <!-- LinkedIn -->
+
+    <div class="magnetic-social-item">
+
+      <a href="{{ portfolio.socials.linkedin.url }}" target="_blank" rel="noopener noreferrer" 
+
+         class="magnetic-btn" id="symbiote-linkedin" aria-label="LinkedIn profile">
+
+        <i class="ri-linkedin-fill"></i>
+
+      </a>
+
+      <span class="social-tooltip">LinkedIn // {{ portfolio.socials.linkedin.handle }}</span>
+
+    </div>
+
+
+
+    <!-- Instagram -->
+
+    <div class="magnetic-social-item">
+
+      <a href="https://www.instagram.com/rithuraj_6/" target="_blank" rel="noopener noreferrer" 
+
+         class="magnetic-btn" id="symbiote-instagram" aria-label="Instagram profile">
+
+        <i class="ri-instagram-line"></i>
+
+      </a>
+
+      <span class="social-tooltip">Instagram // @rithuraj_6</span>
+
+    </div>
+
+
+
+    <!-- GitHub -->
+
+    <div class="magnetic-social-item">
+
+      <a href="{{ portfolio.socials.github.url }}" target="_blank" rel="noopener noreferrer" 
+
+         class="magnetic-btn" id="symbiote-github" aria-label="GitHub profile">
+
+        <i class="ri-github-fill"></i>
+
+      </a>
+
+      <span class="social-tooltip">GitHub // {{ portfolio.socials.github.handle }}</span>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- Floating Contact Modal (Instant Glassmorphism Overlay) -->
+
+  <div id="floating-contact-modal" class="floating-contact-modal" aria-hidden="true">
+
+    <div class="floating-modal-dialog">
+
+      <button class="modal-close-btn" id="close-contact-modal" aria-label="Close Contact Modal">
+
+        <i class="ri-close-line"></i>
+
+      </button>
+
+
+
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+
+        <div class="logo-svg-wrapper" style="width: 36px; height: 36px;">
+
+          <img src="{% static 'portfolio/images/r-logo.svg' %}" alt="R">
+
+        </div>
+
+        <h3 style="font-size: 1.5rem; color: #fff; margin: 0;">Transmit Message</h3>
+
+      </div>
+
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 22px;">
+
+        Direct communication with {{ portfolio.name }}. Powered by Web3Forms.
+
+      </p>
+
+
+
+      <div id="modal-alert-box" class="form-status-alert"></div>
+
+
+
+      <form id="floating-contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+        <input type="hidden" name="access_key" value="{{ portfolio.web3forms_access_key }}">
+
+        <input type="hidden" name="subject" value="New Portfolio Message for {{ portfolio.name }}">
+
+        <input type="hidden" name="from_name" value="{{ portfolio.name }} Floating Contact Form">
+
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+
+
+        <div class="form-group">
+
+          <label for="modal-name" class="form-label">YOUR FULL NAME</label>
+
+          <input type="text" id="modal-name" name="name" class="form-input" placeholder="e.g. Alex Morgan" required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="modal-email" class="form-label">YOUR EMAIL ADDRESS</label>
+
+          <input type="email" id="modal-email" name="email" class="form-input" placeholder="e.g. alex@company.com" required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="modal-message" class="form-label">MESSAGE</label>
+
+          <textarea id="modal-message" name="message" class="form-textarea" style="min-height: 110px;" placeholder="Tell me about your idea, role, or proposal..." required></textarea>
+
+        </div>
+
+
+
+        <button type="submit" id="modal-submit-btn" class="btn-primary" style="width: 100%; justify-content: center;">
+
+          <span id="modal-btn-text">Transmit Message</span>
+
+          <i class="ri-send-plane-fill"></i>
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Main Content Block with Page-Specific Transition -->
+
+  <main class="page-transition-wrapper page-{{ active_nav }}">
+
+    {% block content %}
+
+    {% endblock %}
+
+  </main>
+
+
+
+  <!-- Site Footer -->
+
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-credits">
+
+        <p>© {{ current_year }} {{ portfolio.full_name }}. Built with <strong>Python &amp; Django</strong> on <strong>Render</strong>.</p>
+
+        <p style="font-size: 0.8rem; margin-top: 4px; color: var(--text-dim);">
+
+          Monochrome particle physics • Web3Forms direct mail
+
+        </p>
+
+      </div>
+
+
+
+      <div class="footer-badge-group">
+
+        <span class="footer-pill">DOB: {{ bday.dob_formatted }}</span>
+
+        <span class="footer-pill" style="color: var(--accent-cyan); border-color: rgba(0,240,255,0.25);">
+
+          {{ bday.days_remaining }} days to next celebration
+
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- Core JavaScript Modules -->
+
+  <script src="{% static 'portfolio/js/antigravity-loader.js' %}"></script>
+
+  <script src="{% static 'portfolio/js/venom-symbiote.js' %}"></script>
+
+  <script src="{% static 'portfolio/js/gradient-contrast.js' %}"></script>
+  <script src="{% static 'portfolio/js/antigravity-particles.js' %}"></script>
+  <script src="{% static 'portfolio/js/scroll-reveal.js' %}"></script>
+
+  <script src="{% static 'portfolio/js/countdown.js' %}"></script>
+
+  <script src="{% static 'portfolio/js/github-counter.js' %}"></script>
+  <!-- Theme Manager -->
+  <script src="{% static 'portfolio/js/theme-manager.js' %}" defer></script>
+
+  <!-- Core JavaScript Modules -->
+  <script src="{% static 'portfolio/js/antigravity-loader.js' %}"></script>
+
+
+  {% block extra_js %}{% endblock %}
+
+</body>
+
+</html>

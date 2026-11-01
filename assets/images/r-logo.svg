@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <!-- Tactical Neon Glow Filter -->
+    <filter id="devops-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Tactical Green Gradient (#c7cbb8 to #3e5a3f) -->
+    <linearGradient id="r-tactical-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c7cbb8">
+        <animate attributeName="stop-color" values="#c7cbb8;#6b7f67;#88d49e;#c7cbb8" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#3e5a3f">
+        <animate attributeName="stop-color" values="#3e5a3f;#1e3a2e;#3e5a3f" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Shining Sweep Gradient -->
+    <linearGradient id="shine-sweep-tactical" x1="-100%" y1="0%" x2="200%" y2="0%">
+      <stop offset="0%" stop-color="rgba(199,203,184,0)" />
+      <stop offset="45%" stop-color="rgba(199,203,184,0.15)" />
+      <stop offset="50%" stop-color="rgba(255,255,255,0.9)" />
+      <stop offset="55%" stop-color="rgba(199,203,184,0.15)" />
+      <stop offset="100%" stop-color="rgba(199,203,184,0)" />
+      <animate attributeName="x1" from="-150%" to="250%" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="x2" from="-50%" to="350%" dur="3s" repeatCount="indefinite" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    /* Radar Beep Pulse Wave */
+    .radar-ring {
+      transform-origin: 50px 50px;
+      animation: beepPulse 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+    }
+    .radar-ring-2 {
+      transform-origin: 50px 50px;
+      animation: beepPulse 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+      animation-delay: 1.3s;
+    }
+    @keyframes beepPulse {
+      0% {
+        r: 32px;
+        opacity: 0.85;
+        stroke-width: 2px;
+      }
+      100% {
+        r: 47px;
+        opacity: 0;
+        stroke-width: 0.5px;
+      }
+    }
+
+    /* Beacon Lamp */
+    .beacon-dot {
+      animation: beaconBlink 1.4s ease-in-out infinite alternate;
+    }
+    @keyframes beaconBlink {
+      0% {
+        opacity: 0.3;
+        transform: scale(0.85);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.25);
+        filter: drop-shadow(0 0 6px #c7cbb8);
+      }
+    }
+
+    .bold-r-path {
+      fill: url(#r-tactical-grad);
+      filter: url(#devops-glow);
+    }
+  </style>
+
+  <!-- Deep Obsidian Base Disc #0f1f17 -->
+  <circle cx="50" cy="50" r="44" fill="#0f1f17" stroke="#3e5a3f" stroke-width="2" />
+
+  <!-- Radar Auto-Beeping Rings #6b7f67 & #c7cbb8 -->
+  <circle class="radar-ring" cx="50" cy="50" r="34" fill="none" stroke="#6b7f67" opacity="0.6" />
+  <circle class="radar-ring-2" cx="50" cy="50" r="34" fill="none" stroke="#c7cbb8" opacity="0.4" />
+
+  <!-- Outer Orbit Track -->
+  <circle cx="50" cy="50" r="41" fill="none" stroke="rgba(107, 127, 103, 0.4)" stroke-width="1.2" stroke-dasharray="4 3" />
+
+  <!-- Heavy Geometric Bold 'R' -->
+  <path class="bold-r-path" d="
+    M 30,22 
+    L 55,22 
+    C 67,22 74,28 74,38 
+    C 74,47 67,52 57,53 
+    L 73,78 
+    L 58,78 
+    L 45,55 
+    L 42,55 
+    L 42,78 
+    L 30,78 
+    Z 
+    M 42,33 
+    L 42,45 
+    L 54,45 
+    C 59,45 62,43 62,39 
+    C 62,35 59,33 54,33 
+    Z" />
+
+  <!-- Shining Sweep Overlay Layer -->
+  <path fill="url(#shine-sweep-tactical)" d="
+    M 30,22 
+    L 55,22 
+    C 67,22 74,28 74,38 
+    C 74,47 67,52 57,53 
+    L 73,78 
+    L 58,78 
+    L 45,55 
+    L 42,55 
+    L 42,78 
+    L 30,78 
+    Z" opacity="0.8" />
+
+  <!-- Auto-Beeping Radar Center Beacon Dot -->
+  <circle class="beacon-dot" cx="72" cy="24" r="3.5" fill="#c7cbb8" />
+</svg>

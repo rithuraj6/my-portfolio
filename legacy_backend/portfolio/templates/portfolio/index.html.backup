@@ -1,0 +1,334 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ==========================================================================
+     1. HERO SECTION
+     ========================================================================== -->
+<section class="hero-section" id="hero">
+  <div class="hero-grid">
+    
+    <!-- Left Hero Column -->
+    <div class="hero-info">
+      <div class="hero-badge-pill">
+        <span class="pulse-dot"></span>
+        <span>{{ portfolio.status }}</span>
+      </div>
+
+      <h1 class="hero-title">
+        Hello, I'm <br>
+        <span class="gradient-text">{{ portfolio.name }}.</span>
+      </h1>
+
+      <p class="hero-description">
+        {{ portfolio.tagline }} Specialize in scalable Python &amp; Django services, 
+        creative web physics with living symbiote interactions, and cloud deployments on Render.
+      </p>
+
+      <div class="hero-actions">
+        <a href="{% url 'portfolio:projects' %}" class="btn-primary">
+          <i class="ri-folder-code-line"></i>
+          <span>View Projects Folder</span>
+          <i class="ri-arrow-right-line"></i>
+        </a>
+        <a href="#summary" class="btn-secondary">
+          <i class="ri-file-user-line"></i>
+          <span>Summary Slot</span>
+        </a>
+        <a href="#story" class="btn-secondary">
+          <i class="ri-compass-3-line"></i>
+          <span>Who Was I?</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Hero Column: Live DOB Countdown Card -->
+    <div class="hero-aside" id="countdown">
+      <div class="dob-celebration-card" id="bday-countdown-ticker" data-target-date="{{ bday.next_celebration_date }}">
+        <div class="card-top-header">
+          <span class="dob-chip">
+            <i class="ri-cake-2-line"></i> Born {{ bday.dob_formatted }}
+          </span>
+          <span class="code-font" style="font-size: 0.8rem; color: var(--text-dim);">
+            Turning {{ bday.turning_age }}
+          </span>
+        </div>
+
+        <h3 class="celebration-title">Countdown to Celebration</h3>
+        <p class="celebration-target">Next milestone on {{ bday.next_celebration_formatted }}</p>
+
+        <!-- Live Countdown Ticker -->
+        <div class="countdown-grid">
+          <div class="countdown-box">
+            <div class="countdown-number" id="bday-days">{{ bday.days_remaining }}</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="bday-hours">--</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="bday-mins">--</div>
+            <div class="countdown-label">Mins</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="bday-secs">--</div>
+            <div class="countdown-label">Secs</div>
+          </div>
+        </div>
+
+        <div class="celebration-footer-note">
+          <i class="ri-sparkling-fill" style="color: var(--accent-amber);"></i>
+          <span>Orbital birthday ticker tracking live seconds to next celebration!</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================================
+     2. EXECUTIVE SUMMARY SLOT
+     ========================================================================== -->
+<section class="stories-section-container" id="summary">
+  <div class="section-head">
+    <span class="section-pill">Professional Profile</span>
+    <h2>{{ summary.title|default:"Executive Summary" }}</h2>
+    <p>A concise snapshot of engineering capabilities, system design philosophy, and stack focus.</p>
+  </div>
+
+  <div class="summary-slot-card">
+    <div class="summary-headline">
+      <i class="ri-terminal-box-fill" style="color: var(--accent-cyan); margin-right: 8px;"></i>
+      {{ summary.headline }}
+    </div>
+
+    <p class="summary-bio">
+      {{ summary.bio }}
+    </p>
+
+    <!-- Key Metrics Grid -->
+    <div class="summary-stat-grid">
+      {% for stat in summary.stats %}
+      <div class="summary-stat-box">
+        <div class="summary-stat-label">{{ stat.label }}</div>
+        <div class="summary-stat-val">{{ stat.value }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Highlights Pill List -->
+    <div class="summary-pill-list">
+      {% for item in summary.highlights %}
+      <div class="summary-pill-item">
+        <i class="ri-checkbox-circle-fill"></i>
+        <span>{{ item }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     3. GITHUB DYNAMIC STATS BANNER
+     ========================================================================== -->
+<section class="stats-banner-section" id="github-overview">
+  <div class="github-live-card">
+    <div class="github-user-badge">
+      <img src="{{ github_data.avatar_url|default:'https://github.com/github.png' }}" 
+           alt="{{ github_data.username }} GitHub avatar" class="github-avatar">
+      <div>
+        <div class="github-name">@{{ github_data.username }}</div>
+        <div class="github-sync-indicator">
+          <i class="ri-check-double-line"></i>
+          <span>Live GitHub Sync Active</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Counter Tickers -->
+    <div class="stats-ticker-row">
+      <div class="stat-item">
+        <div class="stat-value dynamic-github-repo-count" data-count="{{ github_data.public_repos }}">
+          {{ github_data.public_repos }}
+        </div>
+        <div class="stat-label">Public Repositories</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-value" data-count="{{ github_data.total_stars }}">
+          {{ github_data.total_stars }}
+        </div>
+        <div class="stat-label">Stargazers</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-value" data-count="{{ github_data.followers }}">
+          {{ github_data.followers }}
+        </div>
+        <div class="stat-label">Followers</div>
+      </div>
+    </div>
+
+    <a href="{% url 'portfolio:projects' %}" class="btn-primary" style="padding: 12px 24px; font-size: 0.95rem;">
+      <i class="ri-folder-open-fill"></i>
+      <span>Open Projects Folder</span>
+      <i class="ri-arrow-right-line"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     4. "WHO WAS I" SCROLLABLE CHRONICLES (ALL CHAPTERS)
+     ========================================================================== -->
+<section class="stories-section-container" id="story">
+  <div class="section-head">
+    <span class="section-pill">Chronicles &amp; Journey</span>
+    <h2>Who Was I? The Scrollable Story.</h2>
+    <p>A scrollable retrospective through challenges, breakthroughs, and architectural evolution.</p>
+  </div>
+
+  <div class="story-timeline">
+    {% for chapter in stories %}
+    <div class="story-card-item" id="{{ chapter.id }}">
+      <div class="story-marker-orb"></div>
+      <div class="story-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <span class="story-badge">{{ chapter.period }}</span>
+          <span class="code-font" style="font-size: 0.8rem; color: var(--accent-cyan); background: rgba(0,240,255,0.08); padding: 2px 8px; border-radius: 4px;">
+            {{ chapter.year }}
+          </span>
+        </div>
+        
+        <h3 class="story-title">{{ chapter.title }}</h3>
+        <div class="story-tagline">{{ chapter.tagline }}</div>
+        <p class="story-text">{{ chapter.content }}</p>
+        
+        <div class="story-lesson-box">
+          <i class="ri-lightbulb-flash-line" style="color: var(--accent-cyan); margin-right: 6px;"></i>
+          <strong>Key Insight:</strong> {{ chapter.lesson }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ==========================================================================
+     5. TECHNICAL ARSENAL / SKILLS
+     ========================================================================== -->
+<section class="stories-section-container" id="skills">
+  <div class="section-head">
+    <span class="section-pill">Technical Arsenal</span>
+    <h2>Engineered for Scale &amp; Performance</h2>
+  </div>
+
+  <div class="projects-grid">
+    {% for cat in portfolio.skill_categories %}
+    <div class="project-repo-card">
+      <div class="repo-card-top">
+        <h3 style="font-size: 1.2rem; color: var(--accent-cyan);">{{ cat.category }}</h3>
+        <i class="ri-terminal-box-line" style="font-size: 1.3rem; color: var(--text-dim);"></i>
+      </div>
+      <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
+        {% for skill in cat.skills %}
+        <li style="background: rgba(255,255,255,0.06); padding: 5px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(255,255,255,0.08);">
+          {{ skill }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Bottom CTA -->
+  <div style="text-align: center; margin-top: 60px;">
+    <a href="{% url 'portfolio:projects' %}" class="btn-primary" style="padding: 14px 32px;">
+      <i class="ri-folder-code-line"></i>
+      <span>Explore All GitHub Projects</span>
+      <i class="ri-arrow-right-line"></i>
+    </a>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Floating Modal Trigger & AJAX Web3Forms Handler
+  const modal = document.getElementById('floating-contact-modal');
+  const openFabBtn = document.getElementById('floating-contact-trigger');
+  const openNavBtn = document.getElementById('nav-contact-btn');
+  const closeBtn = document.getElementById('close-contact-modal');
+  const modalForm = document.getElementById('floating-contact-form');
+  const modalAlert = document.getElementById('modal-alert-box');
+  const modalSubmitBtn = document.getElementById('modal-submit-btn');
+  const modalBtnText = document.getElementById('modal-btn-text');
+
+  function openModal() {
+    if (modal) {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  if (openFabBtn) openFabBtn.addEventListener('click', openModal);
+  if (openNavBtn) openNavBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  // Close on outside click
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  // Web3Forms AJAX inside Floating Modal
+  if (modalForm) {
+    modalForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      modalBtnText.textContent = 'Transmitting...';
+      modalSubmitBtn.disabled = true;
+
+      const formData = new FormData(modalForm);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let jsonResponse = await response.json();
+        if (response.status === 200) {
+          modalAlert.className = 'form-status-alert alert-success';
+          modalAlert.innerHTML = '<i class="ri-checkbox-circle-line"></i> Message sent successfully! Rithu Raj R will reach back shortly.';
+          modalForm.reset();
+        } else {
+          modalAlert.className = 'form-status-alert alert-error';
+          modalAlert.innerHTML = '<i class="ri-error-warning-line"></i> ' + (jsonResponse.message || 'Transmission failed.');
+        }
+      })
+      .catch((err) => {
+        modalAlert.className = 'form-status-alert alert-error';
+        modalAlert.innerHTML = '<i class="ri-error-warning-line"></i> Network error. Please try again.';
+      })
+      .finally(() => {
+        modalBtnText.textContent = 'Transmit Message';
+        modalSubmitBtn.disabled = false;
+        modalAlert.style.display = 'block';
+      });
+    });
+  }
+</script>
+{% endblock %}
