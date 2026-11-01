@@ -8,8 +8,8 @@
 <meta property="og:title" content="Rithu Raj R — DevOps &amp; Cloud Engineer">
 <meta property="og:description" content="From concrete to cloud. Pipelines, clusters and infrastructure as code.">
 <meta name="theme-color" content="#080c18">
-<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-<link rel="alternate icon" href="favicon.svg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="assets/images/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -34,31 +34,48 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 .rl>span::after{content:attr(data-t);display:block}
 a:hover>.rl>span,button:hover>.rl>span{transform:translateY(-100%)}
 
-/* LOADER */
-#loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--ink)}
-#loader .half{position:absolute;left:0;right:0;height:50.1%;background:var(--ink);transition:transform 1s var(--ease);z-index:3}
-#loader .top{top:0;border-bottom:2px solid var(--blue)}#loader .bot{bottom:0}
-#loader.open .top{transform:translateY(-101%)}#loader.open .bot{transform:translateY(101%)}
-#loader.open .stage{opacity:0;transition:opacity .3s}
-#loader.gone{display:none}
-.stage{position:relative;z-index:4;width:min(92vw,740px);padding:1rem}
-.scan{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.7;animation:scan 3s linear infinite;z-index:5}
-@keyframes scan{from{top:0}to{top:100%}}
-.loader-logo-wrap{margin-bottom:.8rem;display:flex;align-items:center}
-.loader-logo{width:56px;height:56px;display:inline-block;filter:drop-shadow(0 0 16px rgba(23,224,255,.85));animation:logoPulse 2.2s ease-in-out infinite alternate}
-@keyframes logoPulse{0%{transform:scale(.94);filter:drop-shadow(0 0 12px rgba(47,107,255,.7))}100%{transform:scale(1.06);filter:drop-shadow(0 0 24px rgba(23,224,255,1))}}
-.count{font-weight:900;font-size:clamp(5.5rem,24vw,16rem);line-height:.85;letter-spacing:-.05em;color:var(--wh);font-variant-numeric:tabular-nums}
-.count small{font-size:.28em;color:var(--cyan);letter-spacing:0}
-.bname{font-weight:900;font-size:clamp(1.7rem,5vw,3rem);letter-spacing:-.02em;margin-top:1rem;height:1.3em;color:var(--wh)}
-.bname i{font-style:normal;display:inline-block;opacity:0;transform:translateY(60%) rotateX(-80deg);animation:rise .5s forwards}
-@keyframes rise{to{opacity:1;transform:none}}
-.logs{margin-top:1.2rem;height:11em;overflow:hidden;font-size:1rem;color:var(--mut);display:flex;flex-direction:column;justify-content:flex-end}
-.logs div{animation:rise .3s forwards;opacity:0}
-.logs b{color:var(--cyan);margin-right:.7rem}
-.bar{height:4px;background:var(--panel);margin-top:1rem;border-radius:4px;overflow:hidden}
-.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .25s}
-.skip{position:absolute;top:1.2rem;right:1.2rem;z-index:6;font-size:.95rem;color:var(--txt);border:1px solid var(--line);padding:.45rem 1rem;border-radius:99px;background:none;cursor:pointer}
-.skip:hover{border-color:var(--cyan);color:var(--cyan)}
+/* Brick wall -> DevOps pipeline loader. Loads after the main <style>. */
+#loader .stage{width:min(92vw,760px)}
+#loader .count{font-size:clamp(4.2rem,14vw,8.5rem)}
+#loader .bname{height:1.3em;margin-top:.6rem}
+
+.scene{--bw:clamp(34px,7.4vw,58px);position:relative;height:calc(var(--bw)*.42*6 + 24px);margin:.4rem 0 1.4rem}
+
+/* bricks */
+.wall{position:absolute;inset:0;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start;gap:3px}
+.brow{display:flex;gap:3px}
+.br{width:var(--bw);height:calc(var(--bw)*.42);border-radius:3px;opacity:0;
+  background:linear-gradient(180deg,#f0704f,#c8432c);
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.2),inset 0 2px 0 rgba(255,255,255,.22);
+  transform:translateY(-160px) rotate(var(--r));
+  animation:brDrop .6s cubic-bezier(.3,1.35,.5,1) forwards;animation-delay:calc(var(--d)*1ms)}
+.br:nth-child(3n){filter:brightness(.9)}.br:nth-child(4n+1){filter:brightness(1.1)}
+@keyframes brDrop{0%{opacity:0;transform:translateY(-160px) rotate(var(--r))}50%{opacity:1}100%{opacity:1;transform:none}}
+#loader.morph .br{animation:brCrush .75s ease-in forwards;animation-delay:calc(var(--m)*1ms)}
+@keyframes brCrush{
+  0%{opacity:1;transform:none}
+  45%{opacity:1;transform:none;filter:hue-rotate(170deg) brightness(1.3)}
+  100%{opacity:0;transform:scale(.15) translateY(-26px) rotate(60deg);filter:hue-rotate(170deg) blur(3px)}}
+
+/* DevOps pipeline */
+.pipe{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 2%}
+.pipe::before{content:'';position:absolute;left:4%;right:4%;top:50%;height:3px;border-radius:3px;opacity:.6;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));
+  transform:scaleX(0);transform-origin:left;transition:transform var(--pt,2s) linear}
+.pipe.run::before{transform:scaleX(1)}
+.ic{position:relative;z-index:1;display:grid;place-items:center;width:clamp(40px,8vw,64px);height:clamp(40px,8vw,64px);
+  border-radius:14px;background:var(--panel);border:2px solid var(--line);
+  opacity:0;transform:translateY(24px) scale(.5) rotateY(-100deg);
+  transition:opacity .3s,transform .3s,border-color .3s,box-shadow .3s}
+.ic.on{opacity:1;transform:none;transition:opacity .4s,transform .7s cubic-bezier(.3,1.5,.5,1),border-color .3s,box-shadow .3s}
+.ic.cur{border-color:var(--cyan);box-shadow:0 0 24px rgba(23,224,255,.55);transform:scale(1.14)}
+.ic svg,.ic img{width:62%;height:62%;object-fit:contain}
+.ic svg{fill:none;stroke:var(--cyan);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* caption */
+.tag{min-height:1.7em;font-size:clamp(1rem,2.4vw,1.2rem);color:var(--mut)}
+.tag b{color:var(--cyan)}
+.tag span{display:inline-block;opacity:0;transform:translateY(8px);animation:rise .35s forwards}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:1rem 0;transition:background .3s}
@@ -223,7 +240,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   <div class="scan"></div>
   <button class="skip lb" id="skip">Skip · Esc</button>
   <div class="stage">
-    <div class="loader-logo-wrap"><img src="assets/images/r-logo.svg" alt="R Logo" class="loader-logo"></div>
+    <div class="loader-logo-wrap"><img src="r-logo.svg" alt="R Logo" class="loader-logo" onerror="if(this.src.indexOf('assets')===-1){this.src='assets/images/r-logo.svg'}"></div>
     <div class="count" id="count">0<small>%</small></div>
     <div class="bname" id="bname" aria-hidden="true"></div>
     <div class="logs lb" id="logs" aria-live="polite"></div>
@@ -236,7 +253,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 <nav id="nav">
   <div class="wrap">
     <a href="#top" class="logo" aria-label="Rithu Raj R">
-      <img src="assets/images/r-logo.svg" alt="R Logo" class="nav-logo-badge">
+      <img src="r-logo.svg" alt="R Logo" class="nav-logo-badge" onerror="if(this.src.indexOf('assets')===-1){this.src='assets/images/r-logo.svg'}">
       <span id="logo"></span>
     </a>
     <div class="status lb"><span class="dot"></span>Open to junior DevOps roles</div>
@@ -278,7 +295,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
           <div class="ring"></div>
           <div class="box">
             <span class="ini">R</span>
-            <img src="assets/images/profile.jpg" alt="Rithu Raj R" loading="eager" onerror="if(this.src.indexOf('assets')!==-1){this.src='profile.jpg'}else{this.style.display='none'}">
+            <img src="profile.jpg" alt="Rithu Raj R" loading="eager" onerror="if(this.src.indexOf('assets')===-1){this.src='assets/images/profile.jpg'}">
           </div>
           <span class="bdg a lb">Kubernetes · AWS</span>
           <span class="bdg b lb">Civil → DevOps</span>
@@ -391,6 +408,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 
 <footer><div class="wrap lb"><span>© 2026 Rithu Raj R</span><span id="clock">--:--:-- IST</span><span>Static site on Vercel</span></div></footer>
 
+<script src="loader.js"></script>
 <script>
 (()=>{
 const $=id=>document.getElementById(id);
@@ -414,25 +432,6 @@ $('track').innerHTML=[...tools,...tools].map(t=>`<span>${t}</span>`).join('');
 /* rolling 3D word cube */
 let ang=0;if(!reduce)setInterval(()=>{ang+=90;$('cb').style.transform=`translateZ(-.65em) rotateX(${ang}deg)`},2200);
 $('cb').style.transform='translateZ(-.65em)';
-
-/* loader */
-const L=$('loader'),logs=$('logs'),fill=$('fill'),count=$('count');
-const msgs=[['OK','Mounting immutable infrastructure'],['OK','terraform plan: multi-AZ VPC, EKS, ALB'],['OK','docker buildx: image built'],['OK','Trivy scan: no critical findings'],['OK','Argo CD: application synced'],['OK','Prometheus: all targets up'],['OK','Resolving identity: civil engineer → devops'],['READY','Welcome.']];
-$('bname').innerHTML=[...'RITHU RAJ R'].map((c,i)=>`<i style="animation-delay:${i*70}ms">${c===' '?'&nbsp;':c}</i>`).join('');
-let done=false,p=0;
-function finish(){
-  if(done)return;done=true;
-  count.innerHTML='100<small>%</small>';fill.style.width='100%';
-  L.classList.add('open');
-  setTimeout(()=>{L.classList.add('gone');document.body.classList.remove('lock');document.body.classList.add('go')},reduce?0:1000);
-}
-$('skip').onclick=finish;
-addEventListener('keydown',e=>{if(e.key==='Escape')finish()});
-if(reduce)finish();else{
-  let i=0;
-  const t=setInterval(()=>{if(done)return clearInterval(t);if(i<msgs.length){const d=document.createElement('div');d.innerHTML=`<b>[${msgs[i][0]}]</b>${msgs[i][1]}`;logs.appendChild(d);i++}},330);
-  (function tick(){if(done)return;p=Math.min(100,p+Math.random()*3.2+.6);count.innerHTML=Math.floor(p)+'<small>%</small>';fill.style.width=p+'%';p>=100?setTimeout(finish,450):requestAnimationFrame(tick)})();
-}
 
 /* nav, glow, reveal, photo tilt, clock */
 const nav=$('nav');addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>30),{passive:true});
