@@ -86,7 +86,7 @@ nav .wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:center;ga
 .logo::after{content:'';width:.5em;height:.95em;margin-left:.22em;background:var(--cyan);box-shadow:0 0 14px var(--cyan);animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .nm{position:relative;display:inline-block}
-.nm .gh{visibility:hidden}
+.nm .nm-gh{visibility:hidden;white-space:nowrap}
 .nm .lv{position:absolute;left:0;top:0;white-space:nowrap}
 .lv i{font-style:normal;color:#fff}
 .lv i.sc{color:var(--cyan);text-shadow:0 0 10px rgba(23,224,255,.9)}
@@ -320,6 +320,71 @@ h3{overflow-wrap:break-word}
 @media(min-width:1700px){html{font-size:19px}.wrap{max-width:1400px}}
 @media(max-height:640px){.count{font-size:clamp(2.6rem,9vh,5rem)}.scene{margin:.2rem 0 .6rem}}
 @media(max-width:380px){.logo{font-size:1.1rem}.wrap{padding:0 1rem}.btn{padding:.8rem 1.2rem}.card,.sk div{padding:1.2rem}}
+
+/* ===== PATCH: compact nav + smaller, calmer content ===== */
+html{font-size:15px;scroll-padding-top:68px}
+@media(min-width:1700px){html{font-size:16px}}
+@media(max-width:600px){html{font-size:14.5px}}
+
+/* navbar: shorter, everything vertically centred, sizes in px so it doesn't shrink with content */
+nav{padding:.4rem 0}
+nav .wrap{align-items:center;gap:1rem}
+.logo{font-size:clamp(17px,1.9vw,21px);letter-spacing:.14em;align-items:center;line-height:1}
+.logo::before{margin-right:.5em;font-size:.95em}
+.logo::after{width:.42em;height:.8em;margin-left:.25em;box-shadow:0 0 8px var(--cyan)}
+.links{font-size:15px;gap:clamp(1rem,1.8vw,1.7rem)}
+.cta{font-size:14px;padding:.45rem 1.1rem}
+.burger{width:38px;height:38px;border-radius:10px}
+.mmenu a{font-size:17px;padding:.75rem 0}
+@media(max-width:480px){.logo{font-size:16px}}
+
+/* calmer look */
+#matrix-bg{opacity:.4}
+body{text-shadow:0 1px 2px rgba(0,0,0,.4)}
+h1,h2{text-shadow:0 .03em .06em rgba(0,0,0,.4)}
+#glow{opacity:.6}
+
+/* hero */
+header.hero{padding:5.5rem 0 3rem}
+h1{font-size:clamp(2rem,6.2vw,5.2rem);line-height:1}
+h1 .ln:nth-child(2) span{-webkit-text-stroke:1.5px var(--wh)}
+.eyebrow{font-size:.95rem;margin-bottom:1rem}
+.avail{font-size:.85rem}
+.sub{margin-top:2rem}
+.sub .lead{font-size:clamp(1.02rem,1.5vw,1.3rem);line-height:1.6;font-weight:500}
+.sub .roll3{font-size:clamp(1.5rem,3vw,2.4rem)}
+.btn{font-size:.95rem;padding:.7rem 1.35rem}
+
+/* marquee */
+.track{font-size:clamp(1.3rem,2.8vw,2.1rem)}
+.marq{padding:.8rem 0}
+
+/* sections */
+section{padding:clamp(3.5rem,8vw,6.5rem) 0}
+h2{font-size:clamp(1.9rem,4.8vw,3.6rem)}
+.lab{font-size:.95rem;margin-bottom:.9rem}
+.story,.proj,.sk,.xp{margin-top:2.5rem}
+.story p{font-size:1.08rem;font-weight:500}
+.step h3{font-size:1.3rem}
+.step p{font-size:.98rem}
+.ini{font-size:6.5rem}
+.pr{padding:1.8rem 1rem}
+.pr h3{font-size:clamp(1.5rem,3vw,2.3rem)}
+.pr ul{font-size:1rem;font-weight:500}
+.tags span{font-size:.82rem}
+.sk h3{font-size:1.25rem}
+.sk b{font-size:.85rem}
+.card h3{font-size:1.35rem}
+.card li{font-size:.98rem;font-weight:500}
+.rc h3{font-size:1.2rem}
+.rc p{font-size:.95rem}
+.st b{font-size:1.8rem}
+.gid{font-size:1.1rem}
+
+/* contact + footer */
+.big{font-size:clamp(1rem,3.4vw,2.7rem)}
+footer{font-size:.92rem}
+.fcol h4{font-size:1rem}
 </style>
 </head>
 <body class="lock">
@@ -353,7 +418,7 @@ h3{overflow-wrap:break-word}
 
 <nav id="nav">
   <div class="wrap">
-    <a class="logo" id="logo" href="#top" aria-label="Rithu Raj R, back to top"><span class="nm"><span class="gh">RITHU RAJ R</span><span class="lv" id="logot" aria-hidden="true"></span></span></a>
+    <a class="logo" id="logo" href="#top" aria-label="Rithu Raj R, back to top"><span class="nm"><span class="nm-gh">RITHU RAJ R</span><span class="lv" id="logot" aria-hidden="true"></span></span></a>
     <div class="links"><a href="#story">Journey</a><a href="#work">Projects</a><a href="#github">GitHub</a><a href="#stack">Stack</a><a href="#exp">Experience</a></div>
     <div class="nr"><a href="#contact" class="cta">Let’s talk</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span></button></div>
   </div>
