@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080c18'/%3E%3Ctext x='32' y='45' font-family='Arial' font-weight='900' font-size='40' text-anchor='middle' fill='%2317e0ff'%3ER%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&family=Syne:wght@800&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&family=Righteous&family=Jost:wght@500;700;800&family=Stack+Sans+Notch:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#080c18;--panel:#111830;--cell:#0d1428;--line:#243055;--mut:#9aa7cc;--txt:#e6ecff;--wh:#fff;--blue:#2f6bff;--cyan:#17e0ff;--pink:#ff4fa3;--ease:cubic-bezier(.77,0,.18,1)}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -81,7 +81,7 @@ a:hover>.rl>span,button:hover>.rl>span{transform:translateY(-1.35em)}
 /* NAV: solid, opaque */
 nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:.75rem 0;background:#0a1022;border-bottom:1px solid var(--line);box-shadow:0 10px 34px rgba(0,0,0,.55)}
 nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.4rem}
-.logo{position:relative;display:inline-flex;align-items:center;white-space:nowrap;font-family:'Unbounded','Urbanist',sans-serif;font-weight:800;font-size:clamp(1rem,1.9vw,1.3rem);letter-spacing:.03em;color:#fff;text-transform:uppercase;line-height:1;transition:letter-spacing .5s var(--ease)}
+.logo{position:relative;display:inline-flex;align-items:center;white-space:nowrap;font-family:'Stack Sans Notch','Urbanist',sans-serif;font-weight:700;font-size:clamp(1.05rem,2vw,1.45rem);letter-spacing:.04em;color:#fff;text-transform:uppercase;line-height:1;transition:letter-spacing .5s var(--ease)}
 .logo:hover{letter-spacing:.1em}
 .logo i{font-style:normal;display:inline-block;color:#fff;animation:nmShine 4s ease-in-out infinite;animation-delay:calc(var(--i)*90ms + 1.6s)}
 .logo.intro i{animation:nmIn .9s var(--ease) backwards;animation-delay:calc(var(--i)*60ms)}
@@ -102,21 +102,19 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.4r
 /* HERO */
 header.hero{min-height:100svh;display:flex;align-items:center;padding:7rem 0 4rem;position:relative;z-index:1}
 .eyebrow{font-size:1.05rem;color:var(--cyan);margin-bottom:1.4rem}
-h1{font-weight:900;font-size:clamp(2.4rem,12vw,11.5rem);line-height:.9;letter-spacing:-.055em;color:var(--wh)}
+h1{font-family:'Righteous','Urbanist',sans-serif;font-weight:400;font-size:clamp(2.1rem,9vw,7.6rem);line-height:.95;letter-spacing:-.02em;color:var(--wh)}
 h1 .ln{display:block;overflow:hidden;padding:.12em .2em .16em;margin:-.12em -.2em -.16em;perspective:900px}
 h1 .ln span{display:block;transform:translateY(135%) rotateX(-75deg);transform-origin:50% 100%;transition:transform 1.1s var(--ease)}
 .go h1 .ln span{transform:none}
 h1 .ln:nth-child(2) span{transition-delay:.14s;color:transparent;-webkit-text-stroke:2px var(--wh)}
 h1 .ln:nth-child(3) span{transition-delay:.28s;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;margin-top:3rem;align-items:end}
-.sub p{font-size:clamp(1.15rem,1.8vw,1.45rem);max-width:36rem;font-weight:600}
-.sub p strong{color:var(--wh)}
-.roll3{font-weight:900;font-size:clamp(1.7rem,3.6vw,2.7rem);color:var(--wh);margin-bottom:1rem;letter-spacing:-.03em}
-.cube{position:relative;display:inline-block;width:8.2em;height:1.3em;vertical-align:bottom;perspective:800px}
-.cb{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s var(--ease)}
-.cb b{position:absolute;inset:0;line-height:1.3em;color:var(--cyan);backface-visibility:hidden}
-.cb b:nth-child(1){transform:rotateX(0) translateZ(.65em)}.cb b:nth-child(2){transform:rotateX(-90deg) translateZ(.65em)}
-.cb b:nth-child(3){transform:rotateX(-180deg) translateZ(.65em)}.cb b:nth-child(4){transform:rotateX(-270deg) translateZ(.65em)}
+.sub .lead{font-size:clamp(1.3rem,2.3vw,1.85rem);line-height:1.5;max-width:40rem;font-weight:600}
+.sub .lead strong{color:var(--wh)}
+.sub .roll3{display:flex;flex-wrap:wrap;align-items:flex-start;gap:0 .32em;font-family:'Righteous','Urbanist',sans-serif;font-weight:400;font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.2;letter-spacing:-.01em;color:var(--wh);margin-bottom:1.1rem}
+.cube{display:inline-block;height:1.2em;overflow:hidden;vertical-align:top}
+.cb{display:flex;flex-direction:column;transition:transform .8s var(--ease)}
+.cb b{display:block;height:1.2em;line-height:1.2em;white-space:nowrap;color:var(--cyan);font-weight:400}
 .acts{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
 .btn{font-weight:800;font-size:1.05rem;padding:.9rem 1.6rem;border-radius:99px;border:2px solid var(--line);transition:all .25s;display:inline-block;background:none;color:var(--txt);cursor:pointer}
 .btn:hover{border-color:var(--cyan);transform:translateY(-3px)}
@@ -135,7 +133,7 @@ h1 .ln:nth-child(3) span{transition-delay:.28s;background:linear-gradient(90deg,
 /* SECTIONS */
 section{padding:clamp(5rem,12vw,10rem) 0;position:relative;z-index:1}
 section.light{background:#f2f5ff;--txt:#141c3a;--mut:#4a5a8c;--line:#c8d3f3;--cell:#fff;--wh:#0a1030}
-h2{font-weight:900;font-size:clamp(2.1rem,8vw,6.5rem);line-height:.95;letter-spacing:-.05em;color:var(--wh);max-width:14ch;perspective:900px}
+h2{font-family:'Righteous','Urbanist',sans-serif;font-weight:400;font-size:clamp(2.1rem,7.4vw,5.6rem);line-height:1;letter-spacing:-.02em;color:var(--wh);max-width:14ch;perspective:900px}
 h2 .w{display:inline-block;white-space:nowrap}
 h2 .ch{display:inline-block;opacity:0;transform:rotateX(-100deg) translateY(45%);transform-origin:50% 100%;transition:transform .8s var(--ease),opacity .5s;transition-delay:calc(var(--i)*32ms)}
 h2.in .ch{opacity:1;transform:none}
@@ -234,7 +232,7 @@ h2.d3.in::after{width:min(220px,40%)}
 .card li::before{content:'›';color:var(--cyan);margin-right:.5rem;font-weight:900}
 
 /* contact */
-.big{display:block;font-weight:900;font-size:clamp(2rem,7vw,6rem);letter-spacing:-.05em;line-height:1;color:var(--wh);margin-top:2rem;word-break:break-all;transition:letter-spacing .5s}
+.big{display:block;font-weight:900;font-size:clamp(1.05rem,4.4vw,3.6rem);letter-spacing:-.03em;line-height:1.1;color:var(--wh);margin-top:2rem;white-space:nowrap;max-width:100%;transition:letter-spacing .5s}
 .big:hover{letter-spacing:-.02em;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
 .soc{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2.5rem}
 footer{border-top:2px solid var(--line);padding:3rem 0 1.6rem;position:relative;z-index:1;font-size:1rem;color:var(--mut);background:#0a1022}
@@ -277,7 +275,7 @@ nav.open .mmenu{max-height:440px;visibility:visible;transition-delay:0s;padding-
 @media(max-width:600px){html{font-size:16px}
   .bdg.a{right:2%}.bdg.b{left:2%}.ini{font-size:6rem}
   .pr{padding:1.8rem .4rem}.pr:hover{padding-left:.4rem}.gh{padding:1.1rem}.sts{gap:1.3rem}
-  .sk div,.card{padding:1.4rem}.acts .btn{flex:1;text-align:center}.big{font-size:clamp(1.4rem,7vw,2.4rem)}
+  .sk div,.card{padding:1.4rem}.acts .btn{flex:1;text-align:center}
   .eyebrow{font-size:.95rem}.step h3{font-size:1.35rem}.story p{font-size:1.12rem}.steps{padding-left:1.4rem}.step::before{left:calc(-1.4rem - 6px)}
   .tabs{flex-wrap:wrap}.rc{padding:1.2rem}}
 @media(hover:none){.btn:hover,.rc:hover,.card:hover,.sk div:hover{transform:none}.pr:hover{padding-left:1rem}}
@@ -289,12 +287,43 @@ h1,h2{text-shadow:0 .03em .06em rgba(0,0,0,.5),0 0 .3em rgba(8,12,24,.9)}
 h1 .ln:nth-child(2) span,h1 .ln:nth-child(3) span,.big:hover{text-shadow:none;filter:drop-shadow(0 .04em .08em rgba(0,0,0,.6)) drop-shadow(0 0 .25em rgba(8,12,24,.8))}
 /* dark text on light fills: no shadow */
 .btn.p,.cta,.bdg,.tabs button.on,.fcol a.otp:hover,.ic,.ic *{text-shadow:none}
+
+/* ===== HEADING FONTS ===== */
+h3{font-family:'Jost','Urbanist',sans-serif;letter-spacing:-.01em}
+.pr h3,.card h3,.sk h3,.rc h3,.step h3{font-weight:800}
+.pr h3{letter-spacing:-.02em}
+.mmenu a{font-family:'Righteous','Urbanist',sans-serif;font-weight:400}
+/* ===== FOOTER ICONS + FLOATING TOP BUTTON ===== */
+.fi{width:22px;height:22px;flex:none}
+.fcol h4{font-family:'Jost','Urbanist',sans-serif;display:flex;align-items:center;gap:.6rem}
+.fcol h4 .fi{width:28px;height:28px}
+.fcol a{display:flex;align-items:center;gap:.65rem;padding:.3rem 0}
+.fcol a span{min-width:0;overflow-wrap:anywhere}
+.fcol a:hover .fi{transform:scale(1.15) rotate(-6deg)}
+.fcol .fi{transition:transform .3s var(--ease)}
+.fcol address{display:flex;align-items:flex-start;gap:.65rem}
+.fbot{justify-content:center}
+.totop{position:fixed;right:clamp(.9rem,2.4vw,1.6rem);bottom:20px;z-index:55;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--cyan) 60%,var(--pink));box-shadow:0 8px 24px rgba(23,224,255,.35),0 0 0 3px rgba(8,12,24,.65);opacity:0;visibility:hidden;transform:translateY(14px) scale(.8);transition:opacity .35s,transform .35s,visibility 0s .35s}
+.totop.show{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.totop.show:hover{transform:translateY(-4px) scale(1.08)}
+.totop svg{width:22px;height:22px}
 </style>
 </head>
 <body class="lock">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6bff"/><stop offset=".6" stop-color="#17e0ff"/><stop offset="1" stop-color="#ff4fa3"/></linearGradient>
 <symbol id="badge" viewBox="0 0 64 64"><path d="M32 3 58 18v28L32 61 6 46V18z" fill="#0a1022" stroke="url(#lg)" stroke-width="3"/><text x="32" y="43" font-family="Urbanist,Arial" font-weight="900" font-size="30" text-anchor="middle" fill="#fff">R</text></symbol>
+<linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".62" stop-color="#d62976"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7z" fill="#ff4d4f"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></symbol>
+<symbol id="i-devops" viewBox="0 0 24 24"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.356-8-5.096 0-5.096 8 0 8 5.223 0 7.26-8 12.356-8z" fill="none" stroke="url(#lg)" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4.5" width="20" height="15" rx="3.5" fill="#ff6b6b"/><path d="M3.5 7.5 12 13.5l8.5-6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#0A66C2"/><path fill="#fff" transform="translate(4 4) scale(.67)" d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></symbol>
+<symbol id="i-github" viewBox="0 0 24 24"><rect width="24" height="24" rx="5.5" fill="#24292f"/><path fill="#fff" transform="translate(3.2 3.2) scale(.73)" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="url(#ig)"/><rect x="5.2" y="5.2" width="13.6" height="13.6" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.3" cy="7.7" r="1.1" fill="#fff"/></symbol>
+<symbol id="i-git" viewBox="0 0 128 128"><path fill="#F34F29" d="M124.737 58.378L69.621 3.264c-3.172-3.174-8.32-3.174-11.497 0L46.68 14.71l14.518 14.518c3.375-1.139 7.243-.375 9.932 2.314 2.703 2.706 3.461 6.607 2.294 9.993l13.992 13.993c3.385-1.167 7.292-.413 9.994 2.295 3.78 3.777 3.78 9.9 0 13.679a9.673 9.673 0 01-13.683 0 9.677 9.677 0 01-2.105-10.521L68.574 47.933l-.002 34.341a9.708 9.708 0 012.559 1.828c3.778 3.777 3.778 9.898 0 13.683-3.779 3.777-9.904 3.777-13.679 0-3.778-3.784-3.778-9.905 0-13.683a9.65 9.65 0 013.167-2.11V47.333a9.581 9.581 0 01-3.167-2.111c-2.862-2.86-3.551-7.06-2.083-10.576L41.056 20.333 3.264 58.123a8.133 8.133 0 000 11.5l55.117 55.114c3.174 3.174 8.32 3.174 11.499 0l54.858-54.858a8.135 8.135 0 00-.001-11.501z"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4.2l2 2.2H19a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="url(#lg)"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5z" fill="#17e0ff"/><path d="m2.5 12 9.5 5 9.5-5" fill="none" stroke="#2f6bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m2.5 16 9.5 5 9.5-5" fill="none" stroke="#ff4fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 4.5h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2z" fill="#ff4fa3"/><circle cx="8" cy="11" r="1.3" fill="#fff"/><circle cx="12" cy="11" r="1.3" fill="#fff"/><circle cx="16" cy="11" r="1.3" fill="#fff"/></symbol>
 </defs></svg>
 
 <canvas id="matrix-bg" aria-hidden="true"></canvas>
@@ -328,8 +357,8 @@ h1 .ln:nth-child(2) span,h1 .ln:nth-child(3) span,.big:hover{text-shadow:none;fi
     </h1>
     <div class="sub">
       <div class="fade">
-        <p class="roll3">I build <span class="cube"><span class="cb" id="cb"><b>pipelines</b><b>clusters</b><b>infrastructure</b><b>dashboards</b></span></span></p>
-        <p>I’m <strong>Rithu Raj R</strong>. After two years supervising construction sites, I retrained as a DevOps engineer. I build <strong>CI/CD</strong>, <strong>GitOps delivery</strong> and <strong>AWS infrastructure</strong> you can trust on a Friday.</p>
+        <p class="roll3"><span>I build</span><span class="cube"><span class="cb" id="cb"><b>pipelines</b><b>clusters</b><b>infrastructure</b><b>dashboards</b><b>pipelines</b></span></span></p>
+        <p class="lead">I’m <strong>Rithu Raj R</strong>. After two years supervising construction sites, I retrained as a DevOps engineer. I build <strong>CI/CD</strong>, <strong>GitOps delivery</strong> and <strong>AWS infrastructure</strong> you can trust on a Friday.</p>
       </div>
       <div class="acts fade">
         <a href="#work" class="btn p">See projects</a>
@@ -464,20 +493,25 @@ h1 .ln:nth-child(2) span,h1 .ln:nth-child(3) span,.big:hover{text-shadow:none;fi
 
 <footer>
   <div class="wrap fgrid">
-    <div class="fcol"><h4>Rithu Raj R</h4><p>Junior DevOps &amp; Cloud Engineer</p>
-      <address>Thiruvananthapuram,<br>Kerala, India</address></div>
+    <div class="fcol">
+      <h4><svg class="fi" aria-hidden="true"><use href="#i-devops"/></svg>Rithu Raj R</h4>
+      <p>Junior DevOps &amp; Cloud Engineer</p>
+      <address><svg class="fi" aria-hidden="true"><use href="#i-pin"/></svg><span>Thiruvananthapuram,<br>Kerala, India</span></address>
+    </div>
     <div class="fcol"><h4>Contact</h4>
-      <a href="mailto:contactrithuraj@gmail.com">contactrithuraj@gmail.com</a>
-      <a href="https://www.linkedin.com/in/rithurajr" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/rithuraj6" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.instagram.com/rithuraj_6" target="_blank" rel="noopener">Instagram</a></div>
-    <div class="fcol"><h4>Links</h4>
-      <!-- REPLACE the href below with your GotOTP page URL -->
-      <a class="otp" id="otp" href="#" target="_blank" rel="noopener">GotOTP page ↗</a>
-      <a href="#work">Projects</a><a href="#stack">Stack</a><a href="#contact">Contact</a></div>
+      <a href="mailto:contactrithuraj@gmail.com"><svg class="fi" aria-hidden="true"><use href="#i-mail"/></svg><span>contactrithuraj@gmail.com</span></a>
+      <a href="https://www.linkedin.com/in/rithurajr" target="_blank" rel="noopener"><svg class="fi" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a>
+      <a href="https://github.com/rithuraj6" target="_blank" rel="noopener"><svg class="fi" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span></a>
+      <a href="https://www.instagram.com/rithuraj_6" target="_blank" rel="noopener"><svg class="fi" aria-hidden="true"><use href="#i-instagram"/></svg><span>Instagram</span></a></div>
+    <div class="fcol"><h4>Explore</h4>
+      <a href="#work"><svg class="fi" aria-hidden="true"><use href="#i-folder"/></svg><span>Projects</span></a>
+      <a href="#github"><svg class="fi" aria-hidden="true"><use href="#i-git"/></svg><span>Repositories</span></a>
+      <a href="#stack"><svg class="fi" aria-hidden="true"><use href="#i-layers"/></svg><span>Stack</span></a>
+      <a href="#contact"><svg class="fi" aria-hidden="true"><use href="#i-chat"/></svg><span>Contact</span></a></div>
   </div>
-  <div class="wrap fbot lb"><span>© 2026 Rithu Raj R</span><span id="clock">--:--:-- IST</span><span>Static site on Vercel</span></div>
+  <div class="wrap fbot lb"><span>© 2026 Rithu Raj R</span></div>
 </footer>
+<button class="totop" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
 <script src="loader.js"></script>
 <script>
@@ -532,8 +566,9 @@ document.querySelectorAll('h2.d3').forEach(h=>{let n=0;const t=h.textContent;h.s
 /* marquee + cube */
 const tools=['Kubernetes','Terraform','AWS','Docker','Argo CD','Jenkins','Helm','Istio','Prometheus','Grafana','Trivy','Python','Linux'];
 $('track').innerHTML=[...tools,...tools].map(t=>`<span>${t}</span>`).join('');
-let ang=0;$('cb').style.transform='translateZ(-.65em)';
-if(!reduce)setInterval(()=>{ang+=90;$('cb').style.transform=`translateZ(-.65em) rotateX(${ang}deg)`},2200);
+const cb=$('cb'),nW=cb.children.length-1;let wi=0;
+if(!reduce)setInterval(()=>{wi++;cb.style.transform=`translateY(${-wi*1.2}em)`;
+  if(wi===nW)setTimeout(()=>{cb.style.transition='none';wi=0;cb.style.transform='none';void cb.offsetHeight;cb.style.transition=''},850)},2200);
 
 /* loader.js runs the intro; this hooks the nav-name animation and is a safety net if loader.js is missing */
 const B=document.body,L=$('loader');
@@ -562,7 +597,13 @@ const g=$('glow');addEventListener('pointermove',e=>{g.style.left=e.clientX+'px'
 const ph=$('ph'),p3=$('p3');
 if(!reduce){ph.addEventListener('pointermove',e=>{const r=ph.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;p3.style.transform=`rotateY(${x*22}deg) rotateX(${-y*22}deg)`});
 ph.addEventListener('pointerleave',()=>p3.style.transform='')}
-const clk=()=>{$('clock').textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kolkata'})+' IST'};clk();setInterval(clk,1000);
+
+
+/* floating back-to-top: appears after scrolling, rides above the footer */
+const tt=$('totop'),ft=document.querySelector('footer');
+function placeTop(){tt.classList.toggle('show',scrollY>500);tt.style.bottom=(Math.max(0,innerHeight-ft.getBoundingClientRect().top)+20)+'px'}
+addEventListener('scroll',placeTop,{passive:true});addEventListener('resize',placeTop);placeTop();
+tt.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
 /* ===== LIVE GITHUB ===== */
 const U='rithuraj6',COL={Python:'#3572A5',JavaScript:'#f1e05a',TypeScript:'#3178c6',HTML:'#e34c26',CSS:'#563d7c',Shell:'#89e051',HCL:'#844fba',Go:'#00ADD8',Dockerfile:'#384d54',YAML:'#cb171e'};
