@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rithu Raj R — DevOps &amp; Cloud Engineer</title>
+<title>Rithu Raj R—DevOps&amp;Cloud Engineer</title>
 <meta name="description" content="Junior DevOps engineer. CI/CD, DevSecOps, GitOps, Kubernetes, Terraform and AWS. Civil engineer turned cloud builder.">
 <meta property="og:title" content="Rithu Raj R — DevOps &amp; Cloud Engineer">
 <meta property="og:description" content="From concrete to cloud. Pipelines, clusters and infrastructure as code.">
@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080c18'/%3E%3Ctext x='32' y='45' font-family='Arial' font-weight='900' font-size='40' text-anchor='middle' fill='%2317e0ff'%3ER%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&family=Righteous&family=Jost:wght@500;700;800&family=Stack+Sans+Notch:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&family=Righteous&family=Jost:wght@500;700;800&family=Voces&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#080c18;--panel:#111830;--cell:#0d1428;--line:#243055;--mut:#9aa7cc;--txt:#e6ecff;--wh:#fff;--blue:#2f6bff;--cyan:#17e0ff;--pink:#ff4fa3;--ease:cubic-bezier(.77,0,.18,1)}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -81,12 +81,18 @@ a:hover>.rl>span,button:hover>.rl>span{transform:translateY(-1.35em)}
 /* NAV: solid, opaque */
 nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:.75rem 0;background:#0a1022;border-bottom:1px solid var(--line);box-shadow:0 10px 34px rgba(0,0,0,.55)}
 nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.4rem}
-.logo{position:relative;display:inline-flex;align-items:center;white-space:nowrap;font-family:'Stack Sans Notch','Urbanist',sans-serif;font-weight:700;font-size:clamp(1.05rem,2vw,1.45rem);letter-spacing:.04em;color:#fff;text-transform:uppercase;line-height:1;transition:letter-spacing .5s var(--ease)}
-.logo:hover{letter-spacing:.1em}
-.logo i{font-style:normal;display:inline-block;color:#fff;animation:nmShine 4s ease-in-out infinite;animation-delay:calc(var(--i)*90ms + 1.6s)}
-.logo.intro i{animation:nmIn .9s var(--ease) backwards;animation-delay:calc(var(--i)*60ms)}
-@keyframes nmIn{from{opacity:0;transform:translateY(70%) rotate(8deg);filter:blur(6px)}}
-@keyframes nmShine{0%,45%,100%{color:#fff;text-shadow:none;transform:none}22%{color:var(--cyan);text-shadow:0 0 18px rgba(23,224,255,.9);transform:translateY(-.12em)}}
+.logo{position:relative;display:inline-flex;align-items:center;white-space:nowrap;font-family:'Voces',sans-serif;font-weight:400;font-synthesis:none;font-size:clamp(1.3rem,2.7vw,2rem);letter-spacing:.09em;color:#fff;text-transform:uppercase;line-height:1}
+.logo::before{content:'>';color:var(--cyan);margin-right:.4em;font-size:.9em;text-shadow:0 0 12px rgba(23,224,255,.9)}
+.logo::after{content:'';width:.5em;height:.95em;margin-left:.22em;background:var(--cyan);box-shadow:0 0 14px var(--cyan);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.nm{position:relative;display:inline-block}
+.nm .gh{visibility:hidden}
+.nm .lv{position:absolute;left:0;top:0;white-space:nowrap}
+.lv i{font-style:normal;color:#fff}
+.lv i.sc{color:var(--cyan);text-shadow:0 0 10px rgba(23,224,255,.9)}
+.lv i.ok{animation:okp .5s}
+.lv.glitch{text-shadow:2px 0 rgba(255,79,163,.85),-2px 0 rgba(23,224,255,.85)}
+@keyframes okp{from{color:var(--cyan);text-shadow:0 0 16px var(--cyan)}}
 .status{display:flex;align-items:center;gap:.6rem;font-size:.92rem;color:var(--mut)}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);animation:ping 2s infinite;flex:none}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(23,224,255,.7)}70%,100%{box-shadow:0 0 0 11px rgba(23,224,255,0)}}
@@ -97,7 +103,7 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.4r
 .cta:hover{transform:translateY(-2px) scale(1.04)}
 @media(max-width:1180px){.status{display:none}}
 @media(max-width:900px){.links{display:none}}
-@media(max-width:480px){.logo{font-size:.95rem}}
+@media(max-width:480px){.logo{font-size:1.2rem}}
 
 /* HERO */
 header.hero{min-height:100svh;display:flex;align-items:center;padding:7rem 0 4rem;position:relative;z-index:1}
@@ -232,8 +238,8 @@ h2.d3.in::after{width:min(220px,40%)}
 .card li::before{content:'›';color:var(--cyan);margin-right:.5rem;font-weight:900}
 
 /* contact */
-.big{display:block;font-weight:900;font-size:clamp(1.05rem,4.4vw,3.6rem);letter-spacing:-.03em;line-height:1.1;color:var(--wh);margin-top:2rem;white-space:nowrap;max-width:100%;transition:letter-spacing .5s}
-.big:hover{letter-spacing:-.02em;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.big{display:block;font-family:'Voces',sans-serif;font-weight:400;font-synthesis:none;font-size:clamp(1.1rem,5vw,4.4rem);letter-spacing:0;line-height:1.15;color:var(--wh);margin-top:2rem;white-space:nowrap;max-width:100%;transition:letter-spacing .5s}
+.big:hover{letter-spacing:.01em;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
 .soc{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2.5rem}
 footer{border-top:2px solid var(--line);padding:3rem 0 1.6rem;position:relative;z-index:1;font-size:1rem;color:var(--mut);background:#0a1022}
 .fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem;padding-bottom:2rem}
@@ -340,7 +346,7 @@ h3{font-family:'Jost','Urbanist',sans-serif;letter-spacing:-.01em}
 
 <nav id="nav">
   <div class="wrap">
-    <a class="logo" id="logo" href="#top" aria-label="Rithu Raj R, back to top"><span id="logot"></span></a>
+    <a class="logo" id="logo" href="#top" aria-label="Rithu Raj R, back to top"><span class="nm"><span class="gh">RITHU RAJ R</span><span class="lv" id="logot" aria-hidden="true"></span></span></a>
     <div class="links"><a href="#story">Journey</a><a href="#work">Projects</a><a href="#github">GitHub</a><a href="#stack">Stack</a><a href="#exp">Experience</a></div>
     <div class="nr"><div class="status lb"><span class="dot"></span>Open to junior DevOps roles</div><a href="#contact" class="cta">Let’s talk</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span></button></div>
   </div>
@@ -554,7 +560,20 @@ const MATRIX={radius:200,baseAlpha:.5,fontSize:16,tick:55,idleMs:900}; // tweak 
 })();
 
 /* ===== NAV NAME ===== */
-$('logot').innerHTML=[...'RITHU RAJ R'].map((c,i)=>`<i style="--i:${i}">${c===' '?'&nbsp;':c}</i>`).join('');
+const NAME='RITHU RAJ R',GL='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/_#$%&{}',lv=$('logot'),letters=[...NAME].map(c=>{const i=document.createElement('i');i.textContent=c===' '?'\u00a0':c;i.className='ok';lv.appendChild(i);return i});
+let nameBusy=false,nameStarted=false;
+function decodeName(){
+  if(nameBusy||reduce)return;nameBusy=true;lv.classList.add('glitch');
+  const t0=performance.now();
+  (function tick(){
+    const e=performance.now()-t0;let done=true;
+    letters.forEach((el,k)=>{const c=NAME[k];if(c===' ')return;
+      if(e>=350+k*80){if(el.className!=='ok'){el.className='ok';el.textContent=c}}
+      else{done=false;el.className='sc';el.textContent=GL[Math.random()*GL.length|0]}});
+    if(done){lv.classList.remove('glitch');nameBusy=false}else setTimeout(tick,45);
+  })();
+}
+function startName(){if(nameStarted)return;nameStarted=true;decodeName();setInterval(decodeName,8000);$('logo').addEventListener('mouseenter',decodeName)}
 
 /* roll hover text */
 document.querySelectorAll('.links a,.btn,.cta').forEach(a=>{const t=a.textContent.trim();a.innerHTML=`<span class="rl"><span>${esc(t)}</span></span>`});
@@ -572,7 +591,7 @@ if(!reduce)setInterval(()=>{wi++;cb.style.transform=`translateY(${-wi*1.2}em)`;
 
 /* loader.js runs the intro; this hooks the nav-name animation and is a safety net if loader.js is missing */
 const B=document.body,L=$('loader');
-new MutationObserver((_,o)=>{if(B.classList.contains('go')){const lg=$('logo');lg.classList.add('intro');setTimeout(()=>lg.classList.remove('intro'),1800);o.disconnect()}}).observe(B,{attributes:true,attributeFilter:['class']});
+new MutationObserver((_,o)=>{if(B.classList.contains('go')){startName();o.disconnect()}}).observe(B,{attributes:true,attributeFilter:['class']});
 setTimeout(()=>{if(!$('count')){B.classList.remove('lock');B.classList.add('go');L.classList.add('open');setTimeout(()=>L.classList.add('gone'),1300)}},1500);
 
 /* mobile menu */
